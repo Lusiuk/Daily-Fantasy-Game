@@ -1,16 +1,47 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Manager : MonoBehaviour
+public class UI_Manager : MonoBehaviour
 {
+
+    public GameObject SettingsPanel;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        SettingsPanel.SetActive(false);
     }
 
+    public void Play()
+    {
+        SceneManager.LoadScene("CharacterRoom");
+    }
+
+    public void Back()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Settings()
+    {
+        if (!SettingsPanel.activeSelf)
+        {
+            SettingsPanel.SetActive(true);
+        }
+        else
+        {
+            SettingsPanel.SetActive(false);
+        }
+
+    }
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
