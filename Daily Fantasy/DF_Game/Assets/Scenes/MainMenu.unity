@@ -1651,8 +1651,9 @@ GameObject:
   m_Component:
   - component: {fileID: 954451214}
   - component: {fileID: 954451215}
+  - component: {fileID: 954451216}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Fullscreen_Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1727,6 +1728,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &954451216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954451213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6ed81dfcda41a4bae86b54fffb1ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FullscreenToggleController
+  fullscreenToggle: {fileID: 954451215}
 --- !u!1 &1221125165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +2062,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.2
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
