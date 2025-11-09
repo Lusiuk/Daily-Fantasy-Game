@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 8e84b162bfbae7dbea0b4a7ae150c245
+guid: 79bdc3bc057a24f95a87c376786535e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3899215544528554959
-    second: table_chair_0
-  - first:
-      213: 5658748061070639071
-    second: table_chair_1
+      213: -1804030700590736360
+    second: wall_right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: table_chair_0
+      name: wall_right_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 13
-        width: 79
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        x: 206
+        y: 0
+        width: 57
+        height: 265
+      alignment: 9
+      pivot: {x: -1.3157895, y: 0.5}
+      border: {x: 2, y: 0, z: 0, w: 1}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 134b1b50f1433e9c0800000000000000
-      internalID: -3899215544528554959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: table_chair_1
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 13
-        width: 118
-        height: 179
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fdfbb855169e78e40800000000000000
-      internalID: 5658748061070639071
+      spriteID: 81cd36fc2abc6f6e0800000000000000
+      internalID: -1804030700590736360
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e3270cd4ddc1b4e498c7dd8e1c4654ca
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      table_chair_0: -3899215544528554959
-      table_chair_1: 5658748061070639071
+      wall_right_0: -1804030700590736360
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
