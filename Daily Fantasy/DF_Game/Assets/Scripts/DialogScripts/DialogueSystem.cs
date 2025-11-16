@@ -2,33 +2,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class DialogueSystem : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private Button closeButton;
 
     [Header("Animation Settings")]
     [SerializeField] private float fadeDuration = 0.3f;
     [SerializeField] private float typewriterSpeed = 0.05f;
 
     [Header("Input Settings")]
-    [SerializeField] private KeyCode interactKey = KeyCode.R;
+    [SerializeField] private InputActionReference interactAction;
 
+    // События диалога
     public System.Action OnDialogueStart;
     public System.Action OnDialogueEnd;
 
+    // Приватные переменные
     private CanvasGroup canvasGroup;
     private Coroutine currentTypewriter;
     private bool isDialogueActive = false;
-    private Dialogue currentDialogue; 
+    private Dialogue currentDialogue;
+    private bool inputEnabled = true;
 
     public static DialogueSystem Instance { get; private set; }
 
-    // Метод Awake вызывается при создании объекта
+    // Вызывается при создании объекта
     void Awake()
     {
         if (Instance == null)
@@ -45,62 +47,79 @@ public class DialogueSystem : MonoBehaviour
         InitializeComponents();
     }
 
-    // Инициализация всех необходимых компонентов
+    // Настраивает систему ввода при активации объекта
+    void OnEnable()
+    {
+        if (interactAction != null)
+        {
+            interactAction.action.Enable();
+            interactAction.action.performed += OnInteractPerformed;
+        }
+    }
+
+    // Отключает систему ввода при деактивации объекта
+    void OnDisable()
+    {
+        if (interactAction != null)
+        {
+            interactAction.action.performed -= OnInteractPerformed;
+            interactAction.action.Disable();
+        }
+    }
+
+    // Инициализирует компоненты системы
     void InitializeComponents()
     {
-        canvasGroup = dialoguePanel.GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-            canvasGroup = dialoguePanel.AddComponent<CanvasGroup>();
+        canvasGroup = dialoguePanel.GetComponent<CanvasGroup>() ?? dialoguePanel.AddComponent<CanvasGroup>();
 
         canvasGroup.alpha = 0f;
         dialoguePanel.SetActive(false);
-
-        if (closeButton != null)
-        {
-            closeButton.onClick.RemoveAllListeners();
-            closeButton.onClick.AddListener(HideDialogue);
-        }
     }
 
-    // Update вызывается каждый кадр
-    void Update()
+    // Обрабатывает нажатие клавиши взаимодействия
+    private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (isDialogueActive && Input.GetKeyDown(interactKey))
-        {
-            HideDialogue();
-        }
+        if (!inputEnabled || !isDialogueActive) return;
+
+        HideDialogue();
     }
 
-    /// <summary>
-    /// Показывает диалоговое окно с указанным текстом
-    /// </summary>
-    /// <param name="dialogue">Объект диалога для отображения</param>
+    // Показывает диалоговое окно
     public void ShowDialogue(Dialogue dialogue)
     {
-        if (dialogue == null || !dialogue.canInteract || isDialogueActive)
-            return;
+        if (dialogue == null || !dialogue.canInteract || isDialogueActive) return;
 
         currentDialogue = dialogue;
         isDialogueActive = true;
+        inputEnabled = false;
 
         dialoguePanel.SetActive(true);
-
-        StartCoroutine(FadeDialogue(0f, 1f, fadeDuration));
 
         if (currentTypewriter != null)
             StopCoroutine(currentTypewriter);
 
-        currentTypewriter = StartCoroutine(TypewriterEffect(dialogue.text));
+        StartCoroutine(ShowDialogueSequence());
 
         OnDialogueStart?.Invoke();
     }
 
-    /// <summary>
-    /// Скрывает диалоговое окно
-    /// </summary>
+    // Управляет последовательностью показа диалога
+    private IEnumerator ShowDialogueSequence()
+    {
+        yield return StartCoroutine(FadeDialogue(0f, 1f, fadeDuration));
+
+        currentTypewriter = StartCoroutine(TypewriterEffect(currentDialogue.text));
+        yield return currentTypewriter;
+
+        inputEnabled = true;
+    }
+
+    // Скрывает диалоговое окно
     public void HideDialogue()
     {
-        if (!isDialogueActive) return;
+        if (!isDialogueActive || !inputEnabled) return;
+
+        inputEnabled = false;
 
         if (currentTypewriter != null)
         {
@@ -108,18 +127,23 @@ public class DialogueSystem : MonoBehaviour
             currentTypewriter = null;
         }
 
-        StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
+        StartCoroutine(HideDialogueSequence());
+    }
 
-        OnDialogueEnd?.Invoke();
+    // Управляет последовательностью скрытия диалога
+    private IEnumerator HideDialogueSequence()
+    {
+        yield return StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
 
         isDialogueActive = false;
         currentDialogue = null;
+
+        inputEnabled = true;
+
+        OnDialogueEnd?.Invoke();
     }
 
-    /// <summary>
-    /// Эффект печатной машинки для текста
-    /// </summary>
-    /// <param name="text">Текст для отображения</param>
+    // Создаёт эффект печатающегося текста
     private IEnumerator TypewriterEffect(string text)
     {
         dialogueText.text = "";
@@ -129,17 +153,9 @@ public class DialogueSystem : MonoBehaviour
             dialogueText.text += character;
             yield return new WaitForSeconds(typewriterSpeed);
         }
-
-        currentTypewriter = null;
     }
 
-    /// <summary>
-    /// Анимация плавного появления/исчезновения диалогового окна
-    /// </summary>
-    /// <param name="from">Начальная прозрачность (0-1)</param>
-    /// <param name="to">Конечная прозрачность (0-1)</param>
-    /// <param name="duration">Длительность анимации в секундах</param>
-    /// <param name="disableAfter">Отключить панель после анимации?</param>
+    // Управляет плавным изменением прозрачности
     private IEnumerator FadeDialogue(float from, float to, float duration, bool disableAfter = false)
     {
         float elapsed = 0f;
@@ -159,10 +175,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Проверяет, активно ли сейчас диалоговое окно
-    /// </summary>
-    /// <returns>true если диалог активен</returns>
+    // Проверяет активен ли диалог
     public bool IsDialogueActive()
     {
         return isDialogueActive;

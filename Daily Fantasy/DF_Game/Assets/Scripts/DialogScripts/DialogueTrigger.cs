@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -7,24 +8,54 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private bool oneTimeUse = true;
     [SerializeField] private bool autoTrigger = false;
 
+    [Header("Input Settings")]
+    [SerializeField] private InputActionReference interactAction;
+
     [Header("Visual Feedback")]
     [SerializeField] private GameObject interactionPrompt;
     [SerializeField] private float promptOffset = 1f;
+    [SerializeField] private float uiAdditionalOffset = 20f;
 
+    // Приватные переменные
     private bool hasBeenUsed = false;
     private bool playerInRange = false;
     private Transform playerTransform;
+    private Camera mainCamera;
+    private RectTransform promptRectTransform;
 
-    // Start вызывается перед первым кадром
+    // Инициализирует компоненты при старте
     void Start()
     {
+        mainCamera = Camera.main;
+
         if (interactionPrompt != null)
         {
+            promptRectTransform = interactionPrompt.GetComponent<RectTransform>();
             interactionPrompt.SetActive(false);
         }
     }
 
-    // OnTriggerEnter2D вызывается когда другой Collider2D входит в триггер
+    // Настраивает систему ввода при активации
+    void OnEnable()
+    {
+        if (interactAction != null)
+        {
+            interactAction.action.Enable();
+            interactAction.action.performed += OnInteractPerformed;
+        }
+    }
+
+    // Отключает систему ввода при деактивации
+    void OnDisable()
+    {
+        if (interactAction != null)
+        {
+            interactAction.action.performed -= OnInteractPerformed;
+            interactAction.action.Disable();
+        }
+    }
+
+    // Обрабатывает вход игрока в триггер
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -45,7 +76,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // OnTriggerExit2D вызывается когда другой Collider2D выходит из триггера
+    // Обрабатывает выход игрока из триггера
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -60,35 +91,45 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Update вызывается каждый кадр
+    // Обновляет позицию подсказки каждый кадр
     void Update()
     {
         if (playerInRange && interactionPrompt != null && interactionPrompt.activeSelf)
         {
             UpdatePromptPosition();
         }
+    }
 
-        if (playerInRange && !autoTrigger && Input.GetKeyDown(KeyCode.R) && !hasBeenUsed)
+    // Обрабатывает нажатие клавиши взаимодействия
+    private void OnInteractPerformed(InputAction.CallbackContext context)
+    {
+        if (playerInRange && !autoTrigger && !hasBeenUsed && !DialogueSystem.Instance.IsDialogueActive())
         {
             TriggerDialogue();
         }
     }
 
-    /// <summary>
-    /// Обновляет позицию подсказки над игроком
-    /// </summary>
+    // Обновляет позицию подсказки над игроком
     private void UpdatePromptPosition()
     {
-        if (playerTransform != null)
+        if (playerTransform != null && mainCamera != null)
         {
-            Vector3 promptPosition = playerTransform.position + Vector3.up * promptOffset;
-            interactionPrompt.transform.position = promptPosition;
+            Vector3 worldPosition = playerTransform.position + Vector3.up * promptOffset;
+            Vector2 screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
+            screenPosition.y += uiAdditionalOffset;
+
+            if (promptRectTransform != null)
+            {
+                promptRectTransform.position = screenPosition;
+            }
+            else
+            {
+                interactionPrompt.transform.position = worldPosition;
+            }
         }
     }
 
-    /// <summary>
-    /// Запускает диалог
-    /// </summary>
+    // Запускает диалог
     public void TriggerDialogue()
     {
         if (dialogue == null || hasBeenUsed) return;
@@ -98,7 +139,6 @@ public class DialogueTrigger : MonoBehaviour
         if (oneTimeUse)
         {
             hasBeenUsed = true;
-
             if (interactionPrompt != null)
             {
                 interactionPrompt.SetActive(false);
@@ -106,33 +146,14 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Сбрасывает состояние триггера
-    /// </summary>
+    // Сбрасывает состояние триггера
     public void ResetTrigger()
     {
         hasBeenUsed = false;
+
         if (interactionPrompt != null && playerInRange)
         {
             interactionPrompt.SetActive(true);
-        }
-    }
-
-    // OnDrawGizmos вызывается каждый кадр в редакторе для отрисовки гизмо
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawIcon(transform.position + Vector3.up * 0.5f, "dialogue_icon.png", true);
-    }
-
-    // OnDrawGizmosSelected вызывается только когда объект выделен в редакторе
-    void OnDrawGizmosSelected()
-    {
-        Collider2D collider = GetComponent<Collider2D>();
-        if (collider != null)
-        {
-            Gizmos.color = new Color(0, 1, 1, 0.3f);
-            Gizmos.DrawCube(transform.position, collider.bounds.size);
         }
     }
 }
