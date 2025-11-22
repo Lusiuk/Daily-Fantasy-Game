@@ -93,7 +93,7 @@ public class CodeAssemblyGameManager : MonoBehaviour
         
         if (levelIndex < 0 || levelIndex >= levels.Length)
         {
-            resultText.text = "Все уровни пройдены!";
+            resultText.text = "🎉 Все уровни пройдены!";
             return;
         }
 
@@ -204,7 +204,7 @@ public class CodeAssemblyGameManager : MonoBehaviour
 
         if (isCorrect)
         {
-            resultText.text = "Отлично! Код работает!";
+            resultText.text = "✅ Отлично! Код работает!";
             resultText.color = Color.green;
             
             // Автоматический переход на следующий уровень через 2 секунды
@@ -212,11 +212,47 @@ public class CodeAssemblyGameManager : MonoBehaviour
         }
         else
         {
-            resultText.text = "Ошибка в порядке строк. Попробуй ещё!";
+            resultText.text = "❌ Ошибка в порядке строк. Попробуй ещё!";
             resultText.color = new Color(1, 0.5f, 0.5f);
             
+            // Подсветка первой неправильной строки
+            //HighlightFirstMistake(playerSolution);
         }
     }
+
+    // private void HighlightFirstMistake(List<string> playerSolution)
+    // {
+    //     // Сначала сбрасываем цвета всех блоков
+    //     foreach (Transform child in buildZoneContainer)
+    //     {
+    //         Image blockImage = child.GetComponent<Image>();
+    //         if (blockImage != null)
+    //         {
+    //             blockImage.color = Color.white; // исходный цвет
+    //         }
+    //     }
+        
+    //     // Находим первую ошибку
+    //     for (int i = 0; i < Mathf.Min(playerSolution.Count, currentLevel.correctCodeLines.Length); i++)
+    //     {
+    //         if (playerSolution[i] != currentLevel.correctCodeLines[i])
+    //         {
+    //             // Подсвечиваем неправильный блок
+    //             if (i < buildZoneContainer.childCount)
+    //             {
+    //                 Transform wrongBlock = buildZoneContainer.GetChild(i);
+    //                 Image blockImage = wrongBlock.GetComponent<Image>();
+    //                 if (blockImage != null)
+    //                 {
+    //                     blockImage.color = new Color(1, 0.5f, 0.5f); // красноватый цвет
+    //                 }
+    //             }
+                
+    //             Debug.Log($"Ошибка в строке {i+1}: ожидалось '{currentLevel.correctCodeLines[i]}', получено '{playerSolution[i]}'");
+    //             break;
+    //         }
+    //     }
+    // }
 
     private void ResetLevel()
     {
