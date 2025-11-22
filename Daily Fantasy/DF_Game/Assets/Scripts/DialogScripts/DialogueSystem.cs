@@ -128,6 +128,12 @@ public class DialogueSystem : MonoBehaviour
         }
 
         StartCoroutine(HideDialogueSequence());
+
+        // Проверяем, нужно ли запускать переход после этого диалога
+        if (currentDialogue != null && currentDialogue.triggerSceneTransition)
+        {
+            TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
+        }
     }
 
     // Управляет последовательностью скрытия диалога
