@@ -6,7 +6,7 @@ using System.Collections;
 public class TransitionManager : MonoBehaviour
 {
     [Header("Transition Settings")]
-    [SerializeField] private float transitionDuration = 3f;
+    [SerializeField] private float transitionDuration = 1.5f;
 
     public static TransitionManager Instance { get; private set; }
 
