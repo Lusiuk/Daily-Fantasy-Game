@@ -7,6 +7,7 @@ public class TransitionManager : MonoBehaviour
 {
     [Header("Transition Settings")]
     [SerializeField] private float transitionDuration = 1.5f;
+    [SerializeField] private AnimationCurve animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     public static TransitionManager Instance { get; private set; }
 
@@ -121,8 +122,10 @@ public class TransitionManager : MonoBehaviour
 
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
-            float currentHeight = Mathf.Lerp(fromHeight, toHeight, elapsed / duration);
+            elapsed += Time.unscaledDeltaTime;
+            float progress = elapsed / duration;
+            float curvedProgress = animationCurve.Evaluate(progress);
+            float currentHeight = Mathf.Lerp(fromHeight, toHeight, curvedProgress);
 
             SetBarsHeight(currentHeight);
 
