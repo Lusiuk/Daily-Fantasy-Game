@@ -10,4 +10,8 @@ public class Dialogue : ScriptableObject
 
     // Определяет можно ли взаимодействовать с этим диалогом
     public bool canInteract = true;
+
+    [Header("Scene Transition Settings")]
+    public bool triggerSceneTransition = false; // Включает переход сцены после диалога
+    public string targetSceneName; // Имя сцены для перехода
 }
