@@ -1,26 +1,26 @@
+using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public float moveSpeed = 5f;
-    float horizontalMovement;
+    private Vector2 moveInput;
 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
+        rb.linearVelocity = moveInput * moveSpeed;
     }
     
     public void Move(InputAction.CallbackContext context)
     {
-        horizontalMovement = context.ReadValue<Vector2>().x;
-
+        moveInput = context.ReadValue<Vector2>();
     }
 }
