@@ -13,8 +13,8 @@ public class DialogueTrigger : MonoBehaviour
 
     [Header("Visual Feedback")]
     [SerializeField] private GameObject interactionPrompt;
-    [SerializeField] private float promptOffset = 1f;
-    [SerializeField] private float uiAdditionalOffset = 20f;
+    [SerializeField] private float promptOffset = 4f;
+    [SerializeField] private float uiAdditionalOffset = 90f;
 
     // Приватные переменные
     private bool hasBeenUsed = false;
@@ -22,6 +22,7 @@ public class DialogueTrigger : MonoBehaviour
     private Transform playerTransform;
     private Camera mainCamera;
     private RectTransform promptRectTransform;
+    private bool isActive = true;
 
     // Инициализирует компоненты при старте
     void Start()
@@ -38,6 +39,8 @@ public class DialogueTrigger : MonoBehaviour
     // Настраивает систему ввода при активации
     void OnEnable()
     {
+        isActive = true;
+
         if (interactAction != null)
         {
             interactAction.action.Enable();
@@ -48,6 +51,8 @@ public class DialogueTrigger : MonoBehaviour
     // Отключает систему ввода при деактивации
     void OnDisable()
     {
+        isActive = false;
+
         if (interactAction != null)
         {
             interactAction.action.performed -= OnInteractPerformed;
@@ -58,6 +63,8 @@ public class DialogueTrigger : MonoBehaviour
     // Обрабатывает вход игрока в триггер
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (!isActive) return;
+
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
@@ -79,6 +86,8 @@ public class DialogueTrigger : MonoBehaviour
     // Обрабатывает выход игрока из триггера
     void OnTriggerExit2D(Collider2D other)
     {
+        if (!isActive) return;
+
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
@@ -94,6 +103,8 @@ public class DialogueTrigger : MonoBehaviour
     // Обновляет позицию подсказки каждый кадр
     void Update()
     {
+        if (!isActive) return;
+
         if (playerInRange && interactionPrompt != null && interactionPrompt.activeSelf)
         {
             UpdatePromptPosition();
@@ -103,7 +114,9 @@ public class DialogueTrigger : MonoBehaviour
     // Обрабатывает нажатие клавиши взаимодействия
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (playerInRange && !autoTrigger && !hasBeenUsed && !DialogueSystem.Instance.IsDialogueActive())
+        if (!isActive || !gameObject.activeInHierarchy) return;
+
+        if (playerInRange && !autoTrigger && !hasBeenUsed && DialogueSystem.Instance != null && !DialogueSystem.Instance.IsDialogueActive())
         {
             TriggerDialogue();
         }
@@ -132,7 +145,9 @@ public class DialogueTrigger : MonoBehaviour
     // Запускает диалог
     public void TriggerDialogue()
     {
-        if (dialogue == null || hasBeenUsed) return;
+        if (!isActive) return;
+
+        if (dialogue == null || hasBeenUsed || DialogueSystem.Instance == null) return;
 
         DialogueSystem.Instance.ShowDialogue(dialogue);
 

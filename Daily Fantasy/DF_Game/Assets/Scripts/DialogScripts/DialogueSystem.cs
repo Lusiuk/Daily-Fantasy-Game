@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class DialogueSystem : MonoBehaviour
     private bool isDialogueActive = false;
     private Dialogue currentDialogue;
     private bool inputEnabled = true;
+    private bool isActive = true;
 
     public static DialogueSystem Instance { get; private set; }
 
@@ -37,6 +39,7 @@ public class DialogueSystem : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -47,9 +50,57 @@ public class DialogueSystem : MonoBehaviour
         InitializeComponents();
     }
 
+    // Переинициализируем Input System при смене сцены
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log($"DialogueSystem: Scene loaded - {scene.name}");
+
+        // Переинициализируем Input System
+        ReinitializeInputSystem();
+
+        // Находим панель диалога в новой сцене
+        FindDialoguePanelInScene();
+
+        // Инициализируем компоненты заново
+        InitializeComponents();
+    }
+
+    // Обновление подписки на событие
+    private void ReinitializeInputSystem()
+    {
+        if (interactAction != null)
+        {
+            interactAction.action.performed -= OnInteractPerformed;
+
+            interactAction.action.Enable();
+            interactAction.action.performed += OnInteractPerformed;
+
+            Debug.Log("DialogueSystem: Input System переинициализирован");
+        }
+    }
+
+    // Ищем панель диалога в новой сцене
+    private void FindDialoguePanelInScene()
+    {
+        GameObject panel = GameObject.Find("DialoguePanel");
+
+        if (panel != null)
+        {
+            dialoguePanel = panel;
+            dialogueText = panel.GetComponentInChildren<TextMeshProUGUI>();
+            Debug.Log("DialogueSystem: Dialogue panel found in new scene");
+        }
+        else
+        {
+            Debug.LogWarning("DialogueSystem: Dialogue panel not found in the new scene!");
+        }
+    }
+
     // Настраивает систему ввода при активации объекта
     void OnEnable()
     {
+        isActive = true;
+
         if (interactAction != null)
         {
             interactAction.action.Enable();
@@ -60,6 +111,8 @@ public class DialogueSystem : MonoBehaviour
     // Отключает систему ввода при деактивации объекта
     void OnDisable()
     {
+        isActive = false;
+
         if (interactAction != null)
         {
             interactAction.action.performed -= OnInteractPerformed;
@@ -70,6 +123,12 @@ public class DialogueSystem : MonoBehaviour
     // Инициализирует компоненты системы
     void InitializeComponents()
     {
+        if (dialoguePanel == null)
+        {
+            Debug.LogError("DialogueSystem: Dialogue panel is null!");
+            return;
+        }
+
         canvasGroup = dialoguePanel.GetComponent<CanvasGroup>() ?? dialoguePanel.AddComponent<CanvasGroup>();
 
         canvasGroup.alpha = 0f;
@@ -79,7 +138,7 @@ public class DialogueSystem : MonoBehaviour
     // Обрабатывает нажатие клавиши взаимодействия
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (!inputEnabled || !isDialogueActive) return;
+        if (!isActive || !inputEnabled || !isDialogueActive) return;
 
         HideDialogue();
     }
@@ -87,6 +146,15 @@ public class DialogueSystem : MonoBehaviour
     // Показывает диалоговое окно
     public void ShowDialogue(Dialogue dialogue)
     {
+        if (!isActive) return;
+
+        if (dialoguePanel == null)
+        {
+            Debug.LogError("DialogueSystem: Cannot show dialogue - dialoguePanel is null!");
+            FindDialoguePanelInScene();
+            if (dialoguePanel == null) return;
+        }
+
         if (dialogue == null || !dialogue.canInteract || isDialogueActive) return;
 
         currentDialogue = dialogue;
@@ -117,7 +185,7 @@ public class DialogueSystem : MonoBehaviour
     // Скрывает диалоговое окно
     public void HideDialogue()
     {
-        if (!isDialogueActive || !inputEnabled) return;
+        if (!isActive || !isDialogueActive || !inputEnabled) return;
 
         inputEnabled = false;
 
@@ -128,12 +196,6 @@ public class DialogueSystem : MonoBehaviour
         }
 
         StartCoroutine(HideDialogueSequence());
-
-        // Проверяем, нужно ли запускать переход после этого диалога
-        if (currentDialogue != null && currentDialogue.triggerSceneTransition)
-        {
-            TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
-        }
     }
 
     // Управляет последовательностью скрытия диалога
@@ -142,8 +204,16 @@ public class DialogueSystem : MonoBehaviour
         yield return StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
 
         isDialogueActive = false;
-        currentDialogue = null;
 
+        if (currentDialogue != null && currentDialogue.triggerSceneTransition)
+        {
+            if (TransitionManager.Instance != null)
+            {
+                TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
+            }
+        }
+
+        currentDialogue = null;
         inputEnabled = true;
 
         OnDialogueEnd?.Invoke();
@@ -152,6 +222,8 @@ public class DialogueSystem : MonoBehaviour
     // Создаёт эффект печатающегося текста
     private IEnumerator TypewriterEffect(string text)
     {
+        if (dialogueText == null) yield break;
+
         dialogueText.text = "";
 
         foreach (char character in text)
@@ -164,6 +236,8 @@ public class DialogueSystem : MonoBehaviour
     // Управляет плавным изменением прозрачности
     private IEnumerator FadeDialogue(float from, float to, float duration, bool disableAfter = false)
     {
+        if (canvasGroup == null) yield break;
+
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -175,7 +249,7 @@ public class DialogueSystem : MonoBehaviour
 
         canvasGroup.alpha = to;
 
-        if (disableAfter)
+        if (disableAfter && dialoguePanel != null)
         {
             dialoguePanel.SetActive(false);
         }
@@ -185,5 +259,10 @@ public class DialogueSystem : MonoBehaviour
     public bool IsDialogueActive()
     {
         return isDialogueActive;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

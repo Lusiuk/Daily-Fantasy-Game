@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IdeMiniGame.unity
     guid: 32b4f4fb15bbd18f3acc5d5cde1400ab
+  - enabled: 1
+    path: Assets/Scenes/DemoRoom.unity
+    guid: ead89b34b4801d84d8e57123d1d13d8c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

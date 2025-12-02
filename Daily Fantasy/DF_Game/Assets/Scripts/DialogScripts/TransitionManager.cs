@@ -33,7 +33,6 @@ public class TransitionManager : MonoBehaviour
     void Start()
     {
         FindBlackBarsInScene();
-        ResetTransitionState();
     }
 
     // После загрузки сцены находим чёрные полосы заново
@@ -149,15 +148,6 @@ public class TransitionManager : MonoBehaviour
 
         topBlackBar.rectTransform.sizeDelta = new Vector2(topBlackBar.rectTransform.sizeDelta.x, barHeight);
         bottomBlackBar.rectTransform.sizeDelta = new Vector2(bottomBlackBar.rectTransform.sizeDelta.x, barHeight);
-    }
-
-    // Принудительный сброс состояния
-    public void ResetTransitionState()
-    {
-        if (topBlackBar != null && bottomBlackBar != null)
-        {
-            SetBarsHeight(0f);
-        }
     }
 
     // Отписываемся от события при уничтожении
