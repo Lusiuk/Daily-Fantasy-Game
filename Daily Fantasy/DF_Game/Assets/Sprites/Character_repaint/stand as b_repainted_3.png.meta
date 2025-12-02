@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c23f545e7be794275a99a455751cefea
+guid: a41d28c9e68bf49a5991cb35606eb2cd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5154310249250992238
-    second: stand as b_repainted_0
+      213: -7919989743819263677
+    second: stand as b_repainted_3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stand as b_repainted_0
+      name: stand as b_repainted_3_0
       rect:
         serializedVersion: 2
         x: 4
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e60b2ccecd9c78740800000000000000
-      internalID: 5154310249250992238
+      spriteID: 3417ae63a4b861290800000000000000
+      internalID: -7919989743819263677
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      stand as b_repainted_0: 5154310249250992238
+      stand as b_repainted_3_0: -7919989743819263677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
