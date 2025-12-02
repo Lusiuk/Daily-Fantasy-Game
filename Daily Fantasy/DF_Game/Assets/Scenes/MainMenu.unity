@@ -1766,6 +1766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980972364}
   - component: {fileID: 980972365}
+  - component: {fileID: 980972366}
   m_Layer: 5
   m_Name: MusicObject
   m_TagString: Untagged
@@ -1889,6 +1890,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &980972366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980972363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130feeb3464b0014d9ef91011654351e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  musicSource: {fileID: 0}
 --- !u!1 &1221125165
 GameObject:
   m_ObjectHideFlags: 0
