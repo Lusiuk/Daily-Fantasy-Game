@@ -498,6 +498,10 @@ MonoBehaviour:
   fadeDuration: 0.3
   typewriterSpeed: 0.05
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
+  useScreenPercentage: 1
+  widthPercentage: 0.8
+  heightPercentage: 0.2
+  disablePlayerMovement: 1
 --- !u!4 &650963848
 Transform:
   m_ObjectHideFlags: 0
@@ -572,8 +576,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d6bfff04aa5ce416eb2a06de0cbce7e9, type: 2}
+  m_sharedMaterial: {fileID: 7405219937465575993, guid: d6bfff04aa5ce416eb2a06de0cbce7e9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -597,8 +601,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 33
+  m_fontSizeBase: 33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1056,7 +1060,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 675, y: -309}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 220, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1102442734
 MonoBehaviour:
@@ -1080,8 +1084,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 R"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d6bfff04aa5ce416eb2a06de0cbce7e9, type: 2}
+  m_sharedMaterial: {fileID: 7405219937465575993, guid: d6bfff04aa5ce416eb2a06de0cbce7e9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1105,8 +1109,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2602,6 +2606,8 @@ MonoBehaviour:
   interactionPrompt: {fileID: 0}
   promptOffset: 1
   uiAdditionalOffset: 20
+  promptSize: {x: 200, y: 40}
+  overridePromptSize: 1
 --- !u!1 &1827979453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3576,8 @@ MonoBehaviour:
   interactionPrompt: {fileID: 1102442732}
   promptOffset: 4
   uiAdditionalOffset: 50
+  promptSize: {x: 200, y: 40}
+  overridePromptSize: 1
 --- !u!1 &2070582521
 GameObject:
   m_ObjectHideFlags: 0

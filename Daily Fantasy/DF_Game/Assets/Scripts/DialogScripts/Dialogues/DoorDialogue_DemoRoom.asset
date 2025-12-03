@@ -18,3 +18,6 @@ MonoBehaviour:
   canInteract: 1
   triggerSceneTransition: 1
   targetSceneName: CharacterRoom
+  teleportAfterDialogue: 1
+  teleportPosition: {x: 0, y: 0}
+  teleportMarkerName: SpawnPoint_Door

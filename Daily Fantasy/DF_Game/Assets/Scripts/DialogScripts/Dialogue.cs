@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// Позволяет создавать объекты диалога через меню Unity
 [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue System/Dialogue")]
 public class Dialogue : ScriptableObject
 {
@@ -14,4 +13,9 @@ public class Dialogue : ScriptableObject
     [Header("Scene Transition Settings")]
     public bool triggerSceneTransition = false; // Включает переход сцены после диалога
     public string targetSceneName; // Имя сцены для перехода
+
+    [Header("Teleport Settings")]
+    public bool teleportAfterDialogue = false; // Телепортировать ли после диалога
+    public Vector2 teleportPosition; // Координаты телепортации
+    public string teleportMarkerName = ""; // Имя маркера для телепортации
 }

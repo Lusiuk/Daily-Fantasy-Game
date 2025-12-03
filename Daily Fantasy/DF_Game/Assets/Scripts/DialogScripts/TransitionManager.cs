@@ -22,6 +22,8 @@ public class TransitionManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            GameState.InitialScene = SceneManager.GetActiveScene().name;
         }
         else
         {
@@ -33,13 +35,48 @@ public class TransitionManager : MonoBehaviour
     void Start()
     {
         FindBlackBarsInScene();
+
+        if (SceneManager.GetActiveScene().name == GameState.InitialScene && GameState.IsFirstLoad)
+        {
+            SetBarsHeight(0f);
+        }
     }
 
-    // После загрузки сцены находим чёрные полосы заново
+    // Загрузка сцены
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"Scene loaded: {scene.name}");
+        // После загрузки сцены находим черные полосы заново
+        Debug.Log($"TransitionManager: Scene loaded - {scene.name}");
         FindBlackBarsInScene();
+
+        // Если это начальная сцена и первый запуск
+        if (scene.name == GameState.InitialScene && GameState.IsFirstLoad)
+        {
+            SetBarsHeight(0f);
+            GameState.IsFirstLoad = false;
+            return;
+        }
+
+        // Для всех остальных загрузок сцен
+        if (topBlackBar != null && bottomBlackBar != null)
+        {
+            SetBarsHeight(0.5f);
+        }
+
+        StartCoroutine(CompleteTransitionAfterDelay());
+    }
+
+    private IEnumerator CompleteTransitionAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (topBlackBar != null && bottomBlackBar != null)
+        {
+            yield return StartCoroutine(AnimateBars(0.5f, 0f, transitionDuration / 2));
+        }
+
+        isTransitioning = false;
+        Debug.Log("Transition completed");
     }
 
     private void FindBlackBarsInScene()
@@ -75,6 +112,8 @@ public class TransitionManager : MonoBehaviour
     {
         if (isTransitioning) return;
 
+        GameState.PreviousScene = SceneManager.GetActiveScene().name;
+
         StartCoroutine(TransitionCoroutine(sceneName));
     }
 
@@ -87,7 +126,7 @@ public class TransitionManager : MonoBehaviour
         // Шаг 1: Анимация закрытия
         yield return StartCoroutine(AnimateBars(0f, 0.5f, transitionDuration / 2));
 
-        Debug.Log("Loading scene: " + sceneName);
+        Debug.Log($"Loading scene: {sceneName}");
 
         // Шаг 2: Загрузка новой сцены
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
@@ -102,19 +141,10 @@ public class TransitionManager : MonoBehaviour
             yield return null;
         }
 
-        // Ждём пока сцена полностью инициализируется
-        yield return new WaitForSeconds(0.1f);
-
-        Debug.Log("Scene loaded, starting opening animation");
-
-        // Шаг 3: Анимация открытия
-        yield return StartCoroutine(AnimateBars(0.5f, 0f, transitionDuration / 2));
-
-        isTransitioning = false;
-        Debug.Log("Transition completed");
+        // Дальнейшая анимация выполняется в OnSceneLoaded
     }
 
-    // Анимирует движение чёрных полос
+    // Анимирует движение черных полос
     private IEnumerator AnimateBars(float fromHeight, float toHeight, float duration)
     {
         float elapsed = 0f;
@@ -134,8 +164,8 @@ public class TransitionManager : MonoBehaviour
         SetBarsHeight(toHeight);
     }
 
-    // Устанавливает высоту чёрных полос
-    private void SetBarsHeight(float height)
+    // Устанавливает высоту черных полос
+    public void SetBarsHeight(float height)
     {
         if (topBlackBar == null || bottomBlackBar == null)
         {
