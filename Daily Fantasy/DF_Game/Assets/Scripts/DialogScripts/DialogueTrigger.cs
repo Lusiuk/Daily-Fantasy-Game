@@ -16,10 +16,6 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private float promptOffset = 4f;
     [SerializeField] private float uiAdditionalOffset = 90f;
 
-    [Header("Prompt Size Settings")]
-    [SerializeField] private Vector2 promptSize = new Vector2(220, 40);
-    [SerializeField] private bool overridePromptSize = true;
-
     // Приватные переменные
     private bool hasBeenUsed = false;
     private bool playerInRange = false;
@@ -36,11 +32,6 @@ public class DialogueTrigger : MonoBehaviour
         if (interactionPrompt != null)
         {
             promptRectTransform = interactionPrompt.GetComponent<RectTransform>();
-
-            if (overridePromptSize && promptRectTransform != null)
-            {
-                promptRectTransform.sizeDelta = promptSize;
-            }
 
             interactionPrompt.SetActive(false);
         }

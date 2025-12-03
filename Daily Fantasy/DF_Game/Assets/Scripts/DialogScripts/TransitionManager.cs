@@ -57,19 +57,63 @@ public class TransitionManager : MonoBehaviour
             return;
         }
 
-        // Для всех остальных загрузок сцен
+        // Устанавливаем полосы в закрытое состояние
         if (topBlackBar != null && bottomBlackBar != null)
         {
             SetBarsHeight(0.5f);
         }
 
+        TeleportPlayerIfNeeded();
+
         StartCoroutine(CompleteTransitionAfterDelay());
+    }
+
+    // Телепортация игрока после загрузки сцены
+    private void TeleportPlayerIfNeeded()
+    {
+        if (!GameState.ShouldTeleport) return;
+
+        Debug.Log($"TransitionManager: Teleporting player to marker '{GameState.TeleportMarkerName}' at position {GameState.TeleportPosition}");
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("TransitionManager: Cannot teleport - player not found");
+            return;
+        }
+
+        Vector2 targetPosition = GameState.TeleportPosition;
+
+        if (!string.IsNullOrEmpty(GameState.TeleportMarkerName))
+        {
+            GameObject marker = GameObject.Find(GameState.TeleportMarkerName);
+            if (marker != null)
+            {
+                targetPosition = marker.transform.position;
+                Debug.Log($"TransitionManager: Found teleport marker '{GameState.TeleportMarkerName}' at position {targetPosition}");
+            }
+            else
+            {
+                Debug.LogWarning($"TransitionManager: Teleport marker '{GameState.TeleportMarkerName}' not found, using default position");
+            }
+        }
+
+        player.transform.position = targetPosition;
+
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+
+        Debug.Log($"TransitionManager: Player teleported to {targetPosition}");
+
+        GameState.ShouldTeleport = false;
+        GameState.TeleportMarkerName = "";
     }
 
     private IEnumerator CompleteTransitionAfterDelay()
     {
-        yield return new WaitForSeconds(0.1f);
-
         if (topBlackBar != null && bottomBlackBar != null)
         {
             yield return StartCoroutine(AnimateBars(0.5f, 0f, transitionDuration / 2));

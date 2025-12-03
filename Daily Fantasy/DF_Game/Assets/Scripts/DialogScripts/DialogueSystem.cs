@@ -76,24 +76,6 @@ public class DialogueSystem : MonoBehaviour
 
         // Инициализируем компоненты заново
         InitializeComponents();
-
-        // Проверяем, нужно ли телепортировать игрока после загрузки сцены
-        StartCoroutine(CheckTeleportAfterSceneLoad());
-    }
-
-    // Проверка телепортации после загрузки сцены
-    private IEnumerator CheckTeleportAfterSceneLoad()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        if (GameState.ShouldTeleport)
-        {
-            Debug.Log($"DialogueSystem: Teleporting player after scene load");
-            TeleportPlayer(GameState.TeleportPosition, GameState.TeleportMarkerName);
-
-            GameState.ShouldTeleport = false;
-            GameState.TeleportMarkerName = "";
-        }
     }
 
     // Обновление подписки на событие
@@ -106,7 +88,7 @@ public class DialogueSystem : MonoBehaviour
             interactAction.action.Enable();
             interactAction.action.performed += OnInteractPerformed;
 
-            Debug.Log("DialogueSystem: Input System переинициализирован");
+            Debug.Log("DialogueSystem: Input System reinitialized");
         }
     }
 
