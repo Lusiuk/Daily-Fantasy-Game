@@ -291,6 +291,11 @@ public class DialogueSystem : MonoBehaviour
     {
         yield return StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
 
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
+
         if (currentDialogue != null)
         {
             if (currentDialogue.teleportAfterDialogue)
