@@ -53,8 +53,6 @@ public class DraggableCodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler
             return;
         }
         
-        //canvasGroup.alpha = 0.7f;
-        //canvasGroup.blocksRaycasts = false;
         originalParent = transform.parent;
         
         if (rectTransform != null)
