@@ -13,7 +13,7 @@ public class DialogueSystem : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private float fadeDuration = 0.3f;
-    [SerializeField] private float typewriterSpeed = 0.05f;
+    [SerializeField] private float typewriterSpeed = 0.03f;
 
     [Header("Input Settings")]
     [SerializeField] private InputActionReference interactAction;

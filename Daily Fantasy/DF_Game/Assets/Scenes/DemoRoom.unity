@@ -496,7 +496,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 442227588}
   dialogueText: {fileID: 709878865}
   fadeDuration: 0.3
-  typewriterSpeed: 0.05
+  typewriterSpeed: 0.03
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   useScreenPercentage: 1
   widthPercentage: 0.8
