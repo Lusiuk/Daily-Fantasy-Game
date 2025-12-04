@@ -749,7 +749,7 @@ TextureImporter:
       name: WholeRoom_100by100_28
       rect:
         serializedVersion: 2
-        x: 100
+        x: 0
         y: 380
         width: 100
         height: 100
@@ -771,7 +771,7 @@ TextureImporter:
       name: WholeRoom_100by100_29
       rect:
         serializedVersion: 2
-        x: 200
+        x: 100
         y: 380
         width: 100
         height: 100
@@ -793,7 +793,7 @@ TextureImporter:
       name: WholeRoom_100by100_30
       rect:
         serializedVersion: 2
-        x: 400
+        x: 200
         y: 380
         width: 100
         height: 100
@@ -815,7 +815,7 @@ TextureImporter:
       name: WholeRoom_100by100_31
       rect:
         serializedVersion: 2
-        x: 800
+        x: 400
         y: 380
         width: 100
         height: 100
@@ -837,7 +837,7 @@ TextureImporter:
       name: WholeRoom_100by100_32
       rect:
         serializedVersion: 2
-        x: 900
+        x: 800
         y: 380
         width: 100
         height: 100
@@ -859,8 +859,8 @@ TextureImporter:
       name: WholeRoom_100by100_33
       rect:
         serializedVersion: 2
-        x: 100
-        y: 280
+        x: 900
+        y: 380
         width: 100
         height: 100
       alignment: 0
@@ -881,7 +881,7 @@ TextureImporter:
       name: WholeRoom_100by100_34
       rect:
         serializedVersion: 2
-        x: 200
+        x: 0
         y: 280
         width: 100
         height: 100
@@ -903,7 +903,7 @@ TextureImporter:
       name: WholeRoom_100by100_35
       rect:
         serializedVersion: 2
-        x: 400
+        x: 100
         y: 280
         width: 100
         height: 100
@@ -925,8 +925,8 @@ TextureImporter:
       name: WholeRoom_100by100_36
       rect:
         serializedVersion: 2
-        x: 300
-        y: 180
+        x: 200
+        y: 280
         width: 100
         height: 100
       alignment: 0
@@ -948,7 +948,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 400
-        y: 180
+        y: 280
         width: 100
         height: 100
       alignment: 0
@@ -961,6 +961,94 @@ TextureImporter:
       bones: []
       spriteID: 4410b58c24392480a826af2c262897b3
       internalID: -1004704570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WholeRoom_100by100_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489123303f25849838d4022f21cef3b8
+      internalID: 41701290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WholeRoom_100by100_39
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 180
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab51738c75ed468ea414885f877c770
+      internalID: -1076524982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WholeRoom_100by100_40
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 180
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e749dbdb4ab64f609643cf2b85d56de
+      internalID: 366991490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WholeRoom_100by100_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec17857f1b844ff8b1c465d452734bc
+      internalID: -1713802712
       vertices: []
       indices: 
       edges: []
@@ -1013,7 +1101,11 @@ TextureImporter:
       WholeRoom_100by100_35: 1705975008
       WholeRoom_100by100_36: 453770037
       WholeRoom_100by100_37: -1004704570
+      WholeRoom_100by100_38: 41701290
+      WholeRoom_100by100_39: -1076524982
       WholeRoom_100by100_4: -1335410909867229900
+      WholeRoom_100by100_40: 366991490
+      WholeRoom_100by100_41: -1713802712
       WholeRoom_100by100_5: 6329416019310251588
       WholeRoom_100by100_6: -5498765317371134743
       WholeRoom_100by100_7: 3956197505900575985
