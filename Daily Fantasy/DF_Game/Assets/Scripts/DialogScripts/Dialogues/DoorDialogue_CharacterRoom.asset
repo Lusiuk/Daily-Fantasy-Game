@@ -21,3 +21,5 @@ MonoBehaviour:
   teleportAfterDialogue: 1
   teleportPosition: {x: 0, y: 0}
   teleportMarkerName: SpawnPoint_Door
+  typewriterMusic: {fileID: 8300000, guid: c51077eac9377af49817a13c23ea11a3, type: 3}
+  loopMusic: 1

@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 488583726}
   - component: {fileID: 488583725}
   m_Layer: 0
-  m_Name: Door (1)
+  m_Name: DoorBug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,6 +654,7 @@ MonoBehaviour:
   dialogueText: {fileID: 709878865}
   fadeDuration: 0.3
   typewriterSpeed: 0.03
+  typewriterAudioSource: {fileID: 0}
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   useScreenPercentage: 1
   widthPercentage: 0.8
@@ -1217,7 +1218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 675, y: -309}
+  m_AnchoredPosition: {x: 425.6, y: -129.5}
   m_SizeDelta: {x: 220, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1102442734
@@ -4283,7 +4284,7 @@ MonoBehaviour:
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 1102442732}
   promptOffset: 4
-  uiAdditionalOffset: 50
+  uiAdditionalOffset: 90
 --- !u!1 &2070582521
 GameObject:
   m_ObjectHideFlags: 0

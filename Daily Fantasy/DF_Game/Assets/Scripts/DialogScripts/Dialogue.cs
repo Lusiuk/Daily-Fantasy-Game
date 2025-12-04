@@ -18,4 +18,8 @@ public class Dialogue : ScriptableObject
     public bool teleportAfterDialogue = false; // Телепортировать ли после диалога
     public Vector2 teleportPosition; // Координаты телепортации
     public string teleportMarkerName = ""; // Имя маркера для телепортации
+
+    [Header("Typewriter Music")]
+    public AudioClip typewriterMusic; // Сама аудиодорожка
+    public bool loopMusic = true; // Зацикливание (на всякий случай)
 }

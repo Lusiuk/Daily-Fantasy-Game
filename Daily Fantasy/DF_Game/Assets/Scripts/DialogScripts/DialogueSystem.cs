@@ -15,6 +15,9 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private float fadeDuration = 0.3f;
     [SerializeField] private float typewriterSpeed = 0.03f;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource typewriterAudioSource;
+
     [Header("Input Settings")]
     [SerializeField] private InputActionReference interactAction;
 
@@ -102,10 +105,6 @@ public class DialogueSystem : MonoBehaviour
             dialoguePanel = panel;
             dialogueText = panel.GetComponentInChildren<TextMeshProUGUI>();
             Debug.Log("DialogueSystem: Dialogue panel found in new scene");
-        }
-        else
-        {
-            Debug.LogWarning("DialogueSystem: Dialogue panel not found in the new scene!");
         }
     }
 
@@ -264,10 +263,42 @@ public class DialogueSystem : MonoBehaviour
 
         yield return StartCoroutine(FadeDialogue(0f, 1f, fadeDuration));
 
+        StartTypewriterMusic();
+
         currentTypewriter = StartCoroutine(TypewriterEffect(currentDialogue.text));
         yield return currentTypewriter;
 
+        StopTypewriterMusic();
+
         inputEnabled = true;
+    }
+
+    // Запускает музыку печати текста
+    private void StartTypewriterMusic()
+    {
+        if (typewriterAudioSource == null)
+        {
+            typewriterAudioSource = gameObject.AddComponent<AudioSource>();
+            typewriterAudioSource.playOnAwake = false;
+        }
+
+        if (currentDialogue != null && currentDialogue.typewriterMusic != null)
+        {
+            typewriterAudioSource.clip = currentDialogue.typewriterMusic;
+            typewriterAudioSource.loop = currentDialogue.loopMusic;
+            typewriterAudioSource.Play();
+            Debug.Log($"DialogueSystem: Started playing typewriter music: {currentDialogue.typewriterMusic.name}");
+        }
+    }
+
+    // Останавливает музыку печати текста
+    private void StopTypewriterMusic()
+    {
+        if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
+        {
+            typewriterAudioSource.Stop();
+            Debug.Log("DialogueSystem: Stopped typewriter music");
+        }
     }
 
     // Скрывает диалоговое окно
@@ -276,6 +307,8 @@ public class DialogueSystem : MonoBehaviour
         if (!isActive || !isDialogueActive || !inputEnabled) return;
 
         inputEnabled = false;
+
+        StopTypewriterMusic();
 
         if (currentTypewriter != null)
         {

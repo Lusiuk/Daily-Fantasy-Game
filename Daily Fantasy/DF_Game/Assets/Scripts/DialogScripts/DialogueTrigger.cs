@@ -107,11 +107,7 @@ public class DialogueTrigger : MonoBehaviour
         if (!isActive || !playerInRange || interactionPrompt == null || !interactionPrompt.activeSelf)
             return;
 
-        if (playerTransform.hasChanged)
-        {
-            UpdatePromptPosition();
-            playerTransform.hasChanged = false;
-        }
+        UpdatePromptPosition();
     }
 
     // ќбрабатывает нажатие клавиши взаимодействи€
@@ -154,13 +150,14 @@ public class DialogueTrigger : MonoBehaviour
 
         DialogueSystem.Instance.ShowDialogue(dialogue);
 
+        if (interactionPrompt != null)
+        {
+            interactionPrompt.SetActive(false);
+        }
+
         if (oneTimeUse)
         {
             hasBeenUsed = true;
-            if (interactionPrompt != null)
-            {
-                interactionPrompt.SetActive(false);
-            }
         }
     }
 
