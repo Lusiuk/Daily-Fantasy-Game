@@ -21,7 +21,9 @@ public class IDEMinigameController : MonoBehaviour
 
     public GameObject Answer;
     public GameObject AnswerSlot;
-   
+
+    private bool isChecking = false;
+
     [Header("Levels Configuration")]
     public GameLevel[] levels;
 
@@ -116,7 +118,9 @@ private void LoadLevel(int levelIndex)
         }
         buildZoneContainer = BuildZoneContainers[levelIndex];
         buildZoneContainer.gameObject.SetActive(true);
-        
+
+        isChecking = false;
+
         Debug.Log($"Загружается уровень: {currentLevel.levelName}");
         Debug.Log($"Количество строк кода: {currentLevel.correctCodeLines.Length}");
         
@@ -170,6 +174,10 @@ private void LoadLevel(int levelIndex)
 
 private void CheckSolution()
 {
+    if (isChecking) return;
+
+    isChecking = true;
+
     List<string> playerSolution = new List<string>();
     
     DraggableAnswer[] blocks = buildZoneContainer.GetComponentsInChildren<DraggableAnswer>();
@@ -194,6 +202,8 @@ private void CheckSolution()
     {
         resultText.text = "Ошибка в порядке строк. Попробуй ещё!";
         resultText.color = new Color(1, 0.5f, 0.5f);
+
+        isChecking = false;
     }
 }
 
