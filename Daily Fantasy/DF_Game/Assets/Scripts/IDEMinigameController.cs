@@ -31,6 +31,9 @@ public class IDEMinigameController : MonoBehaviour
     private GameLevel currentLevel;
     private List<DraggableAnswer> allBlocks = new List<DraggableAnswer>();
 
+    [Header("Completion Dialogue")]
+    public Dialogue completionDialogue;
+
     [System.Serializable]
     public class GameLevel
     {
@@ -172,42 +175,88 @@ private void LoadLevel(int levelIndex)
         }
     }
 
-private void CheckSolution()
-{
-    if (isChecking) return;
-
-    isChecking = true;
-
-    List<string> playerSolution = new List<string>();
-    
-    DraggableAnswer[] blocks = buildZoneContainer.GetComponentsInChildren<DraggableAnswer>();
-    
-    List<DraggableAnswer> sortedBlocks = blocks.OrderBy(b => b.transform.GetSiblingIndex()).ToList();
-    
-    foreach (var block in sortedBlocks)
+    private void CheckSolution()
     {
-        playerSolution.Add(block.codeLine);
+        if (isChecking) return;
+
+        isChecking = true;
+
+        List<string> playerSolution = new List<string>();
+
+        DraggableAnswer[] blocks = buildZoneContainer.GetComponentsInChildren<DraggableAnswer>();
+
+        List<DraggableAnswer> sortedBlocks = blocks.OrderBy(b => b.transform.GetSiblingIndex()).ToList();
+
+        foreach (var block in sortedBlocks)
+        {
+            playerSolution.Add(block.codeLine);
+        }
+
+        bool isCorrect = playerSolution.SequenceEqual(currentLevel.correctCodeLines);
+
+        if (isCorrect)
+        {
+            resultText.text = "Отлично! Код работает!";
+            resultText.color = Color.green;
+
+            if (currentLevelIndex == levels.Length - 1)
+            {
+                resultText.text = "Все уровни пройдены!";
+                StartCoroutine(ShowCompletionDialogueAfterDelay());
+            }
+            else
+            {
+                Invoke("LoadNextLevel", 2f);
+            }
+        }
+        else
+        {
+            resultText.text = "Ошибка в порядке строк. Попробуй ещё!";
+            resultText.color = new Color(1, 0.5f, 0.5f);
+
+            isChecking = false;
+        }
     }
-    
-    bool isCorrect = playerSolution.SequenceEqual(currentLevel.correctCodeLines);
 
-    if (isCorrect)
+    // Показывает завершенный диалог
+    private System.Collections.IEnumerator ShowCompletionDialogueAfterDelay()
     {
-        resultText.text = "Отлично! Код работает!";
-        resultText.color = Color.green;
-        
-        Invoke("LoadNextLevel", 2f);
-    }
-    else
-    {
-        resultText.text = "Ошибка в порядке строк. Попробуй ещё!";
-        resultText.color = new Color(1, 0.5f, 0.5f);
+        yield return new WaitForSeconds(2f);
+
+        // Отключаем всё
+        if (resultText != null)
+        {
+            resultText.text = "";
+        }
+
+        if (checkButton != null) checkButton.interactable = false;
+        if (resetButton != null) resetButton.interactable = false;
+
+        foreach (var block in allBlocks)
+        {
+            var draggable = block.GetComponent<DraggableAnswer>();
+
+            if (draggable != null)
+            {
+                draggable.enabled = false;
+            }
+        }
+
+        // Устанавливаем флаг завершения мини-игры
+        GameState.IsMinigameCompleted = true;
+        Debug.Log("Мини-игра отмечена как завершённая в GameState");
+
+        // Показываем диалог
+        if (completionDialogue != null && DialogueSystem.Instance != null)
+        {
+            DialogueSystem.Instance.ShowDialogue(completionDialogue);
+            Debug.Log("Показываем диалог завершения мини-игры");
+        }
 
         isChecking = false;
     }
-}
 
- private void ResetLevel()
+    private void ResetLevel()
 {
     LoadLevel(currentLevelIndex);
 }

@@ -458,6 +458,8 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: a9f0f9b876776444db9d51997171fce4, type: 2}
   oneTimeUse: 0
   autoTrigger: 0
+  isMinigameTrigger: 0
+  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 2115541722}
   promptOffset: 4
@@ -1239,6 +1241,7 @@ MonoBehaviour:
   dialogueText: {fileID: 709878865}
   fadeDuration: 0.3
   typewriterSpeed: 0.03
+  typewriterAudioSource: {fileID: 0}
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   useScreenPercentage: 1
   widthPercentage: 0.8
@@ -1856,7 +1859,7 @@ Transform:
   m_GameObject: {fileID: 1145757679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.11, y: -4.07, z: 0}
+  m_LocalPosition: {x: 12.11, y: -4.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4070,6 +4073,8 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: cef3efc93b0b7ec40a06ab17d51daa45, type: 2}
   oneTimeUse: 0
   autoTrigger: 0
+  isMinigameTrigger: 0
+  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 2115541722}
   promptOffset: 4
@@ -4449,6 +4454,8 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 85dd62717f3deb942a83209122e53a33, type: 2}
   oneTimeUse: 1
   autoTrigger: 0
+  isMinigameTrigger: 1
+  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 2115541722}
   promptOffset: 4
@@ -5312,6 +5319,8 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 00152c9942fdebd479382a5adff116fe, type: 2}
   oneTimeUse: 0
   autoTrigger: 0
+  isMinigameTrigger: 0
+  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 2115541722}
   promptOffset: 4
@@ -5588,6 +5597,8 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 0d8a504020d5e704891acebabbd2307a, type: 2}
   oneTimeUse: 1
   autoTrigger: 0
+  isMinigameTrigger: 0
+  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 2115541722}
   promptOffset: 4

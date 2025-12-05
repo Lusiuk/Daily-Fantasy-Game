@@ -137,7 +137,6 @@ public class DialogueSystem : MonoBehaviour
     {
         if (dialoguePanel == null)
         {
-            Debug.LogError("DialogueSystem: Dialogue panel is null!");
             return;
         }
 

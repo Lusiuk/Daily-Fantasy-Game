@@ -8,6 +8,10 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private bool oneTimeUse = true;
     [SerializeField] private bool autoTrigger = false;
 
+    [Header("Minigame Settings")]
+    [SerializeField] private bool isMinigameTrigger = false;
+    [SerializeField] private string minigameName = "IDEMinigame";
+
     [Header("Input Settings")]
     [SerializeField] private InputActionReference interactAction;
 
@@ -34,6 +38,21 @@ public class DialogueTrigger : MonoBehaviour
             promptRectTransform = interactionPrompt.GetComponent<RectTransform>();
 
             interactionPrompt.SetActive(false);
+        }
+
+        // Проверяем состояние мини-игры
+        if (isMinigameTrigger && GameState.IsMinigameCompleted && GameState.MinigameName == minigameName)
+        {
+            if (interactionPrompt != null)
+            {
+                interactionPrompt.SetActive(false);
+            }
+
+            Collider2D collider = GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
         }
     }
 
@@ -65,6 +84,11 @@ public class DialogueTrigger : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!isActive) return;
+
+        if (isMinigameTrigger && GameState.IsMinigameCompleted && GameState.MinigameName == minigameName)
+        {
+            return;
+        }
 
         if (other.CompareTag("Player"))
         {
@@ -145,6 +169,11 @@ public class DialogueTrigger : MonoBehaviour
     public void TriggerDialogue()
     {
         if (!isActive) return;
+
+        if (isMinigameTrigger && GameState.IsMinigameCompleted && GameState.MinigameName == minigameName)
+        {
+            return;
+        }
 
         if (dialogue == null || hasBeenUsed || DialogueSystem.Instance == null) return;
 
