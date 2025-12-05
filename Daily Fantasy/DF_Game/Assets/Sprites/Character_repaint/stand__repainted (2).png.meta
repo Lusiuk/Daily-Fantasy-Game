@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a47326b0600f142c395d5ba6c54c4560
+guid: 731e7da3adcd93245831420ad1a53b36
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -655497504601376028
-    second: stand__repainted_0
+      213: -3573171475584755332
+    second: stand__repainted (2)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stand__repainted_0
+      name: stand__repainted (2)_0
       rect:
         serializedVersion: 2
         x: 6
-        y: 2
-        width: 30
-        height: 62
+        y: 3
+        width: 27
+        height: 59
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 3, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ea74171e7437e6f0800000000000000
-      internalID: -655497504601376028
+      spriteID: c795634797b896ec0800000000000000
+      internalID: -3573171475584755332
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 00f0ddee150454d7b8de8d258629762b
+    spriteID: 1379cb075a07c6149a57ce68afa827d5
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      stand__repainted_0: -655497504601376028
+      stand__repainted (2)_0: -3573171475584755332
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
