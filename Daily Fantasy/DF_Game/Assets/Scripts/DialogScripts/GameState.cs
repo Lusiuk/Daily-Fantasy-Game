@@ -12,4 +12,17 @@ public static class GameState
 
     public static bool IsMinigameCompleted { get; set; } = false;
     public static string MinigameName { get; set; } = "IDEMinigame";
+
+    // Метод для сброса состояний
+    public static void ResetGameState()
+    {
+        IsFirstLoad = true;
+        ShouldTeleport = false;
+        TeleportPosition = Vector2.zero;
+        TeleportMarkerName = "";
+        IsMinigameCompleted = false;
+        MinigameName = "IDEMinigame";
+
+        Debug.Log("GameState: Состояние игры сброшено");
+    }
 }

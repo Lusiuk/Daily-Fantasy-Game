@@ -15,6 +15,7 @@ public class UI_Manager : MonoBehaviour
 
     public void Play()
     {
+        GameState.ResetGameState();
         SceneManager.LoadScene("CharacterRoom");
     }
 
