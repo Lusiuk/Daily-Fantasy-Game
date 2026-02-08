@@ -19,6 +19,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject interactionPrompt;
     [SerializeField] private float promptOffset = 4f;
     [SerializeField] private float uiAdditionalOffset = 90f;
+    [SerializeField] private float smoothTime = 0.1f;
 
     // Приватные переменные
     private bool hasBeenUsed = false;
@@ -27,6 +28,8 @@ public class DialogueTrigger : MonoBehaviour
     private Camera mainCamera;
     private RectTransform promptRectTransform;
     private bool isActive = true;
+    private Vector2 targetScreenPosition;
+    private Vector2 currentVelocity = Vector2.zero;
 
     // Инициализирует компоненты при старте
     void Start()
@@ -98,7 +101,7 @@ public class DialogueTrigger : MonoBehaviour
             if (interactionPrompt != null && !hasBeenUsed)
             {
                 interactionPrompt.SetActive(true);
-                UpdatePromptPosition();
+                SnapPromptPosition();
             }
 
             if (autoTrigger && !hasBeenUsed)
@@ -120,7 +123,9 @@ public class DialogueTrigger : MonoBehaviour
 
             if (interactionPrompt != null)
             {
+                currentVelocity = Vector2.zero;
                 interactionPrompt.SetActive(false);
+                targetScreenPosition = Vector2.zero;
             }
         }
     }
@@ -131,7 +136,7 @@ public class DialogueTrigger : MonoBehaviour
         if (!isActive || !playerInRange || interactionPrompt == null || !interactionPrompt.activeSelf)
             return;
 
-        UpdatePromptPosition();
+        UpdatePromptPositionSmooth();
     }
 
     // Обрабатывает нажатие клавиши взаимодействия
@@ -145,8 +150,41 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Обновляет позицию подсказки над игроком
-    private void UpdatePromptPosition()
+    // Плавно обновляет позицию подсказки над игроком
+    private void UpdatePromptPositionSmooth()
+    {
+        if (playerTransform != null && mainCamera != null)
+        {
+            // Вычисляем новую позицию
+            Vector3 worldPosition = playerTransform.position + Vector3.up * promptOffset;
+            Vector2 screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
+            screenPosition.y += uiAdditionalOffset;
+
+            // Обновляем только если позиция изменилась больше чем на 2 пикселя
+            if (Vector2.Distance(targetScreenPosition, screenPosition) > 2f)
+            {
+                targetScreenPosition = screenPosition;
+            }
+
+            if (promptRectTransform != null)
+            {
+                // Для более плавного движения
+                Vector2 currentPosition = promptRectTransform.position;
+                Vector2 smoothedPosition = Vector2.SmoothDamp(
+                    currentPosition,
+                    targetScreenPosition,
+                    ref currentVelocity,
+                    smoothTime,
+                    Mathf.Infinity,
+                    Time.unscaledDeltaTime
+                );
+                promptRectTransform.position = smoothedPosition;
+            }
+        }
+    }
+
+    // Мгновенная установка позиции
+    private void SnapPromptPosition()
     {
         if (playerTransform != null && mainCamera != null)
         {
@@ -162,6 +200,9 @@ public class DialogueTrigger : MonoBehaviour
             {
                 interactionPrompt.transform.position = worldPosition;
             }
+
+            targetScreenPosition = screenPosition;
+            currentVelocity = Vector2.zero;
         }
     }
 
@@ -198,6 +239,7 @@ public class DialogueTrigger : MonoBehaviour
         if (interactionPrompt != null && playerInRange)
         {
             interactionPrompt.SetActive(true);
+            SnapPromptPosition();
         }
     }
 }
