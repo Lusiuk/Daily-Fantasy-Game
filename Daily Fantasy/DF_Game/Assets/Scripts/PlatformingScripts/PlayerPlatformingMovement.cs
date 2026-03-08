@@ -13,11 +13,18 @@ public class PlayerPlatformingMovement : MonoBehaviour
 
     [Header("Jumping")]
     public float jumpPower = 10f;
+    public int jumpMax = 1;
+    int jumpsRemaining;
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
+
+    [Header("Gravity")]
+    public float baseGravity = 2f;
+    public float maxFallSpeed = 18f;
+    public float fallSpeedMultiplier = 2f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +36,24 @@ public class PlayerPlatformingMovement : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
+        Gravity();
+    }
+
+    private void Gravity()
+    {
+        if(rb.linearVelocityY < 0)
+        {
+            rb.gravityScale = baseGravity * fallSpeedMultiplier;
+            rb.linearVelocity = new Vector2(rb.linearVelocityX,Mathf.Max(-maxFallSpeed,rb.linearVelocityY));
+        }
+        else 
+        {
+            rb.gravityScale = baseGravity;
+        }
+        if (rb.linearVelocityY == 0)
+        {
+            GroundCheck();
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -36,22 +61,27 @@ public class PlayerPlatformingMovement : MonoBehaviour
         horizontalMovement = context.ReadValue<Vector2>().x;
     }
 
-    public void Jump(InputAction.CallbackContext context)
+     public void Jump(InputAction.CallbackContext context)
     {
-        if (isGrounded())
+       if (context.performed && jumpsRemaining > 0)
         {
-            if (context.performed)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower);
-            }
-            else if (context.canceled)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower * 0.5f);
-            }
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower*1.2f);
+            jumpsRemaining--;
+        }
+        else if (context.canceled && jumpsRemaining > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower);
+            jumpsRemaining--;
         }
     }
 
-    private bool isGrounded() => Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) ? true : false;
+    private void GroundCheck() 
+    {
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        {
+            jumpsRemaining = jumpMax;
+        }     
+    }
 
     private void OnDrawGizmosSelected()
     {
