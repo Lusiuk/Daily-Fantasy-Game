@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 113323008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.001, y: -0.5014, z: 0}
+  m_LocalPosition: {x: -0.0008, y: -0.5048, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2018,6 +2018,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 113323009}
+  - {fileID: 1847115439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &647740707
@@ -2036,15 +2037,23 @@ MonoBehaviour:
   moveSpeed: 4
   jumpPower: 11
   jumpMax: 1
-  jumpsRemaining: 0
+  jumpCooldown: 0.5
   groundCheckPos: {fileID: 113323009}
-  groundCheckSize: {x: 0.2, y: 0.0008}
+  groundCheckSize: {x: 0.2, y: -0.03}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   baseGravity: 2
   maxFallSpeed: 14
   fallSpeedMultiplier: 2
+  WallCheckPos: {fileID: 1847115439}
+  WallCheckSize: {x: 0.02, y: 0.28}
+  WallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallSlideSpeed: 2
+  canWallSlide: 1
+  wallJumpPower: {x: 5, y: 10}
 --- !u!1 &1668401040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +2068,7 @@ GameObject:
   - component: {fileID: 1668401044}
   - component: {fileID: 1668401043}
   - component: {fileID: 1668401042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2732,7 +2741,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 33.75
+  orthographic size: 45
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2983,6 +2992,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePixelPerfect
+--- !u!1 &1847115438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847115439}
+  m_Layer: 0
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847115439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847115438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.412, y: -0.0757, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 647740706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1999450815
 GameObject:
   m_ObjectHideFlags: 0
