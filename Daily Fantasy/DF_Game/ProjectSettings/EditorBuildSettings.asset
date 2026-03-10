@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DemoRoom.unity
     guid: f5e4683aabd8def4ca8bd39f74b7c30c
+  - enabled: 1
+    path: Assets/Scenes/PlatformingMenu.unity
+    guid: 9e89284761438ad59b83d9b17ce9c3fa
+  - enabled: 1
+    path: Assets/Scenes/Platforming1.unity
+    guid: 52102ee2665e64c6881b1845c26f672d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
