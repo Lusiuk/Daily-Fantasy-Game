@@ -44,8 +44,8 @@ public class PlayerPlatformingMovement : MonoBehaviour
     float wallJumpDirection;
     float wallJumpTime = 0.5f;
     float wallJumpTimer;
-    public Vector2 wallJumpPower = new Vector2(5f,10f);
-    
+    public Vector2 wallJumpPower = new Vector2(5f, 10f);
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,11 +56,16 @@ public class PlayerPlatformingMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    void FixedUpdate()
+    {
         GroundCheck();
         Gravity();
         WallSlide();
         WallJump();
-        
+
         if (!isWallJumping)
         {
             rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
@@ -70,18 +75,18 @@ public class PlayerPlatformingMovement : MonoBehaviour
 
     private void Gravity()
     {
-        if(rb.linearVelocityY < 0)
+        if (rb.linearVelocityY < 0)
         {
             rb.gravityScale = baseGravity * fallSpeedMultiplier;
-            rb.linearVelocity = new Vector2(rb.linearVelocityX,Mathf.Max(-maxFallSpeed,rb.linearVelocityY));
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, Mathf.Max(-maxFallSpeed, rb.linearVelocityY));
         }
-        else 
+        else
         {
             rb.gravityScale = baseGravity;
         }
     }
 
-    private bool isAtWall() 
+    private bool isAtWall()
     {
         return Physics2D.OverlapBox(WallCheckPos.position, WallCheckSize, 0, WallLayer);
     }
@@ -90,10 +95,10 @@ public class PlayerPlatformingMovement : MonoBehaviour
     {
         if (!isGrounded && canWallSlide && isAtWall() && horizontalMovement != 0)
         {
-           isWallSliding = true;
-           rb.linearVelocity = new Vector2(rb.linearVelocityX,Mathf.Max(rb.linearVelocityY,-wallSlideSpeed));
+            isWallSliding = true;
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, Mathf.Max(rb.linearVelocityY, -wallSlideSpeed));
         }
-        else 
+        else
         {
             isWallSliding = false;
         }
@@ -125,11 +130,11 @@ public class PlayerPlatformingMovement : MonoBehaviour
         horizontalMovement = context.ReadValue<Vector2>().x;
     }
 
-     public void Jump(InputAction.CallbackContext context)
+    public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && jumpsRemaining > 0)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower*1.2f);
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower * 1.2f);
             jumpsRemaining--;
         }
         else if (context.canceled && jumpsRemaining > 0)
@@ -142,7 +147,7 @@ public class PlayerPlatformingMovement : MonoBehaviour
         if (context.performed && wallJumpTimer > 0f)
         {
             isWallJumping = true;
-            rb.linearVelocity = new Vector2(wallJumpDirection * wallJumpPower.x,wallJumpPower.y);
+            rb.linearVelocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
             wallJumpTimer = 0f;
 
             if (transform.localScale.x != wallJumpDirection)
@@ -153,15 +158,15 @@ public class PlayerPlatformingMovement : MonoBehaviour
                 transform.localScale = ls;
             }
 
-            Invoke(nameof(CancelWallJump),wallJumpTime + 0.1f); // You can jump again after wallJumpTime + 0.1f seconds
+            Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); // You can jump again after wallJumpTime + 0.1f seconds
         }
     }
 
-    private void GroundCheck() 
+    private void GroundCheck()
     {
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer);
-    
+
         if (isGrounded && !wasGrounded)
         {
             jumpsRemaining = jumpMax;
