@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 488583726}
   - component: {fileID: 488583725}
   m_Layer: 0
-  m_Name: DoorBug
+  m_Name: Door2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
   oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
-  minigameName: IDEMinigame
+  minigameName: 
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 1102442732}
   promptOffset: 4
@@ -1048,10 +1048,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5765625
+    x: 0.24635418
     y: 0
-    width: 0.18000732
-    height: 0.18240741
+    width: 0.30427632
+    height: 0.30833334
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 1174780025}
   - component: {fileID: 1174780024}
   m_Layer: 0
-  m_Name: SpawnPoint_Door
+  m_Name: SpawnPoint_Door1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2664,6 +2664,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1443742075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443742077}
+  - component: {fileID: 1443742076}
+  m_Layer: 0
+  m_Name: SpawnPoint_Door2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1443742076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443742075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c83790e8d29b5244ae79ba088746f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeleportMarker
+  markerName: SpawnPoint_Door
+  showGizmo: 1
+  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!4 &1443742077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443742075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.12, y: -9.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459913660
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,7 +4072,7 @@ GameObject:
   - component: {fileID: 2067163707}
   - component: {fileID: 2067163710}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4166,7 +4213,7 @@ MonoBehaviour:
   oneTimeUse: 1
   autoTrigger: 0
   isMinigameTrigger: 0
-  minigameName: IDEMinigame
+  minigameName: 
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 1102442732}
   promptOffset: 4
@@ -4352,4 +4399,5 @@ SceneRoots:
   - {fileID: 2070582522}
   - {fileID: 2067163709}
   - {fileID: 1174780025}
+  - {fileID: 1443742077}
   - {fileID: 488583728}
