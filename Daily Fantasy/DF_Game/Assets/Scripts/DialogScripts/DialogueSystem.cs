@@ -269,7 +269,7 @@ public class DialogueSystem : MonoBehaviour
     {
         var line = GetCurrentLine();
         if (line.isPlayerSpeaking)
-            return $"[ГГ]: {line.text}";
+            return $"[Женя]: {line.text}";
         else
         {
             string name = string.IsNullOrEmpty(line.npcName) ? "NPC" : line.npcName;
