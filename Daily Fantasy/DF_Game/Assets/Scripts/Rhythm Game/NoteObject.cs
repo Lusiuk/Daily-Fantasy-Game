@@ -4,6 +4,7 @@ public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
     public KeyCode keyToPress;
+    private bool wasHit = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,9 +16,11 @@ public class NoteObject : MonoBehaviour
     {
         if (Input.GetKeyDown(keyToPress))
         {
-            if (canBePressed)
+            if (canBePressed && !wasHit) 
             {
+                wasHit = true;           
                 gameObject.SetActive(false);
+                GameManager.instance.NoteHits();
             }
         }
     }
@@ -35,6 +38,12 @@ public class NoteObject : MonoBehaviour
         if (other.tag == "Activator")
         {
             canBePressed = false;
+
+
+            if (!wasHit)
+            {
+                GameManager.instance.NoteMiss();
+            }
         }
     }
 }
