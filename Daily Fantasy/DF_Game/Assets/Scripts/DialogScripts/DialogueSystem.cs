@@ -1,9 +1,10 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static Dialogue;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class DialogueSystem : MonoBehaviour
     [Header("Teleport Settings")]
     [SerializeField] private float teleportDelay = 0.1f;
 
-    // События диалога
+    // События
     public System.Action OnDialogueStart;
     public System.Action OnDialogueEnd;
 
@@ -45,10 +46,12 @@ public class DialogueSystem : MonoBehaviour
     private bool isActive = true;
     private PlayerMovement playerMovement;
     private bool wasPlayerMovementEnabled = true;
+    private int currentLineIndex = 0;
+    private bool isWaitingForNext = false;
 
     public static DialogueSystem Instance { get; private set; }
 
-    // Вызывается при создании объекта
+    // Инициализация синглтона
     void Awake()
     {
         if (Instance == null)
@@ -62,36 +65,26 @@ public class DialogueSystem : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         InitializeComponents();
     }
 
-    // Переинициализируем Input System при смене сцены
+    // После загрузки сцены переподключаем всё
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"DialogueSystem: Scene loaded - {scene.name}");
-
-        // Переинициализируем Input System
         ReinitializeInputSystem();
-
-        // Находим панель диалога в новой сцене
         FindDialoguePanelInScene();
-
-        // Инициализируем компоненты заново
         InitializeComponents();
     }
 
-    // Обновление подписки на событие
+    // Переподключаем InputSystem
     private void ReinitializeInputSystem()
     {
         if (interactAction != null)
         {
             interactAction.action.performed -= OnInteractPerformed;
-
             interactAction.action.Enable();
             interactAction.action.performed += OnInteractPerformed;
-
-            Debug.Log("DialogueSystem: Input System reinitialized");
         }
     }
 
@@ -99,20 +92,17 @@ public class DialogueSystem : MonoBehaviour
     private void FindDialoguePanelInScene()
     {
         GameObject panel = GameObject.Find("DialoguePanel");
-
         if (panel != null)
         {
             dialoguePanel = panel;
             dialogueText = panel.GetComponentInChildren<TextMeshProUGUI>();
-            Debug.Log("DialogueSystem: Dialogue panel found in new scene");
         }
     }
 
-    // Настраивает систему ввода при активации объекта
+    // Включение/отключение ввода
     void OnEnable()
     {
         isActive = true;
-
         if (interactAction != null)
         {
             interactAction.action.Enable();
@@ -120,11 +110,9 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    // Отключает систему ввода при деактивации объекта
     void OnDisable()
     {
         isActive = false;
-
         if (interactAction != null)
         {
             interactAction.action.performed -= OnInteractPerformed;
@@ -132,116 +120,93 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    // Инициализирует компоненты системы
+    // Инициализация компонентов панели
     void InitializeComponents()
     {
-        if (dialoguePanel == null)
-        {
-            return;
-        }
-
+        if (dialoguePanel == null) return;
         canvasGroup = dialoguePanel.GetComponent<CanvasGroup>() ?? dialoguePanel.AddComponent<CanvasGroup>();
-
         canvasGroup.alpha = 0f;
         dialoguePanel.SetActive(false);
     }
 
-    // Обрабатывает нажатие клавиши взаимодействия
+    // Обработка нажатия кнопки взаимодействия
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (!isActive || !inputEnabled || !isDialogueActive) return;
+        if (!isActive || !isDialogueActive) return;
 
-        HideDialogue();
+        // Если ждём следующую реплику – переходим к ней
+        if (isWaitingForNext)
+        {
+            isWaitingForNext = false;
+            return;
+        }
+
+        // Иначе закрываем диалог
+        if (inputEnabled)
+            HideDialogue();
     }
 
-    // Показывает диалоговое окно
+    // Показ диалога
     public void ShowDialogue(Dialogue dialogue)
     {
         if (!isActive) return;
-
         if (dialoguePanel == null)
         {
-            Debug.LogError("DialogueSystem: Cannot show dialogue - dialoguePanel is null!");
             FindDialoguePanelInScene();
             if (dialoguePanel == null) return;
         }
-
         if (dialogue == null || !dialogue.canInteract || isDialogueActive) return;
 
-        if (disablePlayerMovement)
-        {
-            DisablePlayerMovement();
-        }
+        if (disablePlayerMovement) DisablePlayerMovement();
 
         currentDialogue = dialogue;
+        currentLineIndex = 0;
         isDialogueActive = true;
         inputEnabled = false;
-
+        isWaitingForNext = false;
         dialoguePanel.SetActive(true);
 
-        if (currentTypewriter != null)
-            StopCoroutine(currentTypewriter);
-
+        if (currentTypewriter != null) StopCoroutine(currentTypewriter);
         StartCoroutine(ShowDialogueSequence());
 
         OnDialogueStart?.Invoke();
     }
 
-    // Остановка персонажа
+    // Отключение движения игрока
     private void DisablePlayerMovement()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null)
-        {
-            Debug.LogWarning("DialogueSystem: Player not found with tag 'Player'");
-            return;
-        }
+        if (player == null) return;
 
         playerMovement = player.GetComponent<PlayerMovement>();
-        if (playerMovement == null)
-        {
-            Debug.LogWarning("DialogueSystem: PlayerMovement component not found on player");
-            return;
-        }
+        if (playerMovement == null) return;
 
         wasPlayerMovementEnabled = playerMovement.enabled;
         playerMovement.enabled = false;
-
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-
-        Debug.Log("Player movement disabled");
+        if (rb != null) rb.linearVelocity = Vector2.zero;
     }
 
-    // Управляет последовательностью показа диалога
+    // Основная корутина показа диалога (поддерживает последовательные реплики)
     private IEnumerator ShowDialogueSequence()
     {
-        // Устанавливаем адаптивный размер панели
+        // Адаптация размера панели
         if (dialoguePanel != null)
         {
             RectTransform panelRect = dialoguePanel.GetComponent<RectTransform>();
             if (panelRect != null && useScreenPercentage)
             {
-                float screenWidth = Screen.width;
-                float screenHeight = Screen.height;
-
-                float width = screenWidth * widthPercentage;
-                float height = screenHeight * heightPercentage;
-
+                float width = Screen.width * widthPercentage;
+                float height = Screen.height * heightPercentage;
                 panelRect.sizeDelta = new Vector2(width, height);
-
                 panelRect.anchoredPosition = Vector2.zero;
-
                 panelRect.anchorMin = new Vector2(0.5f, 0.1f);
                 panelRect.anchorMax = new Vector2(0.5f, 0.1f);
                 panelRect.pivot = new Vector2(0.5f, 0.5f);
             }
         }
 
-        // Настраиваем текстовое поле
+        // Настройка текстового поля
         if (dialogueText != null)
         {
             RectTransform textRect = dialogueText.GetComponent<RectTransform>();
@@ -250,11 +215,9 @@ public class DialogueSystem : MonoBehaviour
                 textRect.anchorMin = Vector2.zero;
                 textRect.anchorMax = Vector2.one;
                 textRect.pivot = new Vector2(0.5f, 0.5f);
-
                 float padding = 20f;
                 textRect.offsetMin = new Vector2(padding, padding);
                 textRect.offsetMax = new Vector2(-padding, -padding);
-
                 dialogueText.horizontalAlignment = HorizontalAlignmentOptions.Center;
                 dialogueText.verticalAlignment = VerticalAlignmentOptions.Middle;
             }
@@ -262,17 +225,59 @@ public class DialogueSystem : MonoBehaviour
 
         yield return StartCoroutine(FadeDialogue(0f, 1f, fadeDuration));
 
-        StartTypewriterMusic();
+        // Цикл по репликам
+        while (true)
+        {
+            string displayText = GetCurrentLineText();
+            StartTypewriterMusic();
+            currentTypewriter = StartCoroutine(TypewriterEffect(displayText));
+            yield return currentTypewriter;
+            StopTypewriterMusic();
 
-        currentTypewriter = StartCoroutine(TypewriterEffect(currentDialogue.text));
-        yield return currentTypewriter;
-
-        StopTypewriterMusic();
+            int totalLines = currentDialogue.lines?.Length ?? 0;
+            if (totalLines > 0)
+            {
+                // Если есть следующая реплика – ждём нажатия
+                if (currentLineIndex + 1 >= totalLines)
+                    break;
+                isWaitingForNext = true;
+                yield return new WaitUntil(() => !isWaitingForNext);
+                currentLineIndex++;
+                continue;
+            }
+            else
+            {
+                // Одиночный диалог (старый формат)
+                break;
+            }
+        }
 
         inputEnabled = true;
     }
 
-    // Запускает музыку печати текста
+    // Получение текущей реплики (учитывает одиночный или последовательный диалог)
+    private DialogueLine GetCurrentLine()
+    {
+        if (currentDialogue.lines != null && currentDialogue.lines.Length > 0)
+            return currentDialogue.lines[currentLineIndex];
+        else
+            return new DialogueLine { text = currentDialogue.text, isPlayerSpeaking = currentDialogue.isPlayerSpeaking };
+    }
+
+    // Формирование строки с именем говорящего
+    private string GetCurrentLineText()
+    {
+        var line = GetCurrentLine();
+        if (line.isPlayerSpeaking)
+            return $"[ГГ]: {line.text}";
+        else
+        {
+            string name = string.IsNullOrEmpty(line.npcName) ? "NPC" : line.npcName;
+            return $"[{name}]: {line.text}";
+        }
+    }
+
+    // Запуск музыки печати
     private void StartTypewriterMusic()
     {
         if (typewriterAudioSource == null)
@@ -280,72 +285,54 @@ public class DialogueSystem : MonoBehaviour
             typewriterAudioSource = gameObject.AddComponent<AudioSource>();
             typewriterAudioSource.playOnAwake = false;
         }
-
         if (currentDialogue != null && currentDialogue.typewriterMusic != null)
         {
             typewriterAudioSource.clip = currentDialogue.typewriterMusic;
             typewriterAudioSource.loop = currentDialogue.loopMusic;
             typewriterAudioSource.Play();
-            Debug.Log($"DialogueSystem: Started playing typewriter music: {currentDialogue.typewriterMusic.name}");
         }
     }
 
-    // Останавливает музыку печати текста
+    // Остановка музыки печати
     private void StopTypewriterMusic()
     {
         if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
-        {
             typewriterAudioSource.Stop();
-            Debug.Log("DialogueSystem: Stopped typewriter music");
-        }
     }
 
-    // Скрывает диалоговое окно
+    // Скрытие диалога
     public void HideDialogue()
     {
         if (!isActive || !isDialogueActive || !inputEnabled) return;
-
         inputEnabled = false;
-
+        isWaitingForNext = false;
         StopTypewriterMusic();
-
         if (currentTypewriter != null)
         {
             StopCoroutine(currentTypewriter);
             currentTypewriter = null;
         }
-
         StartCoroutine(HideDialogueSequence());
     }
 
-    // Управляет последовательностью скрытия диалога
+    // Последовательность скрытия с возможными переходами и телепортацией
     private IEnumerator HideDialogueSequence()
     {
         yield return StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
 
-        if (dialogueText != null)
-        {
-            dialogueText.text = "";
-        }
+        if (dialogueText != null) dialogueText.text = "";
 
         if (currentDialogue != null)
         {
             if (currentDialogue.teleportAfterDialogue)
             {
-                Debug.Log($"DialogueSystem: Teleport requested. Marker: {currentDialogue.teleportMarkerName}, Position: {currentDialogue.teleportPosition}");
-
                 if (currentDialogue.triggerSceneTransition)
                 {
                     GameState.ShouldTeleport = true;
                     GameState.TeleportPosition = currentDialogue.teleportPosition;
                     GameState.TeleportMarkerName = currentDialogue.teleportMarkerName;
-
-                    Debug.Log($"DialogueSystem: Will teleport after scene transition to {currentDialogue.targetSceneName}");
-
                     if (TransitionManager.Instance != null)
-                    {
                         TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
-                    }
                 }
                 else
                 {
@@ -356,126 +343,82 @@ public class DialogueSystem : MonoBehaviour
             else if (currentDialogue.triggerSceneTransition)
             {
                 if (TransitionManager.Instance != null)
-                {
                     TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
-                }
             }
         }
 
         if (!currentDialogue.triggerSceneTransition && disablePlayerMovement)
-        {
             EnablePlayerMovement();
-        }
 
         isDialogueActive = false;
         currentDialogue = null;
         inputEnabled = true;
-
         OnDialogueEnd?.Invoke();
     }
 
-    // Метод телепортации игрока
+    // Телепортация игрока
     private void TeleportPlayer(Vector2 position, string markerName = "")
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null)
-        {
-            Debug.LogError("DialogueSystem: Cannot teleport - player not found");
-            return;
-        }
+        if (player == null) return;
 
         Vector2 targetPosition = position;
-
         if (!string.IsNullOrEmpty(markerName))
         {
             GameObject marker = GameObject.Find(markerName);
             if (marker != null)
-            {
                 targetPosition = marker.transform.position;
-                Debug.Log($"DialogueSystem: Found teleport marker '{markerName}' at position {targetPosition}");
-            }
-            else
-            {
-                Debug.LogWarning($"DialogueSystem: Teleport marker '{markerName}' not found, using default position");
-            }
         }
-
         player.transform.position = targetPosition;
-
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-
-        Debug.Log($"DialogueSystem: Player teleported to {targetPosition}");
+        if (rb != null) rb.linearVelocity = Vector2.zero;
     }
 
-    // Пусть идёт
+    // Включение движения игрока
     private void EnablePlayerMovement()
     {
         if (playerMovement != null)
-        {
             playerMovement.enabled = wasPlayerMovementEnabled;
-
-            Debug.Log("Player movement enabled: " + playerMovement.enabled);
-        }
         else
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
                 playerMovement = player.GetComponent<PlayerMovement>();
-                if (playerMovement != null)
-                {
-                    playerMovement.enabled = true;
-                    Debug.Log("Player movement re-enabled");
-                }
+                if (playerMovement != null) playerMovement.enabled = true;
             }
         }
     }
 
-    // Создаёт эффект печатающегося текста
-    private IEnumerator TypewriterEffect(string text)
+    // Эффект печатной машинки
+    private IEnumerator TypewriterEffect(string textToPrint)
     {
         if (dialogueText == null) yield break;
-
         dialogueText.text = "";
-
-        foreach (char character in text)
+        foreach (char character in textToPrint)
         {
             dialogueText.text += character;
             yield return new WaitForSeconds(typewriterSpeed);
         }
     }
 
-    // Управляет плавным изменением прозрачности
+    // Плавное появление/исчезновение панели
     private IEnumerator FadeDialogue(float from, float to, float duration, bool disableAfter = false)
     {
         if (canvasGroup == null) yield break;
-
         float elapsed = 0f;
-
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             canvasGroup.alpha = Mathf.Lerp(from, to, elapsed / duration);
             yield return null;
         }
-
         canvasGroup.alpha = to;
-
-        if (disableAfter && dialoguePanel != null)
-        {
-            dialoguePanel.SetActive(false);
-        }
+        if (disableAfter && dialoguePanel != null) dialoguePanel.SetActive(false);
     }
 
-    // Проверяет активен ли диалог
-    public bool IsDialogueActive()
-    {
-        return isDialogueActive;
-    }
+    // Проверка активен ли диалог
+    public bool IsDialogueActive() => isDialogueActive;
 
     private void OnDestroy()
     {

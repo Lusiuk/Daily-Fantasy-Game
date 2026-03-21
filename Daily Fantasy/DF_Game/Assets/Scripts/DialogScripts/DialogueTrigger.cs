@@ -20,6 +20,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private float promptOffset = 4f;
     [SerializeField] private float uiAdditionalOffset = 90f;
     [SerializeField] private float smoothTime = 0.1f;
+    [SerializeField] private float fadePromptSpeed = 5f;
 
     // Приватные переменные
     private bool hasBeenUsed = false;
@@ -30,6 +31,8 @@ public class DialogueTrigger : MonoBehaviour
     private bool isActive = true;
     private Vector2 targetScreenPosition;
     private Vector2 currentVelocity = Vector2.zero;
+    private CanvasGroup promptCanvasGroup;
+    private bool isPromptVisible = false;
 
     // Инициализирует компоненты при старте
     void Start()
@@ -40,7 +43,20 @@ public class DialogueTrigger : MonoBehaviour
         {
             promptRectTransform = interactionPrompt.GetComponent<RectTransform>();
 
-            interactionPrompt.SetActive(false);
+            // Добавляем или получаем CanvasGroup
+            promptCanvasGroup = interactionPrompt.GetComponent<CanvasGroup>();
+            if (promptCanvasGroup == null)
+            {
+                promptCanvasGroup = interactionPrompt.AddComponent<CanvasGroup>();
+            }
+
+            // Подсказка всегда активна, но прозрачна
+            interactionPrompt.SetActive(true);
+            promptCanvasGroup.alpha = 0f;
+            promptCanvasGroup.interactable = false;
+            promptCanvasGroup.blocksRaycasts = false;
+
+            isPromptVisible = false;
         }
 
         // Проверяем состояние мини-игры
@@ -48,6 +64,8 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (interactionPrompt != null)
             {
+                // Делаем подсказку полностью невидимой и отключаем
+                promptCanvasGroup.alpha = 0f;
                 interactionPrompt.SetActive(false);
             }
 
@@ -100,8 +118,8 @@ public class DialogueTrigger : MonoBehaviour
 
             if (interactionPrompt != null && !hasBeenUsed)
             {
-                interactionPrompt.SetActive(true);
                 SnapPromptPosition();
+                ShowPrompt();
             }
 
             if (autoTrigger && !hasBeenUsed)
@@ -123,17 +141,56 @@ public class DialogueTrigger : MonoBehaviour
 
             if (interactionPrompt != null)
             {
-                currentVelocity = Vector2.zero;
-                interactionPrompt.SetActive(false);
+                // Плавно скрываем
+                HidePrompt();
                 targetScreenPosition = Vector2.zero;
             }
         }
     }
 
+    // Плавно показывает подсказку
+    private void ShowPrompt()
+    {
+        if (promptCanvasGroup == null || isPromptVisible) return;
+
+        isPromptVisible = true;
+        StopAllCoroutines();
+        StartCoroutine(FadePrompt(0f, 1f, fadePromptSpeed));
+    }
+
+    // Плавно скрывает подсказку
+    private void HidePrompt()
+    {
+        if (promptCanvasGroup == null || !isPromptVisible) return;
+
+        isPromptVisible = false;
+        StopAllCoroutines();
+        StartCoroutine(FadePrompt(promptCanvasGroup.alpha, 0f, fadePromptSpeed));
+    }
+
+    // Корутина плавного изменения прозрачности
+    private System.Collections.IEnumerator FadePrompt(float from, float to, float speed)
+    {
+        float elapsed = 0f;
+        float duration = Mathf.Abs(to - from) / speed;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(from, to, elapsed / duration);
+            if (promptCanvasGroup != null)
+                promptCanvasGroup.alpha = alpha;
+            yield return null;
+        }
+
+        if (promptCanvasGroup != null)
+            promptCanvasGroup.alpha = to;
+    }
+
     // Обновляет позицию подсказки
     void Update()
     {
-        if (!isActive || !playerInRange || interactionPrompt == null || !interactionPrompt.activeSelf)
+        if (!isActive || !playerInRange || interactionPrompt == null || !isPromptVisible)
             return;
 
         UpdatePromptPositionSmooth();
@@ -153,14 +210,12 @@ public class DialogueTrigger : MonoBehaviour
     // Плавно обновляет позицию подсказки над игроком
     private void UpdatePromptPositionSmooth()
     {
-        if (playerTransform != null && mainCamera != null)
+        if (playerTransform != null && mainCamera != null && isPromptVisible)
         {
-            // Вычисляем новую позицию
             Vector3 worldPosition = playerTransform.position + Vector3.up * promptOffset;
             Vector2 screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
             screenPosition.y += uiAdditionalOffset;
 
-            // Обновляем только если позиция изменилась больше чем на 2 пикселя
             if (Vector2.Distance(targetScreenPosition, screenPosition) > 2f)
             {
                 targetScreenPosition = screenPosition;
@@ -168,7 +223,6 @@ public class DialogueTrigger : MonoBehaviour
 
             if (promptRectTransform != null)
             {
-                // Для более плавного движения
                 Vector2 currentPosition = promptRectTransform.position;
                 Vector2 smoothedPosition = Vector2.SmoothDamp(
                     currentPosition,
@@ -220,9 +274,10 @@ public class DialogueTrigger : MonoBehaviour
 
         DialogueSystem.Instance.ShowDialogue(dialogue);
 
+        // Скрываем подсказку при запуске диалога
         if (interactionPrompt != null)
         {
-            interactionPrompt.SetActive(false);
+            HidePrompt();
         }
 
         if (oneTimeUse)
@@ -238,8 +293,8 @@ public class DialogueTrigger : MonoBehaviour
 
         if (interactionPrompt != null && playerInRange)
         {
-            interactionPrompt.SetActive(true);
             SnapPromptPosition();
+            ShowPrompt();
         }
     }
 }

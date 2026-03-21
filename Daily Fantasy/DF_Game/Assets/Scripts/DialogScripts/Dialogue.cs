@@ -22,4 +22,19 @@ public class Dialogue : ScriptableObject
     [Header("Typewriter Music")]
     public AudioClip typewriterMusic; // Сама аудиодорожка
     public bool loopMusic = true; // Зацикливание (на всякий случай)
+
+    [System.Serializable]
+    public struct DialogueLine
+    {
+        [TextArea(1, 3)]
+        public string text;
+        public bool isPlayerSpeaking;
+        public string npcName;      // имя NPC, если говорит не игрок
+    }
+
+    public bool isPlayerSpeaking = true;
+    public string npcName = "NPC";
+
+    [Header("Sequential Dialogue")]
+    public DialogueLine[] lines;
 }
