@@ -605,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 473862993}
   - component: {fileID: 473862994}
+  - component: {fileID: 473862995}
   m_Layer: 0
   m_Name: Arrow (2)
   m_TagString: Untagged
@@ -685,6 +686,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &473862995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473862992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911304da10d33a343b4ef191133134b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteObject
 --- !u!1 &515992356
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cc0754d3d1f5f4599ce5729959020c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatScroller
+  beatTempo: 120
+  hasStarted: 0
 --- !u!4 &520797370
 Transform:
   m_ObjectHideFlags: 0
@@ -1008,6 +1023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636167317}
   - component: {fileID: 636167318}
+  - component: {fileID: 636167319}
   m_Layer: 0
   m_Name: Arrow (1)
   m_TagString: Untagged
@@ -1088,6 +1104,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &636167319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636167316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911304da10d33a343b4ef191133134b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteObject
 --- !u!1 &723331158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,6 +2177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1820752203}
   - component: {fileID: 1820752202}
+  - component: {fileID: 1820752204}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -2229,6 +2258,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 520797370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1820752204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820752201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911304da10d33a343b4ef191133134b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteObject
 --- !u!1 &1894841108
 GameObject:
   m_ObjectHideFlags: 0
