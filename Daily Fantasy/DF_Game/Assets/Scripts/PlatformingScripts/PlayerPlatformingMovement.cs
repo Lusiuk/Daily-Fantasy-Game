@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class PlayerPlatformingMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Animator animator;
     bool isFacingRight = true;
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -71,6 +72,10 @@ public class PlayerPlatformingMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
             Flip();
         }
+
+        animator.SetFloat("yVelocity",rb.linearVelocityY);
+        animator.SetFloat("magnitude",rb.linearVelocity.magnitude);
+        animator.SetBool("isWallSliding",isWallSliding);
     }
 
     private void Gravity()
@@ -136,11 +141,13 @@ public class PlayerPlatformingMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower * 1.2f);
             jumpsRemaining--;
+            animator.SetTrigger("jump");
         }
         else if (context.canceled && jumpsRemaining > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower);
             jumpsRemaining--;
+            animator.SetTrigger("jump");
         }
 
         //Some additions for WallJumping
@@ -149,6 +156,7 @@ public class PlayerPlatformingMovement : MonoBehaviour
             isWallJumping = true;
             rb.linearVelocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
             wallJumpTimer = 0f;
+            animator.SetTrigger("jump");
 
             if (transform.localScale.x != wallJumpDirection)
             {
