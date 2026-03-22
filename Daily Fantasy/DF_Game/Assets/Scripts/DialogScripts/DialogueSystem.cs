@@ -178,13 +178,56 @@ public class DialogueSystem : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
 
+        // Отключаем движение
         playerMovement = player.GetComponent<PlayerMovement>();
-        if (playerMovement == null) return;
+        if (playerMovement != null)
+        {
+            wasPlayerMovementEnabled = playerMovement.enabled;
+            playerMovement.enabled = false;
+        }
 
-        wasPlayerMovementEnabled = playerMovement.enabled;
-        playerMovement.enabled = false;
+        // Отключаем аниматор
+        Animator animator = player.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.enabled = false;
+        }
+
+        // Останавливаем физическое движение
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null) rb.linearVelocity = Vector2.zero;
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+
+        Debug.Log("Player movement and animation disabled");
+    }
+
+    // Включение движения игрока
+    private void EnablePlayerMovement()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        // Включаем движение
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = wasPlayerMovementEnabled;
+        }
+        else
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+            if (playerMovement != null) playerMovement.enabled = true;
+        }
+
+        // Включаем аниматор
+        Animator animator = player.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.enabled = true;
+        }
+
+        Debug.Log("Player movement and animation enabled");
     }
 
     // Основная корутина показа диалога (поддерживает последовательные реплики)
@@ -372,22 +415,6 @@ public class DialogueSystem : MonoBehaviour
         player.transform.position = targetPosition;
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = Vector2.zero;
-    }
-
-    // Включение движения игрока
-    private void EnablePlayerMovement()
-    {
-        if (playerMovement != null)
-            playerMovement.enabled = wasPlayerMovementEnabled;
-        else
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                playerMovement = player.GetComponent<PlayerMovement>();
-                if (playerMovement != null) playerMovement.enabled = true;
-            }
-        }
     }
 
     // Эффект печатной машинки
