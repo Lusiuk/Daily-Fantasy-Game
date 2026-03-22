@@ -856,10 +856,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.6333333
-    width: 0.45989585
-    height: 0.46602777
+    x: 0.02776635
+    y: 0
+    width: 0.9435868
+    height: 1.0007654
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -889,7 +889,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8282337, y: -0.017108917, z: -1}
+  m_LocalPosition: {x: -3.2828178, y: -0.015818596, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4153,7 +4153,7 @@ Animator:
   m_GameObject: {fileID: 1670225321}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f43cec7268062b49a9aa14ffce1345b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
