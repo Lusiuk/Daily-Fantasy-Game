@@ -2356,7 +2356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cc0754d3d1f5f4599ce5729959020c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatScroller
-  beatTempo: 120
+  beatTempo: 122
   hasStarted: 0
 --- !u!4 &520797370
 Transform:
@@ -5451,6 +5451,13 @@ MonoBehaviour:
   theMusic: {fileID: 1519265105}
   startPlaying: 0
   theBS: {fileID: 520797369}
+  currentScore: 0
+  scorePerNote: 100
+  scoreText: {fileID: 1791990394}
+  multiText: {fileID: 2046179001}
+  currentMultiplier: 1
+  multiplierTracker: 0
+  multiplierThreshold: 04000000080000000c000000
 --- !u!4 &1437953707
 Transform:
   m_ObjectHideFlags: 0
@@ -6437,7 +6444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1605572179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7042,7 +7049,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 100'
+  m_Text: "\u041E\u0447\u043A\u0438: 100"
 --- !u!222 &1791990395
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8698,7 +8705,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Multiplier: x1'
+  m_Text: "\u041C\u043D\u043E\u0436\u0438\u0442\u0435\u043B\u044C: x1"
 --- !u!222 &2046179002
 CanvasRenderer:
   m_ObjectHideFlags: 0
