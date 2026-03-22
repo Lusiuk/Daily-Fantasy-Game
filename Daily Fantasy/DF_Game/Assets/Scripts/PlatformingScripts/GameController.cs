@@ -24,11 +24,14 @@ public class GameController : MonoBehaviour
     
     public static event Action OnReset;
 
+    private Animator animator;
+
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = player.GetComponent<Animator>();
         HoldToLoadLevel.OnHoldComplete += LoadNextLevel;
         if (vcam != null)
             confiner = vcam.GetComponent<CinemachineConfiner2D>();
@@ -78,12 +81,14 @@ public class GameController : MonoBehaviour
 
     private void GameOverScreen()
     {
+        animator.SetBool("dead",true);
         gameOverScreen.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void ResetGame()
     {
+        animator.SetBool("dead",false);
         gameOverScreen.SetActive(false);
         LoadLevel(0);
         OnReset.Invoke();
