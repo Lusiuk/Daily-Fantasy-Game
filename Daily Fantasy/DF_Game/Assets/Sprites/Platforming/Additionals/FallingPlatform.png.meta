@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 84525bf98fb1f4a8fbfbbac673e7e6b6
+guid: 2fc3d19d85b32480bb8e8bf77c88182c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5026092619118502836
-    second: MovingPlatform_0
+      213: -4314440204327429562
+    second: FallingPlatform_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MovingPlatform_0
+      name: FallingPlatform_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b365c29b9440c540800000000000000
-      internalID: 5026092619118502836
+      spriteID: 64a56683e770024c0800000000000000
+      internalID: -4314440204327429562
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MovingPlatform_0: 5026092619118502836
+      FallingPlatform_0: -4314440204327429562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
