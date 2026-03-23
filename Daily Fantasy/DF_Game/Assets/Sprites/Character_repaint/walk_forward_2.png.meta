@@ -103,13 +103,13 @@ TextureImporter:
       name: walk_forward_2_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 2
-        width: 27
-        height: 60
+        x: 7
+        y: 3
+        width: 26
+        height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 1, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a9f1b5d2a60098d4b83f43321c56a704
     internalID: 0
     vertices: []
     indices: 
