@@ -21,7 +21,11 @@ public class PlayerPlatformingHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Trap trap = collision.GetComponent<Trap>();
+        if (trap && trap.damage > 0)
+        {
+            TakeDamage(trap.damage);
+        }
     }
 
     private void TakeDamage(int damage)
