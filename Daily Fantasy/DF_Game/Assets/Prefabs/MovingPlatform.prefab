@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a05f0c63a7b4ed78a11c771f2b8656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  pointA: {fileID: 0}
-  pointB: {fileID: 0}
+  pointA: {fileID: 4235074488846229138}
+  pointB: {fileID: 2142545763985837102}
   moveSpeed: 5
 --- !u!50 &1895194187718489305
 Rigidbody2D:

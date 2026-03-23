@@ -16,7 +16,7 @@ public class TriggerProxy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            holdScript.SetPlayerInside(true);
+            holdScript.SetPlayerInside(false);
         }
     }
 }
