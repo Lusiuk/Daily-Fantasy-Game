@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &15298545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -610,7 +610,6 @@ GameObject:
   m_Component:
   - component: {fileID: 283130422}
   - component: {fileID: 283130423}
-  - component: {fileID: 283130424}
   m_Layer: 5
   m_Name: Music_Slider
   m_TagString: Untagged
@@ -685,26 +684,12 @@ MonoBehaviour:
   m_HandleRect: {fileID: 252071021}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
-  m_WholeNumbers: 1
-  m_Value: 10
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &283130424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283130421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e0669408ca03f443aff835f77e64384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicVolumeController
-  musicSlider: {fileID: 283130423}
-  musicSource: {fileID: 980972365}
 --- !u!1 &326540952
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &390609766
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1829,8 +1814,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 1340b953e94c9034d8b75d03ec6908da, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1927,6 +1912,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130feeb3464b0014d9ef91011654351e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  audioSource: {fileID: 980972365}
+  musicList:
+  - sceneName: MainMenu
+    clip: {fileID: 8300000, guid: 1340b953e94c9034d8b75d03ec6908da, type: 3}
+  - sceneName: IdeMiniGame 1
+    clip: {fileID: 8300000, guid: b3093842a7fda5c419d77692309bf107, type: 3}
+  - sceneName: Platforming1
+    clip: {fileID: 8300000, guid: 74cf9a0b42384d148921507e4454d99b, type: 3}
 --- !u!1 &1221125165
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,6 +3366,7 @@ GameObject:
   - component: {fileID: 2090003239}
   - component: {fileID: 2090003241}
   - component: {fileID: 2090003240}
+  - component: {fileID: 2090003242}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -3444,6 +3438,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090003238}
   m_CullTransparentMesh: 1
+--- !u!114 &2090003242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090003238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd48ccd9d1cf01408158e269f199a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIVolumeController
+  volumeSlider: {fileID: 283130423}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
