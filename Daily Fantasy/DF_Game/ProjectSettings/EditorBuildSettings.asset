@@ -9,22 +9,22 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 788820a45062f4d44a9094a370bad477
   - enabled: 1
-    path: Assets/Scenes/CharacterRoom.unity
+    path: Assets/Scenes/House/CharacterRoom.unity
     guid: 2bf570e9cd0704212b59c95c6405e3f9
   - enabled: 1
-    path: Assets/Scenes/IdeMiniGame 1.unity
+    path: Assets/Scenes/Extra minigames/IdeMiniGame 1.unity
     guid: 7f5caa1382aee43cfac9e028d3069ecd
   - enabled: 1
-    path: Assets/Scenes/DemoRoom.unity
+    path: Assets/Scenes/House/DemoRoom.unity
     guid: f5e4683aabd8def4ca8bd39f74b7c30c
   - enabled: 1
-    path: Assets/Scenes/PlatformingMenu.unity
+    path: Assets/Scenes/Platforming/PlatformingMenu.unity
     guid: 9e89284761438ad59b83d9b17ce9c3fa
   - enabled: 1
-    path: Assets/Scenes/Platforming1.unity
+    path: Assets/Scenes/Platforming/Platforming1.unity
     guid: 52102ee2665e64c6881b1845c26f672d
   - enabled: 1
-    path: Assets/Scenes/MainRoom.unity
+    path: Assets/Scenes/House/MainRoom.unity
     guid: 6dcb139fa0e834edab13edb5e316824d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
