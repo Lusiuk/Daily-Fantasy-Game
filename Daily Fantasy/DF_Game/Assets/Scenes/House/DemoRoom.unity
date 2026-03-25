@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 58aca5d5dd9cb5c489871ac5c0b6134b, type: 2}
   oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
@@ -1282,10 +1282,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.27447918
+    x: 0.006770834
     y: 0
-    width: 0.2869152
-    height: 0.29074073
+    width: 0.98684216
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
