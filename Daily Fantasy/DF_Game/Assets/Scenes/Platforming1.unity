@@ -13492,6 +13492,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.79
       objectReference: {fileID: 0}
+    - target: {fileID: 1895194187718489305, guid: d30a9e3a19d4943f0a219c727d9edca8, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2142545763985837102, guid: d30a9e3a19d4943f0a219c727d9edca8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.15
@@ -13624,7 +13628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &712063006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20129,15 +20133,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.00052083336
+    x: 0
     y: 0
-    width: 0.48333335
-    height: 1.7333333
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 29.25
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -20313,7 +20317,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
+  Damping: {x: 0, y: 0, z: 0}
   Lookahead:
     Enabled: 0
     Time: 0
