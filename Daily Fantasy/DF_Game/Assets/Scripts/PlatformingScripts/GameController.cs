@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
 
     public Dialogue completionDialogue;
 
+    public DialogueSystem dialogueSystem;
+
     private int currentLevelIndex = 0;
 
     [Header("Camera Settings")]
@@ -84,6 +86,7 @@ public class GameController : MonoBehaviour
     // Показывает завершенный диалог
     private IEnumerator ShowCompletionDialogueAfterDelay()
     {
+        Time.timeScale = 1f;
         yield return new WaitForSeconds(2f);
 
 
@@ -105,11 +108,15 @@ public class GameController : MonoBehaviour
         GameState.Save();
         Debug.Log("Мини-игра отмечена как завершённая в GameState");
 
-        // Показываем диалог
+        // Показ диалога
         if (completionDialogue != null && DialogueSystem.Instance != null)
         {
+            Debug.Log($"Calling completion dialogue: {completionDialogue.name}, timeScale={Time.timeScale}");
             DialogueSystem.Instance.ShowDialogue(completionDialogue);
-            Debug.Log("Показываем диалог завершения мини-игры");
+        }
+        else
+        {
+            Debug.LogWarning($"Completion dialogue NOT shown. completionDialogue={(completionDialogue ? completionDialogue.name : "null")}, DialogueSystem.Instance={(DialogueSystem.Instance ? "ok" : "null")}");
         }
     }
 
