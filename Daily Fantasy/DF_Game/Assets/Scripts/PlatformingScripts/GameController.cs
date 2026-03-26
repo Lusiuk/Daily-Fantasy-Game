@@ -26,11 +26,16 @@ public class GameController : MonoBehaviour
 
     private Animator animator;
 
+    public bool needQuickAccess = false; // Set to true if you want the level to load immediately without holding
+
+    private HoldToLoadLevel loadCanvasInstance;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        loadCanvasInstance = player.transform.Find("LoadCanvas")?.gameObject?.GetComponent<HoldToLoadLevel>();
         animator = player.GetComponent<Animator>();
         HoldToLoadLevel.OnHoldComplete += LoadNextLevel;
         if (vcam != null)
@@ -44,7 +49,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        loadCanvasInstance.needQuickAccess = needQuickAccess;
     }
 
     void LoadLevel(int level)
@@ -95,8 +100,10 @@ public class GameController : MonoBehaviour
     public void ResetGame()
     {
         Debug.Log("ResetGame called");
+        player.GetComponent<Rigidbody2D>().linearVelocityY = 0f;
         Time.timeScale = 1;
         animator.SetBool("dead", false);
+        animator.Play("Idle", -1, 0f);
         gameOverScreen.SetActive(false);
         Debug.Log($"Loading level 0, Levels count: {Levels.Count}");
         LoadLevel(0);
