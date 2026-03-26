@@ -1,0 +1,1019 @@
+fileFormatVersion: 2
+guid: a8546d4e4607346b2b82670da5227293
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8377882892538757020
+    second: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_0
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 460c76ca5e7cbbb80800000000000000
+      internalID: -8377882892538757020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51772e3f1a5794570afc6c34e0f5c452
+      internalID: -33699170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_2
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcab259b2daf54081a10f1791980fd0b
+      internalID: -958844131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58dc71b46700b487bb54be494ecdc224
+      internalID: -90453548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_4
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8df0d592b40434b04aa77d6c2ffa5c0d
+      internalID: -490579739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_5
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56c6af13b1a6a451f9d0da8c5182ad26
+      internalID: 1954120348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_6
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98e93d534dfd544fbadf33b051927168
+      internalID: 932384091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_7
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05278ebb4a7c44408481705d1e8d283
+      internalID: 1310717042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_8
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1238a672e2b204b239c35c793d5ac67f
+      internalID: 1391955063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_9
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17e1b37a5c07c418f9b5ff4acf68fbe9
+      internalID: -1347904985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_10
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b6b03a14a494623888dc36081104f4
+      internalID: 1225240906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_11
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3043072d7024c899bc685a30e607ec
+      internalID: 1593429267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_12
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1500252e05a44dae99324da0423589a
+      internalID: 1220929275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_13
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce8ffc44a9df2474aafdccdbe5e038af
+      internalID: -1015468054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_14
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a020960ca8ec4a509f6bed82b3b70a2
+      internalID: -1856924156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_15
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e1e3968d2114e38bee7d2225de59bf
+      internalID: 1314275942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_16
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc9061b1eda054c219a059ef1a37eca5
+      internalID: -915292493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_17
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7cf709ea22014c3194030df971637c0
+      internalID: -579603207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_18
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736fa97ddb2d44d3d96346000ec1c19c
+      internalID: -1556057881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_19
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b58a9253b9e64131b1cfa7aa8256aa8
+      internalID: 573539532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_20
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ede2ec695ada495cbd2ce4aa91ddbf8
+      internalID: 629219022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_21
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2591fb6d46c2436bbefb54e461d4f8d
+      internalID: -296009689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_22
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6786aa94d80436088bc6e9f66ae19a
+      internalID: -1760900324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_23
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28aa89b7f0a7c4f4db9b80f6e8c1dd36
+      internalID: 518094642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_24
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095a986204ca941a0be5c5555b89e68a
+      internalID: 632442453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_25
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8f978c78623a4b1b9cea91428fcf8f0
+      internalID: 1978315195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_26
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8611d6c7910aa4764b5c7df113cc5d4f
+      internalID: 253084068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_27
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a7fe17c1bf9499b8a3a396e6f055a0
+      internalID: 1755219871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_28
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f50f2422d3d4640c4963766a3691284a
+      internalID: -2003765127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_29
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099cae98d1be640d78d8f735828ac85f
+      internalID: 529597502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_30
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d55406dfc8f4105809194bb517daec
+      internalID: -158017270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_31
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f957b33a88e2d49a58230e921cc83539
+      internalID: 657361747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_32
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f41cba25491a94478a65915fdc347554
+      internalID: 82943082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_33
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c374630cd5af4ffba4d91dc1542ab1d
+      internalID: 1366148257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_34
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0d6104cf954411096cff4bba7fcd59
+      internalID: -1082071380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_35
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bb2e8feca987468c9bb952dd179ae41
+      internalID: 26286167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_36
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ab4ec92856e64a1aa7a0eaed01cbda8
+      internalID: 2030946834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_37
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37fd5d920600244a085aa79c38e26b49
+      internalID: -1578926260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_38
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ea7c463292841c59be3e0d7da41054
+      internalID: 454630621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0640ecffc2819459e88ed667383e35cd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":100.0,"y":100.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_0: -8377882892538757020
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_1: -33699170
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_10: 1225240906
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_11: 1593429267
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_12: 1220929275
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_13: -1015468054
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_14: -1856924156
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_15: 1314275942
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_16: -915292493
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_17: -579603207
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_18: -1556057881
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_19: 573539532
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_2: -958844131
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_20: 629219022
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_21: -296009689
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_22: -1760900324
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_23: 518094642
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_24: 632442453
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_25: 1978315195
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_26: 253084068
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_27: 1755219871
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_28: -2003765127
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_29: 529597502
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_3: -90453548
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_30: -158017270
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_31: 657361747
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_32: 82943082
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_33: 1366148257
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_34: -1082071380
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_35: 26286167
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_36: 2030946834
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_37: -1578926260
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_38: 454630621
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_4: -490579739
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_5: 1954120348
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_6: 932384091
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_7: 1310717042
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_8: 1391955063
+      20260323_1749_Cozy_Retro_Kitchen_remix_01kmdjpfnre1585y5jcdzxhxef (4)_9: -1347904985
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
