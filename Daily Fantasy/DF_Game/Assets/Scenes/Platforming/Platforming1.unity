@@ -12034,6 +12034,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8384909929534266564, guid: 92ee7223613ae41c683bf80d0113d0e8, type: 3}
+      propertyPath: needQuickAccess
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8986630341112239372, guid: 92ee7223613ae41c683bf80d0113d0e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5
@@ -22047,6 +22051,7 @@ MonoBehaviour:
   StartingPositions:
   - {fileID: 178141910}
   - {fileID: 1689132237}
+  completionDialogue: {fileID: 0}
   vcam: {fileID: 1779669898}
   gameOverScreen: {fileID: 881185170}
   needQuickAccess: 0
@@ -22128,8 +22133,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.37500003
-    height: 1.7333333
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

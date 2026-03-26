@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
 using System;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class GameController : MonoBehaviour
     public List<GameObject> Levels;
 
     public List<GameObject> StartingPositions;
+
+    public Dialogue completionDialogue;
 
     private int currentLevelIndex = 0;
 
@@ -54,6 +59,18 @@ public class GameController : MonoBehaviour
 
     void LoadLevel(int level)
     {
+        if (level < 0 || level >= Levels.Count)
+        {
+            Debug.LogError($"LoadLevel: level index {level} is out of range. Levels.Count={Levels.Count}");
+            return;
+        }
+
+        if (level >= StartingPositions.Count)
+        {
+            Debug.LogError($"LoadLevel: no StartingPosition for level {level}. StartingPositions.Count={StartingPositions.Count}");
+            return;
+        }
+
         Levels[currentLevelIndex].gameObject.SetActive(false);
         Levels[level].gameObject.SetActive(true);
 
@@ -64,9 +81,47 @@ public class GameController : MonoBehaviour
         UpdateCameraBounds();
     }
 
+    // Показывает завершенный диалог
+    private IEnumerator ShowCompletionDialogueAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+
+
+        // Устанавливаем флаг завершения мини-игры
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "Platforming1":
+                GameState.IsDoor1Completed = true;
+                break;
+            case "Platforming2":
+                GameState.IsDoor2Completed = true;
+                break;
+            case "Platforming3":
+                GameState.IsDoor3Completed = true;
+                GameState.IsPlatformingCompleted = true;
+                break;
+        }
+
+        GameState.Save();
+        Debug.Log("Мини-игра отмечена как завершённая в GameState");
+
+        // Показываем диалог
+        if (completionDialogue != null && DialogueSystem.Instance != null)
+        {
+            DialogueSystem.Instance.ShowDialogue(completionDialogue);
+            Debug.Log("Показываем диалог завершения мини-игры");
+        }
+    }
+
+
     private void LoadNextLevel()
     {
-        int nextLevelIndex = (currentLevelIndex == Levels.Count - 1) ? 0 : currentLevelIndex + 1;
+        int nextLevelIndex = currentLevelIndex + 1;
+        if (nextLevelIndex >= Levels.Count)
+        {
+            StartCoroutine(ShowCompletionDialogueAfterDelay());
+            return;
+        }
         LoadLevel(nextLevelIndex);
     }
 
