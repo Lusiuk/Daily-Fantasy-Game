@@ -892,10 +892,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.029166669
-    width: 0.1
-    height: 0.076000005
+    x: 0.006770834
+    y: 0
+    width: 0.98684216
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -925,7 +925,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.7203865, y: -4.7884784, z: -1}
+  m_LocalPosition: {x: -3.0517597, y: -4.8246055, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3884,7 +3884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: a00d71e89e429f54b8b2be9a53bb2650, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -3894,6 +3893,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &1497252883
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4370,7 +4370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 9da6711af1587314aa72d6cb49926694, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -4380,6 +4379,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &1653778630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4519,7 +4519,7 @@ GameObject:
   - component: {fileID: 1670225322}
   m_Layer: 0
   m_Name: Mother
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5011,8 +5011,8 @@ Transform:
   m_GameObject: {fileID: 1898629610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26323172, y: -0.9164612, z: 0}
-  m_LocalScale: {x: 8.39752, y: 17.087387, z: 1}
+  m_LocalPosition: {x: 0.0311, y: -6.1393, z: 0}
+  m_LocalScale: {x: 8.861903, y: 6.6418676, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1670225326}
@@ -5030,7 +5030,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 0d318b7d77f57ef48b4935cfa37b444b, type: 2}
-  oneTimeUse: 1
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -5040,6 +5039,10 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements:
+  - conditions:
+    - IsIDEMinigameCompleted
+    dialogue: {fileID: 11400000, guid: e2243a7008d7f87419b0ce7d994e81ce, type: 2}
 --- !u!1 &1925269077
 GameObject:
   m_ObjectHideFlags: 0
@@ -6290,7 +6293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 84cb34dee458adc4982de8c34997e73b, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: 
@@ -6300,6 +6302,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &1970426826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6451,7 +6454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 7587c9df0d9b24a41a88be33007231ab, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -6461,6 +6463,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &2048008580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6712,8 +6715,8 @@ Transform:
   m_GameObject: {fileID: 2067163706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.03, y: -11.23, z: 0}
-  m_LocalScale: {x: 3.149593, y: 3.3238482, z: 1}
+  m_LocalPosition: {x: -27.875, y: -12.3148, z: 0}
+  m_LocalScale: {x: 3.459513, y: 5.493656, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6731,7 +6734,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: e7f189e86ad4e99478f9c169b2731352, type: 2}
-  oneTimeUse: 1
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: 
@@ -6741,6 +6743,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!1 &2070582521
 GameObject:
   m_ObjectHideFlags: 0
@@ -6866,7 +6869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 061045e167847c9419808f992fdddd0b, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -6876,6 +6878,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &2072579851
 BoxCollider2D:
   m_ObjectHideFlags: 0

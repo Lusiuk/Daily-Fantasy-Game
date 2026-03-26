@@ -12196,6 +12196,61 @@ Transform:
   - {fileID: 754110617}
   m_Father: {fileID: 675193444}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &434447929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 434447931}
+  - component: {fileID: 434447930}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &434447930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434447929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d549ea5e913bc5c449b9e4c71b962816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  fadeDuration: 0.3
+  typewriterSpeed: 0.03
+  typewriterAudioSource: {fileID: 0}
+  interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
+  useScreenPercentage: 1
+  widthPercentage: 0.8
+  heightPercentage: 0.2
+  disablePlayerMovement: 1
+  teleportDelay: 0.1
+--- !u!4 &434447931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434447929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.12501, y: -4.24031, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459547211
 GameObject:
   m_ObjectHideFlags: 0
@@ -15622,7 +15677,7 @@ GameObject:
   - component: {fileID: 779555648}
   - component: {fileID: 779555647}
   m_Layer: 0
-  m_Name: SpawnPoint_Door1
+  m_Name: SpawnPoint_Door3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22051,6 +22106,7 @@ MonoBehaviour:
   StartingPositions:
   - {fileID: 178141910}
   - {fileID: 1689132237}
+  completionDialogue: {fileID: 0}
   vcam: {fileID: 1779669898}
   gameOverScreen: {fileID: 881185170}
   needQuickAccess: 0
@@ -22130,15 +22186,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0015625001
-    y: 0
-    width: 1.3708334
-    height: 0.6666666
+    x: 0
+    y: 0.0009259259
+    width: 0.7479167
+    height: 0.34444442
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 5.8125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -22163,7 +22219,7 @@ Transform:
   m_GameObject: {fileID: 1765541961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 0.69, z: -10}
+  m_LocalPosition: {x: 5.1389, y: 0.68999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31062,3 +31118,4 @@ SceneRoots:
   - {fileID: 1754280334}
   - {fileID: 1741064681}
   - {fileID: 1080760233}
+  - {fileID: 434447931}

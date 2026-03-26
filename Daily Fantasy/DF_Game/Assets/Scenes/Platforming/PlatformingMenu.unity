@@ -5052,7 +5052,6 @@ GameObject:
   - component: {fileID: 1568199088}
   - component: {fileID: 1568199087}
   - component: {fileID: 1568199086}
-  - component: {fileID: 1568199090}
   m_Layer: 0
   m_Name: Door2
   m_TagString: Untagged
@@ -5073,7 +5072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: a4dc509a5cc25c94994fe25eaf310045, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 1
   minigameName: Platforming
@@ -5083,6 +5081,13 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements:
+  - conditions:
+    - IsDoor1Completed
+    dialogue: {fileID: 11400000, guid: 8de08c5e926d2a943bffd13617d20f2a, type: 2}
+  - conditions:
+    - IsDoor2Completed
+    dialogue: {fileID: 11400000, guid: ec81ca71344aec34493fe35ba1622561, type: 2}
 --- !u!61 &1568199087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5202,23 +5207,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1568199090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568199085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa82ab465f84e774aa8ab736259cd61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorPlatformingManager
-  doorNumber: 2
-  doorTrigger: {fileID: 0}
-  lockedDialog: {fileID: 11400000, guid: a4dc509a5cc25c94994fe25eaf310045, type: 2}
-  availableDialog: {fileID: 11400000, guid: 8de08c5e926d2a943bffd13617d20f2a, type: 2}
-  completedDialog: {fileID: 11400000, guid: ec81ca71344aec34493fe35ba1622561, type: 2}
 --- !u!1 &1612247138
 GameObject:
   m_ObjectHideFlags: 0
@@ -8782,7 +8770,6 @@ GameObject:
   - component: {fileID: 1648142554}
   - component: {fileID: 1648142553}
   - component: {fileID: 1648142552}
-  - component: {fileID: 1648142556}
   m_Layer: 0
   m_Name: Door3
   m_TagString: Untagged
@@ -8803,7 +8790,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: af62165d99ae5c54990698ac483045a6, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 1
   minigameName: Platforming
@@ -8813,6 +8799,13 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements:
+  - conditions:
+    - IsDoor2Completed
+    dialogue: {fileID: 11400000, guid: 8de08c5e926d2a943bffd13617d20f2a, type: 2}
+  - conditions:
+    - IsDoor3Completed
+    dialogue: {fileID: 11400000, guid: ec81ca71344aec34493fe35ba1622561, type: 2}
 --- !u!61 &1648142553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8932,23 +8925,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1648142556
+--- !u!1 &1648850565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648850567}
+  - component: {fileID: 1648850566}
+  m_Layer: 0
+  m_Name: SpawnPoint_Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1648850566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648142551}
+  m_GameObject: {fileID: 1648850565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa82ab465f84e774aa8ab736259cd61a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c83790e8d29b5244ae79ba088746f53, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorPlatformingManager
-  doorNumber: 3
-  doorTrigger: {fileID: 0}
-  lockedDialog: {fileID: 11400000, guid: af62165d99ae5c54990698ac483045a6, type: 2}
-  availableDialog: {fileID: 11400000, guid: 5eeb3da1000d73b49b095a3cfca358ae, type: 2}
-  completedDialog: {fileID: 11400000, guid: 0133426a3ad74de478ae06f5a648d6b1, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::TeleportMarker
+  markerName: SpawnPoint_Door
+  showGizmo: 1
+  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!4 &1648850567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648850565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: -7.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656105860
 GameObject:
   m_ObjectHideFlags: 0
@@ -10909,7 +10932,6 @@ GameObject:
   - component: {fileID: 1794552641}
   - component: {fileID: 1794552640}
   - component: {fileID: 1794552639}
-  - component: {fileID: 1794552643}
   m_Layer: 0
   m_Name: Door1
   m_TagString: Untagged
@@ -10930,7 +10952,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: e44f7523516e8584d8bd2bc002898019, type: 2}
-  oneTimeUse: 1
   autoTrigger: 0
   isMinigameTrigger: 1
   minigameName: Platforming
@@ -10940,6 +10961,10 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements:
+  - conditions:
+    - IsDoor1Completed
+    dialogue: {fileID: 11400000, guid: f977b0fa2dee11944a5119ab4fdc0210, type: 2}
 --- !u!61 &1794552640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11059,23 +11084,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1794552643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794552638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa82ab465f84e774aa8ab736259cd61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorPlatformingManager
-  doorNumber: 1
-  doorTrigger: {fileID: 0}
-  lockedDialog: {fileID: 0}
-  availableDialog: {fileID: 11400000, guid: e44f7523516e8584d8bd2bc002898019, type: 2}
-  completedDialog: {fileID: 11400000, guid: f977b0fa2dee11944a5119ab4fdc0210, type: 2}
 --- !u!1 &1802269138
 GameObject:
   m_ObjectHideFlags: 0
@@ -11262,3 +11270,4 @@ SceneRoots:
   - {fileID: 1794552642}
   - {fileID: 1568199089}
   - {fileID: 1648142555}
+  - {fileID: 1648850567}
