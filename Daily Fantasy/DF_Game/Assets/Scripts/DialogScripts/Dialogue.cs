@@ -21,7 +21,11 @@ public class Dialogue : ScriptableObject
 
     [Header("Typewriter Music")]
     public AudioClip typewriterMusic; // Сама аудиодорожка
-    public bool loopMusic = true; // Зацикливание (на всякий случай)
+    public bool loopMusic = true; // Зацикливание
+
+    [Header("Dialogue Identification")]
+    public string dialogueId;          // для отслеживания одноразовости
+    public bool oneTimeUse = false;     // должен ли диалог исчезнуть после первого использования
 
     [System.Serializable]
     public struct DialogueLine

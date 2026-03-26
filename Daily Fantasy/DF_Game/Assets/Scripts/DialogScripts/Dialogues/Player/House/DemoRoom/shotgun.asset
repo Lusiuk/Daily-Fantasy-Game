@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: shotgun
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   text: "\u042D\u0442\u043E \u0440\u0443\u0436\u044C\u0451. \u041E\u043D\u043E \u0432\u0438\u0441\u0438\u0442.
-    \u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043D\u0430\u0436\u043C\u0451\u043C
-    R, \u0447\u0442\u043E\u0431\u044B \u043E\u043D\u043E \u043D\u0435 \u0432\u044B\u0441\u0442\u0440\u0435\u043B\u0438\u043B\u043E."
+    \u0414\u0430\u0432\u0430\u0439 \u043D\u0430\u0436\u043C\u0451\u043C R, \u0447\u0442\u043E\u0431\u044B
+    \u043E\u043D\u043E \u043D\u0435 \u0432\u044B\u0441\u0442\u0440\u0435\u043B\u0438\u043B\u043E."
   canInteract: 1
   triggerSceneTransition: 0
   targetSceneName: 
@@ -23,3 +23,6 @@ MonoBehaviour:
   teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: c51077eac9377af49817a13c23ea11a3, type: 3}
   loopMusic: 1
+  isPlayerSpeaking: 1
+  npcName: NPC
+  lines: []

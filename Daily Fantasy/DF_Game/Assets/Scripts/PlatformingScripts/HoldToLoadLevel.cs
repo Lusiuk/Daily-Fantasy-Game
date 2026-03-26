@@ -13,6 +13,8 @@ public class HoldToLoadLevel : MonoBehaviour
     private bool isHolding = false;
     private bool canFinish = false;
 
+    public bool needQuickAccess; // Set to true if you want the level to load immediately without holding
+
     public static event Action OnHoldComplete;
 
     void Start()
@@ -26,14 +28,14 @@ public class HoldToLoadLevel : MonoBehaviour
         canFinish = inside;
         
         if (visualRoot != null) 
-            visualRoot.SetActive(inside);
+            visualRoot.SetActive(inside || needQuickAccess);
 
         if (!inside) ResetHold();
     }
 
     void Update()
     {
-        if (isHolding && canFinish)
+        if ((isHolding && canFinish) || (needQuickAccess == true) && isHolding)
         {
             holdTimer += Time.deltaTime;
             fillCircle.fillAmount = holdTimer / holdDuration;

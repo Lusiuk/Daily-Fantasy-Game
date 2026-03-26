@@ -21,21 +21,26 @@ public class GameController : MonoBehaviour
 
     [Header("GameOver Settings")]
     public GameObject gameOverScreen;
-    
+
     public static event Action OnReset;
 
     private Animator animator;
 
+    public bool needQuickAccess = false; // Set to true if you want the level to load immediately without holding
 
-    
+    private HoldToLoadLevel loadCanvasInstance;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        loadCanvasInstance = player.transform.Find("LoadCanvas")?.gameObject?.GetComponent<HoldToLoadLevel>();
         animator = player.GetComponent<Animator>();
         HoldToLoadLevel.OnHoldComplete += LoadNextLevel;
         if (vcam != null)
             confiner = vcam.GetComponent<CinemachineConfiner2D>();
-            
+
         UpdateCameraBounds();
         PlayerPlatformingHealth.OnPlayerDied += GameOverScreen;
         gameOverScreen.SetActive(false);
@@ -44,12 +49,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        loadCanvasInstance.needQuickAccess = needQuickAccess;
     }
 
     void LoadLevel(int level)
     {
-         Levels[currentLevelIndex].gameObject.SetActive(false);
+        Levels[currentLevelIndex].gameObject.SetActive(false);
         Levels[level].gameObject.SetActive(true);
 
         Vector3 newPos = StartingPositions[level].transform.position;
@@ -81,18 +86,29 @@ public class GameController : MonoBehaviour
 
     private void GameOverScreen()
     {
-        animator.SetBool("dead",true);
+        animator.SetBool("dead", true);
         gameOverScreen.SetActive(true);
         Time.timeScale = 0;
     }
 
+    private void OnDestroy()
+    {
+        HoldToLoadLevel.OnHoldComplete -= LoadNextLevel;
+        PlayerPlatformingHealth.OnPlayerDied -= GameOverScreen;
+    }
+
     public void ResetGame()
     {
-        animator.SetBool("dead",false);
-        gameOverScreen.SetActive(false);
-        LoadLevel(0);
-        OnReset.Invoke();
+        Debug.Log("ResetGame called");
+        player.GetComponent<Rigidbody2D>().linearVelocityY = 0f;
         Time.timeScale = 1;
+        animator.SetBool("dead", false);
+        animator.Play("Idle", -1, 0f);
+        gameOverScreen.SetActive(false);
+        Debug.Log($"Loading level 0, Levels count: {Levels.Count}");
+        LoadLevel(0);
+        Debug.Log($"Player position after load: {player.transform.position}");
+        OnReset?.Invoke();
     }
 }
 

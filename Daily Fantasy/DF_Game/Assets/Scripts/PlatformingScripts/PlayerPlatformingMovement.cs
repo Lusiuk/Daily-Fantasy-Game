@@ -91,7 +91,16 @@ public class PlayerPlatformingMovement : MonoBehaviour
 
         if (!isWallJumping)
         {
-            rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
+            Vector2 playerVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
+
+            if (currentPlatform != null)
+            {
+                animator.SetFloat("magnitude",0f);
+                animator.SetFloat("yVelocity", 0f);
+                Vector2 platformVel = currentPlatform.GetPlatformVelocity();
+                playerVelocity.x += platformVel.x;
+            }
+            rb.linearVelocity = playerVelocity;
             Flip();
         }
     }
@@ -246,5 +255,20 @@ public class PlayerPlatformingMovement : MonoBehaviour
         Gizmos.DrawCube(groundCheckPos.position, groundCheckSize);
         Gizmos.color = Color.red;
         Gizmos.DrawCube(WallCheckPos.position, WallCheckSize);
+    }
+
+    private MovingPlatform currentPlatform;
+    private Vector2 platformVelocityFromLastFrame = Vector2.zero;
+
+    public void AttachToMovingPlatform(MovingPlatform platform)
+    {
+        currentPlatform = platform;
+        platformVelocityFromLastFrame = platform.GetPlatformVelocity();
+    }
+
+    public void DetachFromMovingPlatform()
+    {
+        currentPlatform = null;
+        platformVelocityFromLastFrame = Vector2.zero;
     }
 }
