@@ -100,6 +100,7 @@ public class GameController : MonoBehaviour
     public void ResetGame()
     {
         Debug.Log("ResetGame called");
+        player.GetComponent<Rigidbody2D>().linearVelocityY = 0f;
         Time.timeScale = 1;
         animator.SetBool("dead", false);
         animator.Play("Idle", -1, 0f);
