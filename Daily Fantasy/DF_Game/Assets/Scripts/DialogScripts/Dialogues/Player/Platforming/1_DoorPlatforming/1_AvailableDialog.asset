@@ -24,8 +24,8 @@ MonoBehaviour:
   teleportMarkerName: SpawnPoint_Door1
   typewriterMusic: {fileID: 8300000, guid: c51077eac9377af49817a13c23ea11a3, type: 3}
   loopMusic: 1
-  dialogueId: 46u6weu46
-  oneTimeUse: 1
+  dialogueId: 
+  oneTimeUse: 0
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []
