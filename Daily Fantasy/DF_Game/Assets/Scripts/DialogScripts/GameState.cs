@@ -11,13 +11,19 @@ public static class GameState
     public static string TeleportMarkerName { get; set; } = "";
 
     // Для мини-игр
-    public static bool IsMinigameCompleted { get; set; } = false;
     public static string MinigameName { get; set; } = "IDEMinigame";
+
+    // IDE
+    public static bool IsIDEMinigameCompleted { get; set; } = false;
 
     // Двери платформинга
     public static bool IsDoor1Completed { get; set; } = false;
     public static bool IsDoor2Completed { get; set; } = false;
     public static bool IsDoor3Completed { get; set; } = false;
+
+    // Ритм-игры
+    public static bool IsRhythmGame1Completed { get; set; } = false;
+    public static bool IsRhythmGame2Completed { get; set; } = false;
 
     // Метод для сброса состояний
     public static void ResetGameState()
@@ -26,12 +32,14 @@ public static class GameState
         ShouldTeleport = false;
         TeleportPosition = Vector2.zero;
         TeleportMarkerName = "";
-        IsMinigameCompleted = false;
-        MinigameName = "IDEMinigame";
+        IsIDEMinigameCompleted = false;
 
         IsDoor1Completed = false;
         IsDoor2Completed = false;
         IsDoor3Completed = false;
+
+        IsRhythmGame1Completed = false;
+        IsRhythmGame2Completed = false;
 
         Debug.Log("GameState: Состояние игры сброшено");
     }
@@ -47,11 +55,13 @@ public static class GameState
             previousScene = PreviousScene,
             initialScene = InitialScene,
             isFirstLoad = IsFirstLoad,
-            isMinigameCompleted = IsMinigameCompleted,
+            isIDEMinigameCompleted = IsIDEMinigameCompleted,
             minigameName = MinigameName,
             isDoor1Completed = IsDoor1Completed,
             isDoor2Completed = IsDoor2Completed,
-            isDoor3Completed = IsDoor3Completed
+            isDoor3Completed = IsDoor3Completed,
+            isRhythmGame1Completed = IsRhythmGame1Completed,
+            isRhythmGame2Completed = IsRhythmGame2Completed
         };
 
         string json = JsonUtility.ToJson(data);
@@ -71,11 +81,13 @@ public static class GameState
             PreviousScene = data.previousScene;
             InitialScene = data.initialScene;
             IsFirstLoad = data.isFirstLoad;
-            IsMinigameCompleted = data.isMinigameCompleted;
+            IsIDEMinigameCompleted = data.isIDEMinigameCompleted;
             MinigameName = data.minigameName;
             IsDoor1Completed = data.isDoor1Completed;
             IsDoor2Completed = data.isDoor2Completed;
             IsDoor3Completed = data.isDoor3Completed;
+            IsRhythmGame1Completed = data.isRhythmGame1Completed;
+            IsRhythmGame2Completed = data.isRhythmGame2Completed;
 
             Debug.Log("GameState: Загружено");
         }
@@ -100,10 +112,40 @@ public static class GameState
         public string previousScene;
         public string initialScene;
         public bool isFirstLoad;
-        public bool isMinigameCompleted;
+        public bool isIDEMinigameCompleted;
         public string minigameName;
         public bool isDoor1Completed;
         public bool isDoor2Completed;
         public bool isDoor3Completed;
+        public bool isRhythmGame1Completed;
+        public bool isRhythmGame2Completed;
+    }
+
+    // Получить значение флага по имени
+    public static bool GetFlag(string flagName)
+    {
+        switch (flagName)
+        {
+            case "IsIDEMinigameCompleted": return IsIDEMinigameCompleted;
+            case "IsDoor1Completed": return IsDoor1Completed;
+            case "IsDoor2Completed": return IsDoor2Completed;
+            case "IsDoor3Completed": return IsDoor3Completed;
+            case "IsRhythmGame1Completed": return IsRhythmGame1Completed;
+            case "IsRhythmGame2Completed": return IsRhythmGame2Completed;
+            default:
+                Debug.LogWarning($"Неизвестный флаг: {flagName}");
+                return false;
+        }
+    }
+
+    // Проверить, удовлетворены ли все требования
+    public static bool AreFlagsSatisfied(string[] flags)
+    {
+        if (flags == null || flags.Length == 0) return true;
+        foreach (string flag in flags)
+        {
+            if (!GetFlag(flag)) return false;
+        }
+        return true;
     }
 }

@@ -33,6 +33,7 @@ public class DialogueTrigger : MonoBehaviour
     private Vector2 currentVelocity = Vector2.zero;
     private CanvasGroup promptCanvasGroup;
     private bool isPromptVisible = false;
+    private bool dialogueTriggeredThisSession = false;
 
     // Инициализирует компоненты при старте
     void Start()
@@ -60,7 +61,7 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         // Проверяем состояние мини-игры
-        if (isMinigameTrigger && GameState.IsMinigameCompleted && GameState.MinigameName == minigameName)
+        if (isMinigameTrigger && GameState.IsIDEMinigameCompleted && GameState.MinigameName == minigameName)
         {
             if (interactionPrompt != null)
             {
@@ -75,6 +76,8 @@ public class DialogueTrigger : MonoBehaviour
                 collider.enabled = false;
             }
         }
+
+        CheckAndUpdateDialogue();
     }
 
     // Настраивает систему ввода при активации
@@ -106,7 +109,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (!isActive) return;
 
-        if (isMinigameTrigger && GameState.IsMinigameCompleted && GameState.MinigameName == minigameName)
+        if (isMinigameTrigger && GameState.IsIDEMinigameCompleted && GameState.MinigameName == minigameName)
         {
             return;
         }
@@ -115,14 +118,13 @@ public class DialogueTrigger : MonoBehaviour
         {
             playerInRange = true;
             playerTransform = other.transform;
+            dialogueTriggeredThisSession = false;
 
-            if (interactionPrompt != null && !hasBeenUsed)
-            {
-                SnapPromptPosition();
-                ShowPrompt();
-            }
+            // Проверяем и обновляем диалог, затем показываем подсказку, если доступен
+            CheckAndUpdateDialogue();
+            UpdatePromptVisibility();
 
-            if (autoTrigger && !hasBeenUsed)
+            if (autoTrigger && !hasBeenUsed && IsDialogueAvailable(dialogue))
             {
                 TriggerDialogue();
             }
@@ -138,10 +140,10 @@ public class DialogueTrigger : MonoBehaviour
         {
             playerInRange = false;
             playerTransform = null;
+            dialogueTriggeredThisSession = false;
 
             if (interactionPrompt != null)
             {
-                // Плавно скрываем
                 HidePrompt();
                 targetScreenPosition = Vector2.zero;
             }
@@ -264,26 +266,19 @@ public class DialogueTrigger : MonoBehaviour
     public void TriggerDialogue()
     {
         if (!isActive) return;
+        if (isMinigameTrigger && GameState.IsIDEMinigameCompleted && GameState.MinigameName == minigameName) return;
 
-        if (isMinigameTrigger && GameState.IsMinigameCompleted && GameState.MinigameName == minigameName)
-        {
-            return;
-        }
-
+        // Проверяем, доступен ли диалог и не использован ли
         if (dialogue == null || hasBeenUsed || DialogueSystem.Instance == null) return;
+        if (!IsDialogueAvailable(dialogue)) return;
 
         DialogueSystem.Instance.ShowDialogue(dialogue);
 
-        // Скрываем подсказку при запуске диалога
-        if (interactionPrompt != null)
-        {
-            HidePrompt();
-        }
+        if (interactionPrompt != null) HidePrompt();
 
-        if (oneTimeUse)
-        {
-            hasBeenUsed = true;
-        }
+        dialogueTriggeredThisSession = true;
+
+        if (oneTimeUse) hasBeenUsed = true;
     }
 
     // Сбрасывает состояние триггера
@@ -295,6 +290,61 @@ public class DialogueTrigger : MonoBehaviour
         {
             SnapPromptPosition();
             ShowPrompt();
+        }
+    }
+
+    // Доступен ли диалог
+    private bool IsDialogueAvailable(Dialogue d)
+    {
+        if (d == null) return false;
+        return GameState.AreFlagsSatisfied(d.requiredFlags);
+    }
+
+    // Проверить и заменить диалог
+    private void CheckAndUpdateDialogue()
+    {
+        if (hasBeenUsed || dialogue == null) return;
+
+        Dialogue current = dialogue;
+        bool changed = false;
+
+        int maxIter = 10;
+        while (maxIter-- > 0)
+        {
+            if (current.unlockedDialogue != null && GameState.AreFlagsSatisfied(current.unlockConditions))
+            {
+                current = current.unlockedDialogue;
+                changed = true;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (changed)
+        {
+            dialogue = current;
+            Debug.Log($"{gameObject.name}: диалог заменён на {dialogue.name}");
+        }
+    }
+
+    // Обновить видимость подсказки в зависимости от доступности диалога
+    private void UpdatePromptVisibility()
+    {
+        bool available = IsDialogueAvailable(dialogue) && !hasBeenUsed && !dialogueTriggeredThisSession;
+
+        if (available && playerInRange)
+        {
+            if (!isPromptVisible)
+            {
+                SnapPromptPosition();
+                ShowPrompt();
+            }
+        }
+        else
+        {
+            if (isPromptVisible) HidePrompt();
         }
     }
 }

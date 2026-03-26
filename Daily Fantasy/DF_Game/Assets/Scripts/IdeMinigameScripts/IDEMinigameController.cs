@@ -243,7 +243,8 @@ private void LoadLevel(int levelIndex)
         }
 
         // Устанавливаем флаг завершения мини-игры
-        GameState.IsMinigameCompleted = true;
+        GameState.IsIDEMinigameCompleted = true;
+        GameState.Save();
         Debug.Log("Мини-игра отмечена как завершённая в GameState");
 
         // Показываем диалог

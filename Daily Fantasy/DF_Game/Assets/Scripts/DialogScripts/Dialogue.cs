@@ -21,7 +21,12 @@ public class Dialogue : ScriptableObject
 
     [Header("Typewriter Music")]
     public AudioClip typewriterMusic; // Сама аудиодорожка
-    public bool loopMusic = true; // Зацикливание (на всякий случай)
+    public bool loopMusic = true; // Зацикливание
+
+    [Header("Requirements & Unlock")]
+    public string[] requiredFlags; // Какие флаги должны быть true, чтобы диалог стал доступен
+    public string[] unlockConditions; // // для замены на unlockedDialogue
+    public Dialogue unlockedDialogue; // На какой диалог заменить, когда требования выполнены
 
     [System.Serializable]
     public struct DialogueLine

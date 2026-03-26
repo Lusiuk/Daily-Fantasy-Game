@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0ce09f1e1f89b43ab3ba879ccf71a6, type: 3}
-  m_Name: Mom_Conversation
+  m_Name: Mom_Conversation1
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   text: 
   canInteract: 1
@@ -21,6 +21,10 @@ MonoBehaviour:
   teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: c51077eac9377af49817a13c23ea11a3, type: 3}
   loopMusic: 1
+  requiredFlags: []
+  unlockConditions:
+  - IsIDEMinigameCompleted
+  unlockedDialogue: {fileID: 11400000, guid: e2243a7008d7f87419b0ce7d994e81ce, type: 2}
   isPlayerSpeaking: 1
   npcName: 
   lines:
