@@ -5073,7 +5073,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: a4dc509a5cc25c94994fe25eaf310045, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 1
   minigameName: Platforming
@@ -5083,6 +5082,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &1568199087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8803,7 +8803,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: af62165d99ae5c54990698ac483045a6, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 1
   minigameName: Platforming
@@ -8813,6 +8812,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &1648142553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8949,6 +8949,53 @@ MonoBehaviour:
   lockedDialog: {fileID: 11400000, guid: af62165d99ae5c54990698ac483045a6, type: 2}
   availableDialog: {fileID: 11400000, guid: 5eeb3da1000d73b49b095a3cfca358ae, type: 2}
   completedDialog: {fileID: 11400000, guid: 0133426a3ad74de478ae06f5a648d6b1, type: 2}
+--- !u!1 &1648850565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648850567}
+  - component: {fileID: 1648850566}
+  m_Layer: 0
+  m_Name: SpawnPoint_Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1648850566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648850565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c83790e8d29b5244ae79ba088746f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeleportMarker
+  markerName: SpawnPoint_Door
+  showGizmo: 1
+  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!4 &1648850567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648850565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: -7.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656105860
 GameObject:
   m_ObjectHideFlags: 0
@@ -10646,7 +10693,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 33.75
+  orthographic size: 11.6875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10930,7 +10977,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: e44f7523516e8584d8bd2bc002898019, type: 2}
-  oneTimeUse: 1
   autoTrigger: 0
   isMinigameTrigger: 1
   minigameName: Platforming
@@ -10940,6 +10986,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacements: []
 --- !u!61 &1794552640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11262,3 +11309,4 @@ SceneRoots:
   - {fileID: 1794552642}
   - {fileID: 1568199089}
   - {fileID: 1648142555}
+  - {fileID: 1648850567}
