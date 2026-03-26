@@ -23,10 +23,9 @@ public class Dialogue : ScriptableObject
     public AudioClip typewriterMusic; // —ама аудиодорожка
     public bool loopMusic = true; // «ацикливание
 
-    [Header("Requirements & Unlock")]
-    public string[] requiredFlags; //  акие флаги должны быть true, чтобы диалог стал доступен
-    public string[] unlockConditions; // // дл€ замены на unlockedDialogue
-    public Dialogue unlockedDialogue; // Ќа какой диалог заменить, когда требовани€ выполнены
+    [Header("Dialogue Identification")]
+    public string dialogueId;          // дл€ отслеживани€ одноразовости
+    public bool oneTimeUse = false;     // должен ли диалог исчезнуть после первого использовани€
 
     [System.Serializable]
     public struct DialogueLine

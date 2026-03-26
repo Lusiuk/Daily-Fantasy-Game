@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameState
@@ -14,16 +15,104 @@ public static class GameState
     public static string MinigameName { get; set; } = "IDEMinigame";
 
     // IDE
-    public static bool IsIDEMinigameCompleted { get; set; } = false;
+    private static bool _isIDEMinigameCompleted;
+    public static bool IsIDEMinigameCompleted
+    {
+        get => _isIDEMinigameCompleted;
+        set
+        {
+            if (_isIDEMinigameCompleted != value)
+            {
+                _isIDEMinigameCompleted = value;
+                OnFlagChanged?.Invoke("IsIDEMinigameCompleted");
+            }
+        }
+    }
 
     // Двери платформинга
-    public static bool IsDoor1Completed { get; set; } = false;
-    public static bool IsDoor2Completed { get; set; } = false;
-    public static bool IsDoor3Completed { get; set; } = false;
+    private static bool _isDoor1Completed;
+    public static bool IsDoor1Completed
+    {
+        get => _isDoor1Completed;
+        set
+        {
+            if (_isDoor1Completed != value)
+            {
+                _isDoor1Completed = value;
+                OnFlagChanged?.Invoke("IsDoor1Completed");
+            }
+        }
+    }
+    private static bool _isDoor2Completed;
+    public static bool IsDoor2Completed
+    {
+        get => _isDoor2Completed;
+        set
+        {
+            if (_isDoor2Completed != value)
+            {
+                _isDoor2Completed = value;
+                OnFlagChanged?.Invoke("IsDoor2Completed");
+            }
+        }
+    }
+    private static bool _isDoor3Completed;
+    public static bool IsDoor3Completed
+    {
+        get => _isDoor3Completed;
+        set
+        {
+            if (_isDoor3Completed != value)
+            {
+                _isDoor3Completed = value;
+                OnFlagChanged?.Invoke("IsDoor3Completed");
+            }
+        }
+    }
+    private static bool _isPlatformingCompleted;
+    public static bool IsPlatformingCompleted
+    {
+        get => _isPlatformingCompleted;
+        set
+        {
+            if (_isPlatformingCompleted != value)
+            {
+                _isPlatformingCompleted = value;
+                OnFlagChanged?.Invoke("IsPlatformingCompleted");
+            }
+        }
+    }
 
     // Ритм-игры
-    public static bool IsRhythmGame1Completed { get; set; } = false;
-    public static bool IsRhythmGame2Completed { get; set; } = false;
+    private static bool _isRhythmGame1Completed;
+    public static bool IsRhythmGame1Completed
+    {
+        get => _isRhythmGame1Completed;
+        set
+        {
+            if (_isRhythmGame1Completed != value)
+            {
+                _isRhythmGame1Completed = value;
+                OnFlagChanged?.Invoke("IsRhythmGame1Completed");
+            }
+        }
+    }
+    private static bool _isRhythmGame2Completed;
+    public static bool IsRhythmGame2Completed
+    {
+        get => _isRhythmGame2Completed;
+        set
+        {
+            if (_isRhythmGame2Completed != value)
+            {
+                _isRhythmGame2Completed = value;
+                OnFlagChanged?.Invoke("IsRhythmGame2Completed");
+            }
+        }
+    }
+
+    //Событие
+    public static event System.Action<string> OnFlagChanged;
 
     // Метод для сброса состояний
     public static void ResetGameState()
@@ -37,9 +126,12 @@ public static class GameState
         IsDoor1Completed = false;
         IsDoor2Completed = false;
         IsDoor3Completed = false;
+        IsPlatformingCompleted = false;
 
         IsRhythmGame1Completed = false;
         IsRhythmGame2Completed = false;
+
+        _usedDialogues.Clear();
 
         Debug.Log("GameState: Состояние игры сброшено");
     }
@@ -60,6 +152,7 @@ public static class GameState
             isDoor1Completed = IsDoor1Completed,
             isDoor2Completed = IsDoor2Completed,
             isDoor3Completed = IsDoor3Completed,
+            isPlatformingCompleted = IsPlatformingCompleted,
             isRhythmGame1Completed = IsRhythmGame1Completed,
             isRhythmGame2Completed = IsRhythmGame2Completed
         };
@@ -86,6 +179,7 @@ public static class GameState
             IsDoor1Completed = data.isDoor1Completed;
             IsDoor2Completed = data.isDoor2Completed;
             IsDoor3Completed = data.isDoor3Completed;
+            IsPlatformingCompleted = data.isPlatformingCompleted;
             IsRhythmGame1Completed = data.isRhythmGame1Completed;
             IsRhythmGame2Completed = data.isRhythmGame2Completed;
 
@@ -117,6 +211,7 @@ public static class GameState
         public bool isDoor1Completed;
         public bool isDoor2Completed;
         public bool isDoor3Completed;
+        public bool isPlatformingCompleted;
         public bool isRhythmGame1Completed;
         public bool isRhythmGame2Completed;
     }
@@ -130,6 +225,7 @@ public static class GameState
             case "IsDoor1Completed": return IsDoor1Completed;
             case "IsDoor2Completed": return IsDoor2Completed;
             case "IsDoor3Completed": return IsDoor3Completed;
+            case "IsPlatformingCompleted": return IsPlatformingCompleted;
             case "IsRhythmGame1Completed": return IsRhythmGame1Completed;
             case "IsRhythmGame2Completed": return IsRhythmGame2Completed;
             default:
@@ -147,5 +243,21 @@ public static class GameState
             if (!GetFlag(flag)) return false;
         }
         return true;
+    }
+
+    private static HashSet<string> _usedDialogues = new HashSet<string>();
+
+    public static bool IsDialogueUsed(string dialogueId)
+    {
+        return !string.IsNullOrEmpty(dialogueId) && _usedDialogues.Contains(dialogueId);
+    }
+
+    public static void MarkDialogueUsed(string dialogueId)
+    {
+        if (string.IsNullOrEmpty(dialogueId)) return;
+        if (_usedDialogues.Add(dialogueId))
+        {
+            Debug.Log($"Диалог {dialogueId} отмечен как использованный");
+        }
     }
 }

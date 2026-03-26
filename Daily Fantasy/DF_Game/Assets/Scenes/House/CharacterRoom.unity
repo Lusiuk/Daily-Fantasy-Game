@@ -498,6 +498,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &107579789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1713,10 +1715,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.64074075
-    width: 0.44583336
-    height: 0.4517778
+    x: 0.006770834
+    y: 0
+    width: 0.98684216
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1746,7 +1748,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.46503448, y: -2.40273, z: -1}
+  m_LocalPosition: {x: -3.1284065, y: -4.87326, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4009,6 +4011,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &1606514458
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4392,6 +4396,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!1 &1827979453
 GameObject:
   m_ObjectHideFlags: 0
@@ -5259,6 +5265,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &2040628886
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5510,8 +5518,8 @@ Transform:
   m_GameObject: {fileID: 2067163706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.84, y: -11.23, z: 0}
-  m_LocalScale: {x: 3.1495926, y: 3.323848, z: 1}
+  m_LocalPosition: {x: 28.809, y: -12.3458, z: 0}
+  m_LocalScale: {x: 3.21164, y: 5.5554795, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5539,6 +5547,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!1 &2070582521
 GameObject:
   m_ObjectHideFlags: 0

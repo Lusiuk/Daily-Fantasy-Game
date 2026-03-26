@@ -892,10 +892,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.029166669
-    width: 0.1
-    height: 0.076000005
+    x: 0.27447918
+    y: 0
+    width: 0.2869152
+    height: 0.29074073
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -925,7 +925,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.7203865, y: -4.7884784, z: -1}
+  m_LocalPosition: {x: -3.0517597, y: -4.8246055, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3894,6 +3894,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &1497252883
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4380,6 +4382,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &1653778630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5040,6 +5044,9 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions:
+  - IsIDEMinigameCompleted
+  replacementDialogue: {fileID: 11400000, guid: e2243a7008d7f87419b0ce7d994e81ce, type: 2}
 --- !u!1 &1925269077
 GameObject:
   m_ObjectHideFlags: 0
@@ -6300,6 +6307,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &1970426826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6461,6 +6470,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &2048008580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6712,8 +6723,8 @@ Transform:
   m_GameObject: {fileID: 2067163706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.03, y: -11.23, z: 0}
-  m_LocalScale: {x: 3.149593, y: 3.3238482, z: 1}
+  m_LocalPosition: {x: -27.875, y: -12.3148, z: 0}
+  m_LocalScale: {x: 3.459513, y: 5.493656, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6741,6 +6752,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!1 &2070582521
 GameObject:
   m_ObjectHideFlags: 0
@@ -6876,6 +6889,8 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
+  replacementConditions: []
+  replacementDialogue: {fileID: 0}
 --- !u!61 &2072579851
 BoxCollider2D:
   m_ObjectHideFlags: 0

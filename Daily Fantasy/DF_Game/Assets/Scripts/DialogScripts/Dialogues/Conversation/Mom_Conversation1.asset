@@ -21,10 +21,8 @@ MonoBehaviour:
   teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: c51077eac9377af49817a13c23ea11a3, type: 3}
   loopMusic: 1
-  requiredFlags: []
-  unlockConditions:
-  - IsIDEMinigameCompleted
-  unlockedDialogue: {fileID: 11400000, guid: e2243a7008d7f87419b0ce7d994e81ce, type: 2}
+  dialogueId: w57w8w
+  oneTimeUse: 1
   isPlayerSpeaking: 1
   npcName: 
   lines:
