@@ -17743,6 +17743,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 675193444}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1575187483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575187485}
+  - component: {fileID: 1575187484}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1575187484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575187483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d549ea5e913bc5c449b9e4c71b962816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  fadeDuration: 0.3
+  typewriterSpeed: 0.03
+  typewriterAudioSource: {fileID: 0}
+  interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
+  useScreenPercentage: 1
+  widthPercentage: 0.8
+  heightPercentage: 0.2
+  disablePlayerMovement: 1
+  teleportDelay: 0.1
+--- !u!4 &1575187485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575187483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.12501, y: -4.24031, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1602614945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4289261035054695355, guid: ea4d354349ab144b2ac305975c616c2a, type: 3}
@@ -31063,3 +31118,4 @@ SceneRoots:
   - {fileID: 1754280334}
   - {fileID: 1741064681}
   - {fileID: 1080760233}
+  - {fileID: 1575187485}
