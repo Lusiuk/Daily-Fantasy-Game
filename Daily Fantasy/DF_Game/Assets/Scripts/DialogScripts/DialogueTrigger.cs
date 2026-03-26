@@ -21,9 +21,15 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private float smoothTime = 0.1f;
     [SerializeField] private float fadePromptSpeed = 5f;
 
+    [System.Serializable]
+    public class DialogueReplacement
+    {
+        public string[] conditions;
+        public Dialogue dialogue;
+    }
+
     [Header("Dialogue Replacement")]
-    [SerializeField] private string[] replacementConditions; // флаги, при выполнении которых диалог замен€етс€
-    [SerializeField] private Dialogue replacementDialogue;   // новый диалог, который станет основным
+    [SerializeField] private DialogueReplacement[] replacements; // список замен
 
     // ѕриватные переменные
     private bool hasBeenUsed = false;
@@ -37,7 +43,7 @@ public class DialogueTrigger : MonoBehaviour
     private CanvasGroup promptCanvasGroup;
     private bool isPromptVisible = false;
     private bool dialogueTriggeredThisSession = false;
-    private bool hasBeenReplaced = false;
+    private int appliedReplacementIndex = -1;
 
     // »нициализирует компоненты при старте
     void Start()
@@ -60,9 +66,9 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         UpdateMinigameBlock();
-        CheckAndApplyReplacement();
+        CheckAndApplyReplacement(); // сначала замены
 
-        // ѕроверка использованности текущего диалога
+        // ѕроверка, не €вл€етс€ ли текущий диалог
         if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
         {
             DisableTrigger();
@@ -344,29 +350,38 @@ public class DialogueTrigger : MonoBehaviour
 
     private void CheckAndApplyReplacement()
     {
-        if (hasBeenReplaced) return;
-        if (replacementDialogue == null) return;
-        if (replacementConditions == null || replacementConditions.Length == 0) return;
+        if (replacements == null || replacements.Length == 0) return;
 
-        if (GameState.AreFlagsSatisfied(replacementConditions))
+        // Ќачинаем проверку со следующей после уже применЄнной замены
+        int startIndex = appliedReplacementIndex + 1;
+        for (int i = startIndex; i < replacements.Length; i++)
         {
-            dialogue = replacementDialogue;
-            hasBeenReplaced = true;
-            Debug.Log($"{gameObject.name}: диалог заменЄн на {dialogue.name} по условию");
+            var repl = replacements[i];
+            if (repl.dialogue == null) continue;
+            if (repl.conditions == null || repl.conditions.Length == 0) continue;
 
-            // ѕровер€ем, можно ли использовать новый диалог
-            if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
+            if (GameState.AreFlagsSatisfied(repl.conditions))
             {
-                DisableTrigger();
-            }
-            else
-            {
-                EnableTrigger();
-                dialogueTriggeredThisSession = false;
-                if (playerInRange)
+                // ѕримен€ем замену
+                dialogue = repl.dialogue;
+                appliedReplacementIndex = i;
+                Debug.Log($"{gameObject.name}: диалог заменЄн на {dialogue.name} (услови€ #{i})");
+
+                // ѕосле замены перепровер€ем доступность нового диалога
+                if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
                 {
-                    UpdatePromptVisibility();
+                    DisableTrigger();
                 }
+                else
+                {
+                    EnableTrigger();
+                    dialogueTriggeredThisSession = false;
+                    if (playerInRange)
+                    {
+                        UpdatePromptVisibility();
+                    }
+                }
+                return;
             }
         }
     }

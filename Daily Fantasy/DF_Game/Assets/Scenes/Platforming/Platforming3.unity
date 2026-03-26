@@ -15622,7 +15622,7 @@ GameObject:
   - component: {fileID: 779555648}
   - component: {fileID: 779555647}
   m_Layer: 0
-  m_Name: SpawnPoint_Door1
+  m_Name: SpawnPoint_Door3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22130,15 +22130,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0015625001
-    y: 0
-    width: 1.3708334
-    height: 0.6666666
+    x: 0
+    y: 0.0009259259
+    width: 0.7479167
+    height: 0.34444442
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 5.8125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -22163,7 +22163,7 @@ Transform:
   m_GameObject: {fileID: 1765541961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 0.69, z: -10}
+  m_LocalPosition: {x: 5.1389, y: 0.68999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

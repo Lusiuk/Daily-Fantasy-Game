@@ -18,12 +18,14 @@ MonoBehaviour:
     \u0441\u0432\u043E\u044E \u0441\u0438\u043B\u0443."
   canInteract: 1
   triggerSceneTransition: 1
-  targetSceneName: Platforming1
+  targetSceneName: Platforming2
   teleportAfterDialogue: 1
   teleportPosition: {x: 0, y: 0}
-  teleportMarkerName: SpawnPoint_Door1
+  teleportMarkerName: SpawnPoint_Door2
   typewriterMusic: {fileID: 8300000, guid: c51077eac9377af49817a13c23ea11a3, type: 3}
   loopMusic: 1
+  dialogueId: 3w7q7q
+  oneTimeUse: 1
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []
