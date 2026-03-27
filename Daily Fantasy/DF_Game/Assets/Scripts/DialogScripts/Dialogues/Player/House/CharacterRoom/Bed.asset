@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   text: 
   canInteract: 1
-  triggerSceneTransition: 0
-  targetSceneName: 
+  triggerSceneTransition: 1
+  targetSceneName: MainMenu
   teleportAfterDialogue: 0
   teleportPosition: {x: 0, y: 0}
   teleportMarkerName: 
@@ -26,7 +26,7 @@ MonoBehaviour:
   isPlayerSpeaking: 1
   npcName: NPC
   lines:
-  - text: "*\u0417\u0435\u0432\u0430\u0435\u0442*"
+  - text: "*\u0417\u0435\u0432\u0430\u0435\u0442* [R]"
     isPlayerSpeaking: 1
     npcName: 
   - text: "\u041A\u0430\u043A \u0442\u0430\u043C \u0433\u043E\u0432\u043E\u0440\u0438\u043B\u043E\u0441\u044C,
@@ -35,6 +35,10 @@ MonoBehaviour:
     isPlayerSpeaking: 1
     npcName: 
   - text: "\u0422\u0430\u043A\u043E\u0435 \u044F \u043B\u044E\u0431\u043B\u044E.
+      [R]"
+    isPlayerSpeaking: 1
+    npcName: 
+  - text: "\u0412\u0441\u0451, \u0442\u0438\u0445\u0438\u0439 \u0447\u0430\u0441.
       [R]"
     isPlayerSpeaking: 1
     npcName: 
