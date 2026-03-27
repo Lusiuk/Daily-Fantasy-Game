@@ -16,7 +16,7 @@ MonoBehaviour:
     \u043C\u043E\u0436\u043D\u043E. [R]"
   canInteract: 1
   triggerSceneTransition: 1
-  targetSceneName: MainRoom
+  targetSceneName: MainRoom2
   teleportAfterDialogue: 1
   teleportPosition: {x: 0, y: 0}
   teleportMarkerName: SpawnPoint_Door2
