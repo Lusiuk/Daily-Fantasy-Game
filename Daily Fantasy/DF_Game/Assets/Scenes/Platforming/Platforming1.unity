@@ -688,7 +688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u0417\u0430\u0436\u043C\u0438\u0442\u0435 R"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6bfff04aa5ce416eb2a06de0cbce7e9, type: 2}
   m_sharedMaterial: {fileID: 7405219937465575993, guid: d6bfff04aa5ce416eb2a06de0cbce7e9, type: 2}
@@ -784,7 +784,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 425.59985, y: -129.5}
-  m_SizeDelta: {x: 220, y: 40}
+  m_SizeDelta: {x: 220, y: -700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &162181231
 GameObject:
