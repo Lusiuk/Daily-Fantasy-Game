@@ -796,6 +796,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPlatforming
       objectReference: {fileID: 0}
+    - target: {fileID: 4526430281605155185, guid: 92ee7223613ae41c683bf80d0113d0e8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.84827965
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526430281605155185, guid: 92ee7223613ae41c683bf80d0113d0e8, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10963681
+      objectReference: {fileID: 0}
     - target: {fileID: 5706551711495637018, guid: 92ee7223613ae41c683bf80d0113d0e8, type: 3}
       propertyPath: jumpMax
       value: 3
@@ -20186,7 +20194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &712063006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24879,14 +24887,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0018518518
-    width: 1.271875
-    height: 0.5333333
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 31.0625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
