@@ -5074,8 +5074,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: a4dc509a5cc25c94994fe25eaf310045, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 1
-  minigameName: Platforming
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 185041580}
   promptOffset: 4
@@ -8792,8 +8790,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: af62165d99ae5c54990698ac483045a6, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 1
-  minigameName: Platforming
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 185041580}
   promptOffset: 4
@@ -8937,7 +8933,7 @@ GameObject:
   - component: {fileID: 1648850567}
   - component: {fileID: 1648850566}
   m_Layer: 0
-  m_Name: SpawnPoint_Door
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10670,7 +10666,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 33.75
+  orthographic size: 11.59375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10954,8 +10950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: e44f7523516e8584d8bd2bc002898019, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 1
-  minigameName: Platforming
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 185041580}
   promptOffset: 4

@@ -6724,7 +6724,7 @@ MonoBehaviour:
   StartingPositions:
   - {fileID: 178141910}
   - {fileID: 1689132237}
-  completionDialogue: {fileID: 0}
+  completionDialogue: {fileID: 11400000, guid: 8a7c3cb7923da6b45b7cd14397cd84af, type: 2}
   dialogueSystem: {fileID: 0}
   vcam: {fileID: 1779669898}
   gameOverScreen: {fileID: 881185170}
@@ -6807,13 +6807,13 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.60625005
-    height: 1.7333333
+    width: 0.33333334
+    height: 0.44444445
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 19.5
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
