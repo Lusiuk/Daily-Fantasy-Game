@@ -488,7 +488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: a9f0f9b876776444db9d51997171fce4, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -498,8 +497,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacementConditions: []
-  replacementDialogue: {fileID: 0}
+  replacements: []
 --- !u!61 &107579789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4001,7 +3999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: cef3efc93b0b7ec40a06ab17d51daa45, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -4011,8 +4008,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacementConditions: []
-  replacementDialogue: {fileID: 0}
+  replacements: []
 --- !u!61 &1606514458
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4386,7 +4382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 85dd62717f3deb942a83209122e53a33, type: 2}
-  oneTimeUse: 1
   autoTrigger: 0
   isMinigameTrigger: 1
   minigameName: IDEMinigame
@@ -4396,8 +4391,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacementConditions: []
-  replacementDialogue: {fileID: 0}
+  replacements: []
 --- !u!1 &1827979453
 GameObject:
   m_ObjectHideFlags: 0
@@ -5255,7 +5249,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 00152c9942fdebd479382a5adff116fe, type: 2}
-  oneTimeUse: 0
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -5265,8 +5258,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacementConditions: []
-  replacementDialogue: {fileID: 0}
+  replacements: []
 --- !u!61 &2040628886
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5537,7 +5529,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 0d8a504020d5e704891acebabbd2307a, type: 2}
-  oneTimeUse: 1
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: IDEMinigame
@@ -5547,8 +5538,7 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacementConditions: []
-  replacementDialogue: {fileID: 0}
+  replacements: []
 --- !u!1 &2070582521
 GameObject:
   m_ObjectHideFlags: 0
@@ -5858,6 +5848,10 @@ PrefabInstance:
     - target: {fileID: 1392169367849006305, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168794700365915830, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6805020889521051939, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
       propertyPath: m_LocalPosition.x
