@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogue: {fileID: 11400000, guid: 09fa7bbbd4759d640b27e9ac966e36cd, type: 2}
+  dialogue: {fileID: 11400000, guid: 7782b07ac6d898342b5040ac90406252, type: 2}
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: 
@@ -690,7 +690,10 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacements: []
+  replacements:
+  - conditions:
+    - DialogueUsed:w57w8w
+    dialogue: {fileID: 11400000, guid: 09fa7bbbd4759d640b27e9ac966e36cd, type: 2}
 --- !u!61 &467398608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1098,10 +1101,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.6333333
-    width: 0.45989585
-    height: 0.46602777
+    x: 0.24791668
+    y: 0
+    width: 0.33899856
+    height: 0.34351853
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1131,7 +1134,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.079565, y: -4.7952514, z: -1}
+  m_LocalPosition: {x: -3.0517597, y: -4.8246055, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6485,6 +6488,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 313991075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1979273207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1979273209}
+  - component: {fileID: 1979273208}
+  m_Layer: 0
+  m_Name: SpawnPoint_Door2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1979273208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979273207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c83790e8d29b5244ae79ba088746f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeleportMarker
+  markerName: SpawnPoint_Door
+  showGizmo: 1
+  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!4 &1979273209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979273207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 70.2, y: -9.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2048008578
 GameObject:
   m_ObjectHideFlags: 0
@@ -7159,6 +7209,7 @@ SceneRoots:
   - {fileID: 2067163709}
   - {fileID: 467398610}
   - {fileID: 1174780025}
+  - {fileID: 1979273209}
   - {fileID: 1670225326}
   - {fileID: 313991075}
   - {fileID: 103032098}
