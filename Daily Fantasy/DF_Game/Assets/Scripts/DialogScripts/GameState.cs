@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class GameState
@@ -157,6 +158,7 @@ public static class GameState
             isRhythmGame2Completed = IsRhythmGame2Completed
         };
 
+        data.usedDialogues = _usedDialogues.ToList();
         string json = JsonUtility.ToJson(data);
         PlayerPrefs.SetString(SAVE_KEY, json);
         PlayerPrefs.Save();
@@ -182,6 +184,7 @@ public static class GameState
             IsPlatformingCompleted = data.isPlatformingCompleted;
             IsRhythmGame1Completed = data.isRhythmGame1Completed;
             IsRhythmGame2Completed = data.isRhythmGame2Completed;
+            _usedDialogues = new HashSet<string>(data.usedDialogues);
 
             Debug.Log("GameState: Загружено");
         }
@@ -214,6 +217,7 @@ public static class GameState
         public bool isPlatformingCompleted;
         public bool isRhythmGame1Completed;
         public bool isRhythmGame2Completed;
+        public List<string> usedDialogues;
     }
 
     // Получить значение флага по имени
@@ -240,7 +244,7 @@ public static class GameState
         if (flags == null || flags.Length == 0) return true;
         foreach (string flag in flags)
         {
-            if (!GetFlag(flag)) return false;
+            if (!CheckCondition(flag)) return false;
         }
         return true;
     }
@@ -258,6 +262,20 @@ public static class GameState
         if (_usedDialogues.Add(dialogueId))
         {
             Debug.Log($"Диалог {dialogueId} отмечен как использованный");
+            OnFlagChanged?.Invoke($"DialogueUsed:{dialogueId}");
         }
+    }
+
+    public static bool CheckCondition(string condition)
+    {
+        if (string.IsNullOrEmpty(condition)) return true;
+
+        if (condition.StartsWith("DialogueUsed:"))
+        {
+            string dialogueId = condition.Substring("DialogueUsed:".Length);
+            return IsDialogueUsed(dialogueId);
+        }
+
+        return GetFlag(condition);
     }
 }
