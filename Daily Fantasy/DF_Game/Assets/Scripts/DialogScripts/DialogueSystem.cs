@@ -298,7 +298,7 @@ public class DialogueSystem : MonoBehaviour
         inputEnabled = true;
     }
 
-    // Получение текущей реплики (учитывает одиночный или последовательный диалог)
+    // Получение текущей реплики
     private DialogueLine GetCurrentLine()
     {
         if (currentDialogue.lines != null && currentDialogue.lines.Length > 0)
@@ -315,7 +315,8 @@ public class DialogueSystem : MonoBehaviour
             return $"[Женя]: {line.text}";
         else
         {
-            string name = string.IsNullOrEmpty(line.npcName) ? "NPC" : line.npcName;
+            string name = string.IsNullOrEmpty(line.npcName) ? currentDialogue.npcName : line.npcName;
+            if (string.IsNullOrEmpty(name)) name = "NPC";
             return $"[{name}]: {line.text}";
         }
     }

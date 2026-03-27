@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 81014071e7897f943881b3f1a2e6d2e6
+guid: fb92960951412c5479381983b59564e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1581656492317439953
-    second: unfake-pixel-art-scaled(3)_0
+      213: -5058593029926442084
+    second: man_closed_eyes_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: unfake-pixel-art-scaled(3)_0
+      name: man_closed_eyes_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1315
-        height: 975
+        x: 293
+        y: 80
+        width: 352
+        height: 844
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f288abadcc3dc0ae0800000000000000
-      internalID: -1581656492317439953
+      spriteID: c9ba7fbd0744cc9b0800000000000000
+      internalID: -5058593029926442084
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      unfake-pixel-art-scaled(3)_0: -1581656492317439953
+      man_closed_eyes_0: -5058593029926442084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -682,8 +682,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 7782b07ac6d898342b5040ac90406252, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: 
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
@@ -4008,8 +4006,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: a00d71e89e429f54b8b2be9a53bb2650, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
@@ -4438,8 +4434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 9da6711af1587314aa72d6cb49926694, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
@@ -5097,8 +5091,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 0d318b7d77f57ef48b4935cfa37b444b, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
@@ -5107,7 +5099,7 @@ MonoBehaviour:
   fadePromptSpeed: 5
   replacements:
   - conditions:
-    - IsIDEMinigameCompleted
+    - IsRhythmGame1Completed
     dialogue: {fileID: 11400000, guid: e2243a7008d7f87419b0ce7d994e81ce, type: 2}
 --- !u!1 &1925269077
 GameObject:
@@ -6360,8 +6352,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 84cb34dee458adc4982de8c34997e73b, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: 
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
@@ -6568,8 +6558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 7587c9df0d9b24a41a88be33007231ab, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
@@ -6848,8 +6836,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: e7f189e86ad4e99478f9c169b2731352, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: 
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
@@ -6983,8 +6969,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: 061045e167847c9419808f992fdddd0b, type: 2}
   autoTrigger: 0
-  isMinigameTrigger: 0
-  minigameName: IDEMinigame
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 258110355}
   promptOffset: 4
