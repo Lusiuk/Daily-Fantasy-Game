@@ -4085,7 +4085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue: {fileID: 11400000, guid: e2243a7008d7f87419b0ce7d994e81ce, type: 2}
   autoTrigger: 0
-  interactAction: {fileID: 0}
+  interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 2115541722}
   promptOffset: 4
   uiAdditionalOffset: 90
@@ -4629,10 +4629,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.006770834
+    x: 0.4885417
     y: 0
-    width: 0.98684216
-    height: 1
+    width: 0.02284357
+    height: 0.023148147
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
