@@ -149,6 +149,7 @@ MonoBehaviour:
   holdDuration: 1
   fillCircle: {fileID: 222455385075142641}
   visualRoot: {fileID: 764672327507618722}
+  needQuickAccess: 0
 --- !u!1 &764672327507618722
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,8 +287,8 @@ Transform:
   m_GameObject: {fileID: 4165753795658072454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.42, z: 0}
-  m_LocalScale: {x: 0.9152779, y: 1.0601077, z: 1}
+  m_LocalPosition: {x: 0.0168, y: 0.3323, z: 0}
+  m_LocalScale: {x: 0.8688733, y: 0.88476586, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 973839273127117978}
@@ -563,6 +564,10 @@ MonoBehaviour:
   rb: {fileID: 7487060032993369835}
   animator: {fileID: 6686597305871646353}
   moveSpeed: 4
+  dashSpeed: 20
+  dashDuration: 0.15
+  dashCooldown: 0.2
+  isDashingActive: 1
   jumpPower: 12
   jumpMax: 1
   jumpCooldown: 0.5
@@ -582,6 +587,7 @@ MonoBehaviour:
   wallSlideSpeed: 2
   canWallSlide: 0
   wallJumpPower: {x: 6, y: 12}
+  trailRenderer: {fileID: 0}
 --- !u!95 &6686597305871646353
 Animator:
   serializedVersion: 7
