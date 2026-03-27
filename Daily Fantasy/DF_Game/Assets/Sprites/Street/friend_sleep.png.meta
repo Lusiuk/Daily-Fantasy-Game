@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9632a1c9888da864a8c736802b2a3f30
+guid: c8ccb442ee191cd439a47e418e7056e8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5832153931593667461
-    second: background0_0
+      213: 8792712278413972273
+    second: friend_sleep_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background0_0
+      name: friend_sleep_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 563
+        y: 163
+        width: 650
+        height: 1706
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b7c26f736e6001fa0800000000000000
-      internalID: -5832153931593667461
+      spriteID: 133941f3b3df50a70800000000000000
+      internalID: 8792712278413972273
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      background0_0: -5832153931593667461
+      friend_sleep_0: 8792712278413972273
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
