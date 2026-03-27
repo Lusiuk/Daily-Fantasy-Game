@@ -8937,10 +8937,10 @@ MonoBehaviour:
   replacements:
   - conditions:
     - IsDoor2Completed
-    dialogue: {fileID: 11400000, guid: 8de08c5e926d2a943bffd13617d20f2a, type: 2}
+    dialogue: {fileID: 11400000, guid: 5eeb3da1000d73b49b095a3cfca358ae, type: 2}
   - conditions:
     - IsDoor3Completed
-    dialogue: {fileID: 11400000, guid: ec81ca71344aec34493fe35ba1622561, type: 2}
+    dialogue: {fileID: 11400000, guid: 0133426a3ad74de478ae06f5a648d6b1, type: 2}
 --- !u!61 &1648142553
 BoxCollider2D:
   m_ObjectHideFlags: 0

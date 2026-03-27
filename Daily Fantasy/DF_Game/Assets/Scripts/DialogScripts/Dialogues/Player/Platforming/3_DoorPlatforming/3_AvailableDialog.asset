@@ -27,6 +27,6 @@ MonoBehaviour:
   loopMusic: 1
   dialogueId: 
   oneTimeUse: 0
-  isPlayerSpeaking: 1
-  npcName: NPC
+  isPlayerSpeaking: 0
+  npcName: "\u0410\u0437"
   lines: []
