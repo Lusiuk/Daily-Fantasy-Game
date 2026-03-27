@@ -3,38 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class RoomController : MonoBehaviour
 {
-
     public GameObject Mother;
+    private Collider2D motherCollider;    
+    private SpriteRenderer motherSprite;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        bool completed = GameState.IsRhythmGame1Completed;
+        motherCollider = Mother.GetComponent<Collider2D>();
+        motherSprite = Mother.GetComponent<SpriteRenderer>();
         switch (SceneManager.GetActiveScene().name)
         {
             case "MainRoom":
-                if (GameState.IsRhythmGame1Completed)
-                {
-                    Mother.SetActive(false);
-                }
-                else
-                    Mother.SetActive(true);
-
+                SetMotherVisible(!completed);
                 break;
-            case "KitchenRoom":
-                if (GameState.IsRhythmGame1Completed)
-                {
-                    Mother.SetActive(true);
-                }
-                else
-                    Mother.SetActive(false);
 
+            case "KitchenRoom":
+                SetMotherVisible(completed);
                 break;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetMotherVisible(bool visible)
     {
-
+        if (motherSprite != null) motherSprite.enabled = visible;
+        if (motherCollider != null) motherCollider.enabled = visible;
     }
 }
