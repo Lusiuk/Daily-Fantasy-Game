@@ -25,7 +25,7 @@ MonoBehaviour:
   teleportAfterDialogue: 0
   teleportPosition: {x: 0, y: 0}
   teleportMarkerName: 
-  typewriterMusic: {fileID: 0}
+  typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
   loopMusic: 1
   dialogueId: 
   oneTimeUse: 0
