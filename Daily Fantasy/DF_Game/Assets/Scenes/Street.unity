@@ -1128,10 +1128,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.2046875
-    y: 0
-    width: 0.33899856
-    height: 0.34351853
+    x: 0
+    y: 0.625
+    width: 0.47656253
+    height: 0.48291665
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1161,7 +1161,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0011387, y: -7.3810735, z: -1}
+  m_LocalPosition: {x: 4.3480034, y: -0.34333017, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1592,8 +1592,8 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
+  TargetOffset: {x: 0, y: 7, z: 0}
+  Damping: {x: 0, y: 0, z: 0}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -1651,7 +1651,7 @@ Transform:
   m_GameObject: {fileID: 1200332903}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.5, y: -7.4, z: -1}
+  m_LocalPosition: {x: -20.5, y: -0.4000001, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6056,10 +6056,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 110.20729, y: 15.28723}
-      - {x: -29.81811, y: 14.864768}
-      - {x: -29.688345, y: -24.106016}
-      - {x: 110.30586, y: -24.542482}
+    - - {x: 109.38818, y: 14.4681225}
+      - {x: -30.145758, y: 14.864768}
+      - {x: -29.688345, y: -24.43366}
+      - {x: 109.65057, y: -24.542482}
   m_UseDelaunayMesh: 0
 --- !u!1 &2091542365
 GameObject:
