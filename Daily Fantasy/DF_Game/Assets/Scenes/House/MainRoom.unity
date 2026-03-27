@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogue: {fileID: 11400000, guid: 09fa7bbbd4759d640b27e9ac966e36cd, type: 2}
+  dialogue: {fileID: 11400000, guid: 7782b07ac6d898342b5040ac90406252, type: 2}
   autoTrigger: 0
   isMinigameTrigger: 0
   minigameName: 
@@ -645,7 +645,10 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacements: []
+  replacements:
+  - conditions:
+    - DialogueUsed:w57w8w
+    dialogue: {fileID: 11400000, guid: 09fa7bbbd4759d640b27e9ac966e36cd, type: 2}
 --- !u!61 &467398608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1053,10 +1056,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.2046875
+    x: 0
     y: 0
-    width: 0.33899856
-    height: 0.34351853
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1086,7 +1089,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0517597, y: -4.8246055, z: -1}
+  m_LocalPosition: {x: -2.7008762, y: -4.823175, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
