@@ -10,23 +10,15 @@ public class RoomController : MonoBehaviour
     void Start()
     {
         bool completed = GameState.IsRhythmGame1Completed;
-        motherCollider = Mother.GetComponent<Collider2D>();
-        motherSprite = Mother.GetComponent<SpriteRenderer>();
         switch (SceneManager.GetActiveScene().name)
         {
             case "MainRoom":
-                SetMotherVisible(!completed);
+                Mother.SetActive(!completed);
                 break;
 
             case "KitchenRoom":
-                SetMotherVisible(completed);
+                Mother.SetActive(completed);
                 break;
         }
-    }
-
-    void SetMotherVisible(bool visible)
-    {
-        if (motherSprite != null) motherSprite.enabled = visible;
-        if (motherCollider != null) motherCollider.enabled = visible;
     }
 }
