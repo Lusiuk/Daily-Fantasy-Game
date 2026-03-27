@@ -48,6 +48,7 @@ public class DialogueSystem : MonoBehaviour
     private bool wasPlayerMovementEnabled = true;
     private int currentLineIndex = 0;
     private bool isWaitingForNext = false;
+    private PlayerPlatformingMovement playerPlatformingMovement;
 
     public static DialogueSystem Instance { get; private set; }
 
@@ -186,6 +187,13 @@ public class DialogueSystem : MonoBehaviour
             playerMovement.enabled = false;
         }
 
+        // Отключаем платформенное движение
+        playerPlatformingMovement = player.GetComponent<PlayerPlatformingMovement>();
+        if (playerPlatformingMovement != null)
+        {
+            playerPlatformingMovement.enabled = false;
+        }
+
         // Отключаем аниматор
         Animator animator = player.GetComponent<Animator>();
         if (animator != null)
@@ -218,6 +226,12 @@ public class DialogueSystem : MonoBehaviour
         {
             playerMovement = player.GetComponent<PlayerMovement>();
             if (playerMovement != null) playerMovement.enabled = true;
+        }
+
+        // Включаем платформенное движение
+        if (playerPlatformingMovement != null)
+        {
+            playerPlatformingMovement.enabled = true;
         }
 
         // Включаем аниматор
