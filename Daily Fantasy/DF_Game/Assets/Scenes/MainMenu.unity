@@ -2204,7 +2204,21 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1340b953e94c9034d8b75d03ec6908da, type: 3}
   - sceneName: IdeMiniGame 1
     clip: {fileID: 8300000, guid: b3093842a7fda5c419d77692309bf107, type: 3}
+  - sceneName: CharacterRoom
+    clip: {fileID: 8300000, guid: 1340b953e94c9034d8b75d03ec6908da, type: 3}
+  - sceneName: DemoRoom
+    clip: {fileID: 8300000, guid: 1340b953e94c9034d8b75d03ec6908da, type: 3}
+  - sceneName: KitchenRoom
+    clip: {fileID: 8300000, guid: 1340b953e94c9034d8b75d03ec6908da, type: 3}
+  - sceneName: MainRoom
+    clip: {fileID: 8300000, guid: 1340b953e94c9034d8b75d03ec6908da, type: 3}
   - sceneName: Platforming1
+    clip: {fileID: 8300000, guid: 74cf9a0b42384d148921507e4454d99b, type: 3}
+  - sceneName: Platforming2
+    clip: {fileID: 8300000, guid: 74cf9a0b42384d148921507e4454d99b, type: 3}
+  - sceneName: Platforming3
+    clip: {fileID: 8300000, guid: 74cf9a0b42384d148921507e4454d99b, type: 3}
+  - sceneName: PlatformingMenu
     clip: {fileID: 8300000, guid: 74cf9a0b42384d148921507e4454d99b, type: 3}
 --- !u!1 &987063048
 GameObject:

@@ -1,0 +1,975 @@
+fileFormatVersion: 2
+guid: cd56b0c2e8d32c24cb5d95108b72c9a2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9039284652853485135
+    second: character_platforming_repaint2_0
+  - first:
+      213: 4685078918883472116
+    second: character_platforming_repaint2_1
+  - first:
+      213: -718600479104937240
+    second: character_platforming_repaint2_2
+  - first:
+      213: 5905496616966104456
+    second: character_platforming_repaint2_3
+  - first:
+      213: -2311337762943832274
+    second: character_platforming_repaint2_4
+  - first:
+      213: 7092828312746979384
+    second: character_platforming_repaint2_5
+  - first:
+      213: -8683635232261690799
+    second: character_platforming_repaint2_6
+  - first:
+      213: -1155828380022115782
+    second: character_platforming_repaint2_7
+  - first:
+      213: 3829049112744903581
+    second: character_platforming_repaint2_8
+  - first:
+      213: -2917844891178405601
+    second: character_platforming_repaint2_9
+  - first:
+      213: 8998124703395220209
+    second: character_platforming_repaint2_10
+  - first:
+      213: 8100449297652916797
+    second: character_platforming_repaint2_11
+  - first:
+      213: 4688863267194031802
+    second: character_platforming_repaint2_12
+  - first:
+      213: -8911025187408300963
+    second: character_platforming_repaint2_13
+  - first:
+      213: -5822836184404765558
+    second: character_platforming_repaint2_14
+  - first:
+      213: -8782641002975100164
+    second: character_platforming_repaint2_15
+  - first:
+      213: -697978176287219136
+    second: character_platforming_repaint2_16
+  - first:
+      213: 4065875625462241852
+    second: character_platforming_repaint2_17
+  - first:
+      213: -7269761270353715625
+    second: character_platforming_repaint2_18
+  - first:
+      213: 167227554550944574
+    second: character_platforming_repaint2_19
+  - first:
+      213: -6682093102946730932
+    second: character_platforming_repaint2_20
+  - first:
+      213: -3963536082967219252
+    second: character_platforming_repaint2_21
+  - first:
+      213: -3553090367198630376
+    second: character_platforming_repaint2_22
+  - first:
+      213: 4218810566341182936
+    second: character_platforming_repaint2_23
+  - first:
+      213: -6609842099833128447
+    second: character_platforming_repaint2_24
+  - first:
+      213: 1483068185000861056
+    second: character_platforming_repaint2_25
+  - first:
+      213: -2433141626731246232
+    second: character_platforming_repaint2_26
+  - first:
+      213: 8894758989368584419
+    second: character_platforming_repaint2_27
+  - first:
+      213: 8420129227435947808
+    second: character_platforming_repaint2_28
+  - first:
+      213: 8218069077835989285
+    second: character_platforming_repaint2_29
+  - first:
+      213: 1711275889538093815
+    second: character_platforming_repaint2_30
+  - first:
+      213: 8236461481976208368
+    second: character_platforming_repaint2_31
+  - first:
+      213: -6959833514419833381
+    second: character_platforming_repaint2_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: character_platforming_repaint2_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 143
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ed8f4ef7df17d70800000000000000
+      internalID: 9039284652853485135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 143
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f278b0447eb40140800000000000000
+      internalID: 4685078918883472116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 143
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e2568beba40706f0800000000000000
+      internalID: -718600479104937240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 143
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885298c62e984f150800000000000000
+      internalID: 5905496616966104456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 148
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2f69c3fc8a7cefd0800000000000000
+      internalID: -2311337762943832274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_5
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 148
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 830fd1265c9ce6260800000000000000
+      internalID: 7092828312746979384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 127
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15aa9fd93c78d7780800000000000000
+      internalID: -8683635232261690799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_7
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 131
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a327773563ca5ffe0800000000000000
+      internalID: -1155828380022115782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_8
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 131
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d934fa081e3832530800000000000000
+      internalID: 3829049112744903581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_9
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 131
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f117f97e78bb187d0800000000000000
+      internalID: -2917844891178405601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_10
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 131
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fa0a8e5eb2cfdc70800000000000000
+      internalID: 8998124703395220209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 111
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d322aabd7b39a6070800000000000000
+      internalID: 8100449297652916797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_12
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 111
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abe4a718c40321140800000000000000
+      internalID: 4688863267194031802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_13
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 111
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5438fffdcda55480800000000000000
+      internalID: -8911025187408300963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_14
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 116
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84534b4751213fa0800000000000000
+      internalID: -5822836184404765558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_15
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 116
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf283eb4a8acd1680800000000000000
+      internalID: -8782641002975100164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_16
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 115
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 042ec65fb884056f0800000000000000
+      internalID: -697978176287219136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_17
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 116
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3a9894e654ec6830800000000000000
+      internalID: 4065875625462241852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 95
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75e9ca634ae9c1b90800000000000000
+      internalID: -7269761270353715625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_19
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 100
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e339aa9239c125200800000000000000
+      internalID: 167227554550944574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_20
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 100
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4cb5c2e9bf6443a0800000000000000
+      internalID: -6682093102946730932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_21
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 100
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc3bb48aee0bef8c0800000000000000
+      internalID: -3963536082967219252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_22
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 96
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81e6348d223e0bec0800000000000000
+      internalID: -3553090367198630376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_23
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 79
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d54e6d9bd93c8a30800000000000000
+      internalID: 4218810566341182936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_24
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 84
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a360271af1544a0800000000000000
+      internalID: -6609842099833128447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_25
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 84
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08dd8a818aae49410800000000000000
+      internalID: 1483068185000861056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_26
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 84
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86dc772f49ebb3ed0800000000000000
+      internalID: -2433141626731246232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_27
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 84
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e8e604ac28807b70800000000000000
+      internalID: 8894758989368584419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_28
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 84
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 027343cabee4ad470800000000000000
+      internalID: 8420129227435947808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_29
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 47
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 521490cf8427c0270800000000000000
+      internalID: 8218069077835989285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_30
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 63
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f2db94da5cafb710800000000000000
+      internalID: 1711275889538093815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_31
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 63
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb1167441acd4270800000000000000
+      internalID: 8236461481976208368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_platforming_repaint2_32
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 31
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd5b52d1b44b96f90800000000000000
+      internalID: -6959833514419833381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      character_platforming_repaint2_0: 9039284652853485135
+      character_platforming_repaint2_1: 4685078918883472116
+      character_platforming_repaint2_10: 8998124703395220209
+      character_platforming_repaint2_11: 8100449297652916797
+      character_platforming_repaint2_12: 4688863267194031802
+      character_platforming_repaint2_13: -8911025187408300963
+      character_platforming_repaint2_14: -5822836184404765558
+      character_platforming_repaint2_15: -8782641002975100164
+      character_platforming_repaint2_16: -697978176287219136
+      character_platforming_repaint2_17: 4065875625462241852
+      character_platforming_repaint2_18: -7269761270353715625
+      character_platforming_repaint2_19: 167227554550944574
+      character_platforming_repaint2_2: -718600479104937240
+      character_platforming_repaint2_20: -6682093102946730932
+      character_platforming_repaint2_21: -3963536082967219252
+      character_platforming_repaint2_22: -3553090367198630376
+      character_platforming_repaint2_23: 4218810566341182936
+      character_platforming_repaint2_24: -6609842099833128447
+      character_platforming_repaint2_25: 1483068185000861056
+      character_platforming_repaint2_26: -2433141626731246232
+      character_platforming_repaint2_27: 8894758989368584419
+      character_platforming_repaint2_28: 8420129227435947808
+      character_platforming_repaint2_29: 8218069077835989285
+      character_platforming_repaint2_3: 5905496616966104456
+      character_platforming_repaint2_30: 1711275889538093815
+      character_platforming_repaint2_31: 8236461481976208368
+      character_platforming_repaint2_32: -6959833514419833381
+      character_platforming_repaint2_4: -2311337762943832274
+      character_platforming_repaint2_5: 7092828312746979384
+      character_platforming_repaint2_6: -8683635232261690799
+      character_platforming_repaint2_7: -1155828380022115782
+      character_platforming_repaint2_8: 3829049112744903581
+      character_platforming_repaint2_9: -2917844891178405601
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
