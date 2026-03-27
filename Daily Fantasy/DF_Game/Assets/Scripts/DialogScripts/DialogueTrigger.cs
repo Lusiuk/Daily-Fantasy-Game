@@ -7,10 +7,6 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private Dialogue dialogue;
     [SerializeField] private bool autoTrigger = false;
 
-    [Header("Minigame Settings")]
-    [SerializeField] private bool isMinigameTrigger = false;
-    [SerializeField] private string minigameName = "IDEMinigame";
-
     [Header("Input Settings")]
     [SerializeField] private InputActionReference interactAction;
 
@@ -65,8 +61,7 @@ public class DialogueTrigger : MonoBehaviour
             isPromptVisible = false;
         }
 
-        UpdateMinigameBlock();
-        CheckAndApplyReplacement(); // сначала замены
+        CheckAndApplyReplacement();
 
         // Проверка, не является ли текущий диалог
         if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
@@ -108,62 +103,11 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnFlagChanged(string flagName)
     {
-        // Если изменился флаг, относящийся к этой мини-игре, обновляем блокировку
-        UpdateMinigameBlock();
-
         CheckAndApplyReplacement();
 
         if (playerInRange)
         {
             UpdatePromptVisibility();
-        }
-    }
-
-    private void UpdateMinigameBlock()
-    {
-        if (!isMinigameTrigger) return;
-
-        bool isCompleted = false;
-        switch (minigameName)
-        {
-            case "IDEMinigame":
-                isCompleted = GameState.IsIDEMinigameCompleted;
-                break;
-            case "Platforming":
-                isCompleted = GameState.IsPlatformingCompleted;
-                break;
-            case "RhythmGame1":
-                isCompleted = GameState.IsRhythmGame1Completed;
-                break;
-            case "RhythmGame2":
-                isCompleted = GameState.IsRhythmGame2Completed;
-                break;
-            default:
-                return;
-        }
-
-        if (isCompleted)
-        {
-            if (interactionPrompt != null)
-            {
-                promptCanvasGroup.alpha = 0f;
-                interactionPrompt.SetActive(false);
-                isPromptVisible = false;
-            }
-            Collider2D collider = GetComponent<Collider2D>();
-            if (collider != null) collider.enabled = false;
-        }
-        else
-        {
-            // Если ещё не пройдена, включаем коллайдер и подсказку
-            Collider2D collider = GetComponent<Collider2D>();
-            if (collider != null) collider.enabled = true;
-            if (interactionPrompt != null)
-            {
-                interactionPrompt.SetActive(true);
-                promptCanvasGroup.alpha = 0f;
-                isPromptVisible = false;
-            }
         }
     }
 

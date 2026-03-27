@@ -12,9 +12,6 @@ public static class GameState
     public static Vector2 TeleportPosition { get; set; } = Vector2.zero;
     public static string TeleportMarkerName { get; set; } = "";
 
-    // Для мини-игр
-    public static string MinigameName { get; set; } = "IDEMinigame";
-
     // IDE
     private static bool _isIDEMinigameCompleted;
     public static bool IsIDEMinigameCompleted
@@ -149,7 +146,6 @@ public static class GameState
             initialScene = InitialScene,
             isFirstLoad = IsFirstLoad,
             isIDEMinigameCompleted = IsIDEMinigameCompleted,
-            minigameName = MinigameName,
             isDoor1Completed = IsDoor1Completed,
             isDoor2Completed = IsDoor2Completed,
             isDoor3Completed = IsDoor3Completed,
@@ -177,7 +173,6 @@ public static class GameState
             InitialScene = data.initialScene;
             IsFirstLoad = data.isFirstLoad;
             IsIDEMinigameCompleted = data.isIDEMinigameCompleted;
-            MinigameName = data.minigameName;
             IsDoor1Completed = data.isDoor1Completed;
             IsDoor2Completed = data.isDoor2Completed;
             IsDoor3Completed = data.isDoor3Completed;
