@@ -25,8 +25,8 @@ MonoBehaviour:
   teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
   loopMusic: 1
-  dialogueId: 
-  oneTimeUse: 0
+  dialogueId: 76557rm75
+  oneTimeUse: 1
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []
