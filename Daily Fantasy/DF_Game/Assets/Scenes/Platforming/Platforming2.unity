@@ -20186,7 +20186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &712063006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23883,7 +23883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2809368134086245342, guid: 180e165c569e14d0aa08da7affcae503, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.3
+      value: 49.02
       objectReference: {fileID: 0}
     - target: {fileID: 2809368134086245342, guid: 180e165c569e14d0aa08da7affcae503, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24879,14 +24879,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.0018518518
+    width: 1.271875
+    height: 0.5333333
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
