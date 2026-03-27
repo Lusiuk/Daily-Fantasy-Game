@@ -35,6 +35,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Platforming/Platforming3.unity
     guid: cfab3c00a9d4948f8bdd00c69edbb9c7
+  - enabled: 1
+    path: Assets/Scenes/Extra minigames/Rhythm Game.unity
+    guid: a7efac3f0da73e7439004acd29203987
+  - enabled: 1
+    path: Assets/Scenes/Street.unity
+    guid: 80e15cfc8a13b479aaf9ab5842552ad1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
