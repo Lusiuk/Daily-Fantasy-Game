@@ -35,6 +35,10 @@ public class GameController : MonoBehaviour
 
     public bool needQuickAccess = false; // Set to true if you want the level to load immediately without holding
 
+    [Header("Health Settings")]
+
+    public GameObject HealthContainer;
+
     private HoldToLoadLevel loadCanvasInstance;
 
 
@@ -42,6 +46,10 @@ public class GameController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        HealthContainer.SetActive(true);
+        OnReset?.Invoke();
+
         loadCanvasInstance = player.transform.Find("LoadCanvas")?.gameObject?.GetComponent<HoldToLoadLevel>();
         animator = player.GetComponent<Animator>();
         HoldToLoadLevel.OnHoldComplete += LoadNextLevel;
@@ -149,6 +157,7 @@ public class GameController : MonoBehaviour
     private void GameOverScreen()
     {
         animator.SetBool("dead", true);
+        HealthContainer.SetActive(false);
         gameOverScreen.SetActive(true);
         Time.timeScale = 0;
     }
@@ -162,16 +171,27 @@ public class GameController : MonoBehaviour
     public void ResetGame()
     {
         Debug.Log("ResetGame called");
+        StartCoroutine(ResetGameCoroutine());
+    }
+
+    private IEnumerator ResetGameCoroutine()
+    {
+        // Scene scene = SceneManager.GetActiveScene();
+        // SceneManager.LoadScene(scene.name);
+        yield return new WaitForSecondsRealtime(0.1f);
+        Debug.Log("ResetGame called");
         player.GetComponent<Rigidbody2D>().linearVelocityY = 0f;
         player.GetComponent<Rigidbody2D>().linearVelocityX = 0f;
-        Time.timeScale = 1;
         animator.SetBool("dead", false);
         animator.Play("Idle", -1, 0f);
         gameOverScreen.SetActive(false);
         Debug.Log($"Loading level 0, Levels count: {Levels.Count}");
         LoadLevel(0);
+        Time.timeScale = 1;
         Debug.Log($"Player position after load: {player.transform.position}");
         OnReset?.Invoke();
+        HealthContainer.SetActive(true);
     }
+
 }
 

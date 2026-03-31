@@ -61,6 +61,9 @@ public class PlayerPlatformingMovement : MonoBehaviour
     [Header("Effects")]
     public TrailRenderer trailRenderer;
 
+    private bool isOnPlatform;
+    private bool isInputActive;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -89,17 +92,20 @@ public class PlayerPlatformingMovement : MonoBehaviour
         WallSlide();
         WallJump();
 
+        if (isOnPlatform && !isInputActive)
+        {
+            if (currentPlatform != null)
+            {
+                rb.MovePosition(rb.position + currentPlatform.PlatformDelta);
+            }
+
+            animator.SetFloat("magnitude", 0f);
+            return;
+        }
+
         if (!isWallJumping)
         {
             Vector2 playerVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
-
-            if (currentPlatform != null)
-            {
-                animator.SetFloat("magnitude",0f);
-                animator.SetFloat("yVelocity", 0f);
-                Vector2 platformVel = currentPlatform.GetPlatformVelocity();
-                playerVelocity.x += platformVel.x;
-            }
             rb.linearVelocity = playerVelocity;
             Flip();
         }
@@ -159,7 +165,9 @@ public class PlayerPlatformingMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        horizontalMovement = context.ReadValue<Vector2>().x;
+        Vector2 input = context.ReadValue<Vector2>();
+        horizontalMovement = input.x;
+        isInputActive = Mathf.Abs(horizontalMovement) > 0.01f;
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -258,17 +266,18 @@ public class PlayerPlatformingMovement : MonoBehaviour
     }
 
     private MovingPlatform currentPlatform;
-    private Vector2 platformVelocityFromLastFrame = Vector2.zero;
 
     public void AttachToMovingPlatform(MovingPlatform platform)
     {
         currentPlatform = platform;
-        platformVelocityFromLastFrame = platform.GetPlatformVelocity();
+        isOnPlatform = true;
+        //transform.SetParent(platform.transform);
     }
 
     public void DetachFromMovingPlatform()
     {
         currentPlatform = null;
-        platformVelocityFromLastFrame = Vector2.zero;
+        isOnPlatform = false;
+        //transform.SetParent(null);
     }
 }

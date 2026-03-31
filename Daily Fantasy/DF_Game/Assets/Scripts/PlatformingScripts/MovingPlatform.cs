@@ -9,7 +9,8 @@ public class MovingPlatform : MonoBehaviour
     private Vector3 nextPosition;
     private Vector3 previousPosition;
     private Rigidbody2D platformRb;
-    private Vector2 platformVelocity = Vector2.zero;
+    public Vector2 PlatformDelta { get; private set; }
+
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class MovingPlatform : MonoBehaviour
     {
         previousPosition = transform.position;
         
-        Vector3 newPosition = Vector3.MoveTowards(
+       Vector3 newPosition = Vector3.MoveTowards(
             transform.position,
             nextPosition,
             moveSpeed * Time.fixedDeltaTime
@@ -35,18 +36,12 @@ public class MovingPlatform : MonoBehaviour
 
         platformRb.MovePosition(newPosition);
 
-        platformVelocity = ((Vector2)newPosition - (Vector2)previousPosition) / Time.fixedDeltaTime;
+        PlatformDelta = (Vector2)(newPosition - previousPosition);
 
         if (Vector3.Distance(transform.position, nextPosition) < 0.05f)
         {
             nextPosition = nextPosition == pointA.position ? pointB.position : pointA.position;
         }
-    }
-
-    // ← НОВОЕ: получить скорость платформы
-    public Vector2 GetPlatformVelocity()
-    {
-        return platformVelocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -24974,6 +24974,7 @@ MonoBehaviour:
   vcam: {fileID: 1779669898}
   gameOverScreen: {fileID: 881185170}
   needQuickAccess: 0
+  HealthContainer: {fileID: 1319649405}
 --- !u!4 &1754280334
 Transform:
   m_ObjectHideFlags: 0
@@ -25045,15 +25046,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0010416667
     y: 0
-    width: 1
-    height: 1
+    width: 0.50937504
+    height: 1.7333333
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.90625
+  orthographic size: 19.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

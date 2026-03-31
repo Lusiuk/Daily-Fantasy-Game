@@ -22447,6 +22447,7 @@ MonoBehaviour:
   vcam: {fileID: 1779669898}
   gameOverScreen: {fileID: 881185170}
   needQuickAccess: 0
+  HealthContainer: {fileID: 1319649405}
 --- !u!4 &1754280334
 Transform:
   m_ObjectHideFlags: 0

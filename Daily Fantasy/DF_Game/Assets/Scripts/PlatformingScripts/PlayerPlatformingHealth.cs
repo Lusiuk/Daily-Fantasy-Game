@@ -17,6 +17,13 @@ public class PlayerPlatformingHealth : MonoBehaviour
         ResetHealth();
         spriteRenderer = GetComponent<SpriteRenderer>();
         GameController.OnReset += ResetHealth;
+        OnPlayerDied += ResetHealth;
+    }
+
+    private void OnDestroy()
+    {
+        GameController.OnReset -= ResetHealth;
+        OnPlayerDied -= ResetHealth;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,15 +37,18 @@ public class PlayerPlatformingHealth : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthUI.UpdateHearts(currentHealth);
+        Debug.Log($"TakeDamage called, damage={damage}, currentHealth before={currentHealth}");
 
-        //Flash red
+        currentHealth -= damage;
+
+        if (healthUI != null) healthUI.UpdateHearts(currentHealth);
+        else Debug.LogWarning("healthUI is NULL in PlayerPlatformingHealth");
+
         StartCoroutine(FlashRed());
 
         if (currentHealth <= 0)
         {
-            //Player dead!
+            Debug.Log("Player died -> OnPlayerDied invoked");
             OnPlayerDied?.Invoke();
         }
     }
@@ -48,6 +58,7 @@ public class PlayerPlatformingHealth : MonoBehaviour
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = Color.white;
+        yield return new WaitForEndOfFrame();
     }
 
     private void ResetHealth()
