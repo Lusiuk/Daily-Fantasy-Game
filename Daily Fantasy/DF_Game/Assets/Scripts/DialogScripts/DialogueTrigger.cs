@@ -296,9 +296,9 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (replacements == null || replacements.Length == 0) return;
 
-        // Начинаем проверку со следующей после уже применённой замены
-        int startIndex = appliedReplacementIndex + 1;
-        for (int i = startIndex; i < replacements.Length; i++)
+        // Ищем самую нижнюю подходящую замену, начиная с конца массива
+        int bestIndex = -1;
+        for (int i = replacements.Length - 1; i >= 0; i--)
         {
             var repl = replacements[i];
             if (repl.dialogue == null) continue;
@@ -306,26 +306,33 @@ public class DialogueTrigger : MonoBehaviour
 
             if (GameState.AreFlagsSatisfied(repl.conditions))
             {
-                // Применяем замену
-                dialogue = repl.dialogue;
-                appliedReplacementIndex = i;
-                Debug.Log($"{gameObject.name}: диалог заменён на {dialogue.name} (условия #{i})");
+                bestIndex = i;
+                break;
+            }
+        }
 
-                // После замены перепроверяем доступность нового диалога
-                if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
-                {
-                    DisableTrigger();
-                }
-                else
-                {
-                    EnableTrigger();
-                    dialogueTriggeredThisSession = false;
-                    if (playerInRange)
-                    {
-                        UpdatePromptVisibility();
-                    }
-                }
-                return;
+        if (bestIndex == -1) return;
+
+        // Если это та же замена, что уже применена, ничего не делаем
+        if (appliedReplacementIndex == bestIndex) return;
+
+        // Применяем замену
+        dialogue = replacements[bestIndex].dialogue;
+        appliedReplacementIndex = bestIndex;
+        Debug.Log($"{gameObject.name}: диалог заменён на {dialogue.name} (условия #{bestIndex})");
+
+        // После замены перепроверяем доступность нового диалога
+        if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
+        {
+            DisableTrigger();
+        }
+        else
+        {
+            EnableTrigger();
+            dialogueTriggeredThisSession = false;
+            if (playerInRange)
+            {
+                UpdatePromptVisibility();
             }
         }
     }

@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0ce09f1e1f89b43ab3ba879ccf71a6, type: 3}
-  m_Name: Q
+  m_Name: J
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  text: "\u042F \u0434\u043E\u043A\u0430\u0437\u0430\u043B \u0441\u0432\u043E\u044E
-    \u0441\u0438\u043B\u0443 \u0432 \u043F\u0435\u0440\u0432\u043E\u043C \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u0438,
-    \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043D\u0435 \u0434\u043E\u0441\u0442\u0443\u043F\u0435\u043D
-    \u0434\u0432\u043E\u0439\u043D\u043E\u0439 \u043F\u0440\u044B\u0436\u043E\u043A.
+  text: "\u0422\u0435\u043F\u0435\u0440\u044C \u043C\u043D\u0435 \u0434\u043E\u0441\u0442\u0443\u043F\u0435\u043D
+    \u043F\u0440\u044B\u0436\u043E\u043A \u043E\u0442 \u043A\u043E\u043B\u043E\u043D\u043D.
     [R]"
   canInteract: 1
   triggerSceneTransition: 0
@@ -25,7 +23,7 @@ MonoBehaviour:
   teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
   loopMusic: 1
-  dialogueId: w6h574w5
+  dialogueId: g6rr6e
   oneTimeUse: 1
   isPlayerSpeaking: 1
   npcName: 
