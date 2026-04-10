@@ -4,9 +4,12 @@
 * text=auto
 
 # Unity 
-*.cs diff=csharp text
-*.cginc text
-*.shader text
+*.cs diff=csharp text eol=lf
+*.cginc text eol=lf
+*.shader text eol=lf
+*.json text eol=lf
+*.asmdef text eol=lf
+*.yaml text eol=lf
 
 *.mat -text merge=unityyamlmerge diff
 *.anim -text merge=unityyamlmerge diff
