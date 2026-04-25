@@ -191,6 +191,7 @@ public class DialogueSystem : MonoBehaviour
         playerPlatformingMovement = player.GetComponent<PlayerPlatformingMovement>();
         if (playerPlatformingMovement != null)
         {
+            //playerPlatformingMovement.jumpMax = 0;
             playerPlatformingMovement.enabled = false;
         }
 
