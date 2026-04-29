@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -143,6 +144,7 @@ public class DialogueSystem : MonoBehaviour
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         if (!isActive || !isDialogueActive) return;
+        if (isQuestionMode) return;
 
         // Если ждём следующую реплику – переходим к ней
         if (isWaitingForNext)
@@ -484,5 +486,67 @@ public class DialogueSystem : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+
+    public void AskQuestion(string question, Action<bool> callback)
+    {
+        if (!isActive || isDialogueActive || isQuestionMode) return;
+        StartCoroutine(AskQuestionRoutine(question, callback));
+    }
+
+    private IEnumerator AskQuestionRoutine(string question, Action<bool> callback)
+    {
+        isQuestionMode = true;
+        if (dialoguePanel == null) yield break;
+
+        // Показываем панель
+        dialoguePanel.SetActive(true);
+        if (canvasGroup != null) canvasGroup.alpha = 1f;
+
+        // Печатаем вопрос
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+            foreach (char c in question)
+            {
+                dialogueText.text += c;
+                yield return new WaitForSeconds(typewriterSpeed);
+            }
+        }
+
+        // Показываем кнопки
+        if (yesButton != null) yesButton.gameObject.SetActive(true);
+        if (noButton != null) noButton.gameObject.SetActive(true);
+
+        bool? answer = null;
+        UnityEngine.Events.UnityAction yesAction = null;
+        UnityEngine.Events.UnityAction noAction = null;
+
+        yesAction = () => {
+            answer = true;
+            yesButton.onClick.RemoveListener(yesAction);
+            noButton.onClick.RemoveListener(noAction);
+        };
+        noAction = () => {
+            answer = false;
+            yesButton.onClick.RemoveListener(yesAction);
+            noButton.onClick.RemoveListener(noAction);
+        };
+
+        yesButton.onClick.AddListener(yesAction);
+        noButton.onClick.AddListener(noAction);
+
+        yield return new WaitUntil(() => answer.HasValue);
+
+        // Скрываем кнопки и панель
+        yesButton.gameObject.SetActive(false);
+        noButton.gameObject.SetActive(false);
+        dialoguePanel.SetActive(false);
+        if (dialogueText != null) dialogueText.text = "";
+
+        isQuestionMode = false;
+        callback?.Invoke(answer.Value);
     }
 }

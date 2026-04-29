@@ -41,6 +41,9 @@ public class DialogueTrigger : MonoBehaviour
     private bool dialogueTriggeredThisSession = false;
     private int appliedReplacementIndex = -1;
 
+    // Публичные переменные
+    public bool disableInputHandling = false;
+
     // Инициализирует компоненты при старте
     void Start()
     {
@@ -201,6 +204,7 @@ public class DialogueTrigger : MonoBehaviour
     // Обрабатывает нажатие клавиши взаимодействия
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
+        if (disableInputHandling) return;
         if (!isActive || !gameObject.activeInHierarchy) return;
 
         if (playerInRange && !autoTrigger && !hasBeenUsed && DialogueSystem.Instance != null && !DialogueSystem.Instance.IsDialogueActive())
