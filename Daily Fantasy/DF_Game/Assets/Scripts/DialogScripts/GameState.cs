@@ -109,6 +109,93 @@ public static class GameState
         }
     }
 
+    // Флаги для кровати
+    private static bool _bedMade;
+    public static bool BedMade
+    {
+        get => _bedMade;
+        set
+        {
+            if (_bedMade != value)
+            {
+                _bedMade = value;
+                OnFlagChanged?.Invoke("BedMade");
+            }
+        }
+    }
+
+    private static bool _bedInteracted;
+    public static bool BedInteracted
+    {
+        get => _bedInteracted;
+        set
+        {
+            if (_bedInteracted != value)
+            {
+                _bedInteracted = value;
+                OnFlagChanged?.Invoke("BedInteracted");
+            }
+        }
+    }
+
+    // Флаг выхода на улицу
+    private static bool _playerWentOutside;
+    public static bool PlayerWentOutside
+    {
+        get => _playerWentOutside;
+        set
+        {
+            if (_playerWentOutside != value)
+            {
+                _playerWentOutside = value;
+                OnFlagChanged?.Invoke("PlayerWentOutside");
+            }
+        }
+    }
+
+    // Флаги для лейки и цветка
+    private static bool _hasWateringCan;
+    public static bool HasWateringCan
+    {
+        get => _hasWateringCan;
+        set
+        {
+            if (_hasWateringCan != value)
+            {
+                _hasWateringCan = value;
+                OnFlagChanged?.Invoke("HasWateringCan");
+            }
+        }
+    }
+
+    private static bool _flowerWatered;
+    public static bool FlowerWatered
+    {
+        get => _flowerWatered;
+        set
+        {
+            if (_flowerWatered != value)
+            {
+                _flowerWatered = value;
+                OnFlagChanged?.Invoke("FlowerWatered");
+            }
+        }
+    }
+
+    private static bool _pieBaked;
+    public static bool PieBaked
+    {
+        get => _pieBaked;
+        set
+        {
+            if (_pieBaked != value)
+            {
+                _pieBaked = value;
+                OnFlagChanged?.Invoke("PieBaked");
+            }
+        }
+    }
+
     //Событие
     public static event System.Action<string> OnFlagChanged;
 
@@ -128,6 +215,13 @@ public static class GameState
 
         IsRhythmGame1Completed = false;
         IsRhythmGame2Completed = false;
+
+        BedMade = false;
+        BedInteracted = false;
+        PlayerWentOutside = false;
+        HasWateringCan = false;
+        FlowerWatered = false;
+        PieBaked = false;
 
         _usedDialogues.Clear();
 
@@ -151,7 +245,13 @@ public static class GameState
             isDoor3Completed = IsDoor3Completed,
             isPlatformingCompleted = IsPlatformingCompleted,
             isRhythmGame1Completed = IsRhythmGame1Completed,
-            isRhythmGame2Completed = IsRhythmGame2Completed
+            isRhythmGame2Completed = IsRhythmGame2Completed,
+            bedMade = BedMade,
+            bedInteracted = BedInteracted,
+            playerWentOutside = PlayerWentOutside,
+            hasWateringCan = HasWateringCan,
+            flowerWatered = FlowerWatered,
+            pieBaked = PieBaked
         };
 
         data.usedDialogues = _usedDialogues.ToList();
@@ -180,6 +280,12 @@ public static class GameState
             IsRhythmGame1Completed = data.isRhythmGame1Completed;
             IsRhythmGame2Completed = data.isRhythmGame2Completed;
             _usedDialogues = new HashSet<string>(data.usedDialogues);
+            BedMade = data.bedMade;
+            BedInteracted = data.bedInteracted;
+            PlayerWentOutside = data.playerWentOutside;
+            HasWateringCan = data.hasWateringCan;
+            FlowerWatered = data.flowerWatered;
+            PieBaked = data.pieBaked;
 
             Debug.Log("GameState: Загружено");
         }
@@ -212,7 +318,30 @@ public static class GameState
         public bool isPlatformingCompleted;
         public bool isRhythmGame1Completed;
         public bool isRhythmGame2Completed;
+        public bool bedMade;
+        public bool bedInteracted;
+        public bool playerWentOutside;
+        public bool hasWateringCan;
+        public bool flowerWatered;
+        public bool pieBaked;
         public List<string> usedDialogues;
+    }
+
+    // Универсальная установка флага по имени
+    public static void SetFlag(string flagName, bool value)
+    {
+        switch (flagName)
+        {
+            case "BedMade": BedMade = value; break;
+            case "BedInteracted": BedInteracted = value; break;
+            case "PlayerWentOutside": PlayerWentOutside = value; break;
+            case "HasWateringCan": HasWateringCan = value; break;
+            case "FlowerWatered": FlowerWatered = value; break;
+            case "PieBaked": PieBaked = value; break;
+            default:
+                Debug.LogWarning($"GameState.SetFlag: неизвестный флаг '{flagName}'");
+                break;
+        }
     }
 
     // Получить значение флага по имени
@@ -227,6 +356,12 @@ public static class GameState
             case "IsPlatformingCompleted": return IsPlatformingCompleted;
             case "IsRhythmGame1Completed": return IsRhythmGame1Completed;
             case "IsRhythmGame2Completed": return IsRhythmGame2Completed;
+            case "BedMade": return BedMade;
+            case "BedInteracted": return BedInteracted;
+            case "PlayerWentOutside": return PlayerWentOutside;
+            case "HasWateringCan": return HasWateringCan;
+            case "FlowerWatered": return FlowerWatered;
+            case "PieBaked": return PieBaked;
             default:
                 Debug.LogWarning($"Неизвестный флаг: {flagName}");
                 return false;
