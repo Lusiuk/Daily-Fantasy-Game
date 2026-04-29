@@ -33,6 +33,10 @@ public class DialogueSystem : MonoBehaviour
     [Header("Teleport Settings")]
     [SerializeField] private float teleportDelay = 0.1f;
 
+    [Header("Question UI")]
+    [SerializeField] private Button yesButton;
+    [SerializeField] private Button noButton;
+
     // События
     public System.Action OnDialogueStart;
     public System.Action OnDialogueEnd;
@@ -49,6 +53,7 @@ public class DialogueSystem : MonoBehaviour
     private int currentLineIndex = 0;
     private bool isWaitingForNext = false;
     private PlayerPlatformingMovement playerPlatformingMovement;
+    private bool isQuestionMode = false;
 
     public static DialogueSystem Instance { get; private set; }
 
@@ -98,6 +103,10 @@ public class DialogueSystem : MonoBehaviour
             dialoguePanel = panel;
             dialogueText = panel.GetComponentInChildren<TextMeshProUGUI>();
         }
+        if (yesButton == null)
+            yesButton = dialoguePanel?.transform.Find("YesButton")?.GetComponent<Button>();
+        if (noButton == null)
+            noButton = dialoguePanel?.transform.Find("NoButton")?.GetComponent<Button>();
     }
 
     // Включение/отключение ввода
@@ -242,6 +251,16 @@ public class DialogueSystem : MonoBehaviour
         }
 
         Debug.Log("Player movement and animation enabled");
+    }
+
+    public void DisablePlayerMovementPublic()
+    {
+        DisablePlayerMovement();
+    }
+
+    public void EnablePlayerMovementPublic()
+    {
+        EnablePlayerMovement();
     }
 
     // Основная корутина показа диалога (поддерживает последовательные реплики)
