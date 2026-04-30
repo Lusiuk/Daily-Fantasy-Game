@@ -393,9 +393,11 @@ public class DialogueSystem : MonoBehaviour
     private IEnumerator HideDialogueSequence()
     {
         yield return StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
-
         if (dialogueText != null) dialogueText.text = "";
 
+        QuestDialogue questDialogue = currentDialogue as QuestDialogue;
+
+        // Стандартная обработка переходов и телепортов (как раньше)
         if (currentDialogue != null)
         {
             if (currentDialogue.teleportAfterDialogue)
@@ -407,6 +409,7 @@ public class DialogueSystem : MonoBehaviour
                     GameState.TeleportMarkerName = currentDialogue.teleportMarkerName;
                     if (TransitionManager.Instance != null)
                         TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
+                    goto EndDialogue;
                 }
                 else
                 {
@@ -418,16 +421,44 @@ public class DialogueSystem : MonoBehaviour
             {
                 if (TransitionManager.Instance != null)
                     TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
+                goto EndDialogue;
             }
         }
 
-        if (!currentDialogue.triggerSceneTransition && disablePlayerMovement)
+        // Если это квестовый диалог и есть вопрос – задаём его и выполняем исход
+        if (questDialogue != null && !string.IsNullOrEmpty(questDialogue.questionText))
+        {
+            bool? answer = null;
+            AskQuestion(questDialogue.questionText, (result) => { answer = result; });
+            yield return new WaitUntil(() => answer.HasValue);
+
+            Outcome chosenOutcome = answer.Value ? questDialogue.positiveOutcome : questDialogue.negativeOutcome;
+            if (chosenOutcome != null)
+            {
+                ExecuteOutcome(chosenOutcome);
+                if (questDialogue.playEyeBlink && TransitionManager.Instance != null)
+                    yield return TransitionManager.Instance.PlayEyeBlink();
+            }
+        }
+
+        // Разблокируем движение, если не было перехода на сцену
+        if (disablePlayerMovement)
             EnablePlayerMovement();
 
+        EndDialogue:
         isDialogueActive = false;
         currentDialogue = null;
         inputEnabled = true;
         OnDialogueEnd?.Invoke();
+    }
+
+    private void ExecuteOutcome(Outcome outcome)
+    {
+        if (outcome == null) return;
+        foreach (var change in outcome.flagChanges)
+            GameState.SetFlag(change.flagName, change.value);
+
+        outcome.onComplete.Invoke();
     }
 
     // Телепортация игрока
@@ -487,7 +518,7 @@ public class DialogueSystem : MonoBehaviour
 
     public void AskQuestion(string question, Action<bool> callback)
     {
-        if (!isActive || isDialogueActive || isQuestionMode) return;
+        if (!isActive || isQuestionMode) return;
         StartCoroutine(AskQuestionRoutine(question, callback));
     }
 

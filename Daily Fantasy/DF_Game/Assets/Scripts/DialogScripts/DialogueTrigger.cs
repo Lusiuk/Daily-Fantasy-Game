@@ -41,9 +41,6 @@ public class DialogueTrigger : MonoBehaviour
     private bool dialogueTriggeredThisSession = false;
     private int appliedReplacementIndex = -1;
 
-    // Публичные переменные
-    public bool disableInputHandling = false;
-
     // Инициализирует компоненты при старте
     void Start()
     {
@@ -204,7 +201,6 @@ public class DialogueTrigger : MonoBehaviour
     // Обрабатывает нажатие клавиши взаимодействия
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (disableInputHandling) return;
         if (!isActive || !gameObject.activeInHierarchy) return;
 
         if (playerInRange && !autoTrigger && !hasBeenUsed && DialogueSystem.Instance != null && !DialogueSystem.Instance.IsDialogueActive())
@@ -384,30 +380,5 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (isPromptVisible) HidePrompt();
         }
-    }
-
-    // Возвращает true, если диалог сейчас может быть запущен
-    public bool CanTriggerDialogue()
-    {
-        return isActive && dialogue != null && !hasBeenUsed && !dialogueTriggeredThisSession;
-    }
-
-    // Отдаёт объект подсказки, если нужно передать управление другому компоненту
-    public GameObject GetPrompt()
-    {
-        return interactionPrompt;
-    }
-
-    // Отключает собственное управление подсказкой
-    public void DisablePromptControl()
-    {
-        if (interactionPrompt != null)
-        {
-            StopAllCoroutines();
-            if (promptCanvasGroup != null) promptCanvasGroup.alpha = 0f;
-            interactionPrompt.SetActive(false);
-            isPromptVisible = false;
-        }
-        interactionPrompt = null;
     }
 }
