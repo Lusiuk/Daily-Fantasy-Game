@@ -122,6 +122,8 @@ public class InteractableObject : MonoBehaviour
         // Подписка на изменения флагов для обновления визуала
         GameState.OnFlagChanged += OnFlagChanged;
         UpdateVisual();
+
+        if (playerInRange) UpdatePromptVisibility();
     }
 
     void OnEnable()
@@ -148,6 +150,7 @@ public class InteractableObject : MonoBehaviour
     private void OnFlagChanged(string flagName)
     {
         UpdateVisual();
+        UpdatePromptVisibility();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -156,6 +159,7 @@ public class InteractableObject : MonoBehaviour
         {
             playerInRange = true;
             playerTransform = other.transform;
+            UpdatePromptVisibility();
         }
     }
 
@@ -165,7 +169,7 @@ public class InteractableObject : MonoBehaviour
         {
             playerInRange = false;
             playerTransform = null;
-            HidePrompt();
+            UpdatePromptVisibility();
         }
     }
 
@@ -215,6 +219,7 @@ public class InteractableObject : MonoBehaviour
         if (availableAction != null)
         {
             isPerformingAction = true;
+            HidePrompt();
             StartCoroutine(PerformAction(availableAction));
         }
         else
@@ -312,6 +317,33 @@ public class InteractableObject : MonoBehaviour
         if (promptCanvasGroup == null || !isPromptVisible) return;
         isPromptVisible = false;
         StartCoroutine(FadePrompt(promptCanvasGroup.alpha, 0f, fadePromptSpeed));
+    }
+
+    private void UpdatePromptVisibility()
+    {
+        if (interactionPrompt == null) return;
+
+        bool canInteract = false;
+        foreach (var act in actions)
+        {
+            if (GameState.AreFlagsSatisfied(act.conditions))
+            {
+                canInteract = true;
+                break;
+            }
+        }
+        // Если действий нет, но есть диалог (DialogueTrigger) – тоже показываем подсказку
+        if (!canInteract && dialogueTrigger != null)
+            canInteract = true;
+
+        if (playerInRange && canInteract)
+        {
+            if (!isPromptVisible) ShowPrompt();
+        }
+        else
+        {
+            if (isPromptVisible) HidePrompt();
+        }
     }
 
     private IEnumerator FadePrompt(float from, float to, float speed)

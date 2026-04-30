@@ -1503,7 +1503,6 @@ MonoBehaviour:
   heightPercentage: 0.2
   disablePlayerMovement: 1
   teleportDelay: 0.1
-  questionMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
 --- !u!4 &650963848
 Transform:
   m_ObjectHideFlags: 0
@@ -1935,10 +1934,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.006770834
+    x: 0
     y: 0
-    width: 0.98684216
-    height: 1
+    width: 0
+    height: 0
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1968,7 +1967,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1284065, y: -4.87326, z: -1}
+  m_LocalPosition: {x: -2.7775269, y: -4.87293, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

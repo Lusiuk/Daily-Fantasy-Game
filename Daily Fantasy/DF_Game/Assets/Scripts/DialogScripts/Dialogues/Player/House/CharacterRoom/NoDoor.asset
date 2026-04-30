@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0ce09f1e1f89b43ab3ba879ccf71a6, type: 3}
   m_Name: NoDoor
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  text: "\u041C\u043E\u0436\u0435\u0442 \u0441\u0442\u043E\u0438\u0442 \u043F\u043E\u0438\u0433\u0440\u0430\u0442\u044C
-    \u0432 \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440? [R]"
+  text: "\u041D\u0435 \u0445\u043E\u0447\u0443 \u0432\u044B\u0445\u043E\u0434\u0438\u0442\u044C,
+    \u043B\u0443\u0447\u0448\u0435 \u043F\u043E\u0438\u0433\u0440\u0430\u044E \u0432
+    \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440 [R]"
   canInteract: 1
   triggerSceneTransition: 0
   targetSceneName: 

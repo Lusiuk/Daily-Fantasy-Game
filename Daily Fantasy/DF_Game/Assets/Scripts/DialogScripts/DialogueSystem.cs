@@ -35,8 +35,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private float teleportDelay = 0.1f;
 
     [Header("Question UI")]
-    [SerializeField] private Button yesButton;
-    [SerializeField] private Button noButton;
+    [SerializeField] private AudioClip questionMusic;
 
     // События
     public System.Action OnDialogueStart;
@@ -104,10 +103,6 @@ public class DialogueSystem : MonoBehaviour
             dialoguePanel = panel;
             dialogueText = panel.GetComponentInChildren<TextMeshProUGUI>();
         }
-        if (yesButton == null)
-            yesButton = dialoguePanel?.transform.Find("YesButton")?.GetComponent<Button>();
-        if (noButton == null)
-            noButton = dialoguePanel?.transform.Find("NoButton")?.GetComponent<Button>();
     }
 
     // Включение/отключение ввода
@@ -505,44 +500,57 @@ public class DialogueSystem : MonoBehaviour
         dialoguePanel.SetActive(true);
         if (canvasGroup != null) canvasGroup.alpha = 1f;
 
+        // Запускаем музыку вопроса, если назначена
+        if (questionMusic != null)
+        {
+            if (typewriterAudioSource == null)
+            {
+                typewriterAudioSource = gameObject.AddComponent<AudioSource>();
+                typewriterAudioSource.playOnAwake = false;
+            }
+            typewriterAudioSource.clip = questionMusic;
+            typewriterAudioSource.loop = false;
+            typewriterAudioSource.Play();
+        }
+
+        // Добавляем подсказку Y/N
+        string fullText = question + " (Y/N)";
+
         // Печатаем вопрос
         if (dialogueText != null)
         {
             dialogueText.text = "";
-            foreach (char c in question)
+            foreach (char c in fullText)
             {
                 dialogueText.text += c;
                 yield return new WaitForSeconds(typewriterSpeed);
             }
         }
 
-        // Показываем кнопки
-        if (yesButton != null) yesButton.gameObject.SetActive(true);
-        if (noButton != null) noButton.gameObject.SetActive(true);
-
+        // Ждём нажатия Y или N
         bool? answer = null;
-        UnityEngine.Events.UnityAction yesAction = null;
-        UnityEngine.Events.UnityAction noAction = null;
+        Keyboard keyboard = Keyboard.current;
+        while (!answer.HasValue)
+        {
+            if (keyboard != null)
+            {
+                if (keyboard.yKey.wasPressedThisFrame)
+                    answer = true;
+                else if (keyboard.nKey.wasPressedThisFrame)
+                    answer = false;
+            }
+            #if ENABLE_LEGACY_INPUT_MANAGER
+            if (Input.GetKeyDown(KeyCode.Y)) answer = true;
+            else if (Input.GetKeyDown(KeyCode.N)) answer = false;
+            #endif
+            yield return null;
+        }
 
-        yesAction = () => {
-            answer = true;
-            yesButton.onClick.RemoveListener(yesAction);
-            noButton.onClick.RemoveListener(noAction);
-        };
-        noAction = () => {
-            answer = false;
-            yesButton.onClick.RemoveListener(yesAction);
-            noButton.onClick.RemoveListener(noAction);
-        };
+        // Останавливаем музыку
+        if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
+            typewriterAudioSource.Stop();
 
-        yesButton.onClick.AddListener(yesAction);
-        noButton.onClick.AddListener(noAction);
-
-        yield return new WaitUntil(() => answer.HasValue);
-
-        // Скрываем кнопки и панель
-        yesButton.gameObject.SetActive(false);
-        noButton.gameObject.SetActive(false);
+        // Скрываем панель
         dialoguePanel.SetActive(false);
         if (dialogueText != null) dialogueText.text = "";
 

@@ -400,6 +400,12 @@ public static class GameState
     {
         if (string.IsNullOrEmpty(condition)) return true;
 
+        if (condition.StartsWith("!"))
+        {
+            string flagName = condition.Substring(1);
+            return !GetFlag(flagName);
+        }
+
         if (condition.StartsWith("DialogueUsed:"))
         {
             string dialogueId = condition.Substring("DialogueUsed:".Length);
