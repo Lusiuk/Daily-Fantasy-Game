@@ -54,6 +54,7 @@ public class DialogueSystem : MonoBehaviour
     private bool isWaitingForNext = false;
     private PlayerPlatformingMovement playerPlatformingMovement;
     private bool isQuestionMode = false;
+    private GameObject currentContextObject;
 
     public static DialogueSystem Instance { get; private set; }
 
@@ -154,7 +155,7 @@ public class DialogueSystem : MonoBehaviour
     }
 
     // Показ диалога
-    public void ShowDialogue(Dialogue dialogue)
+    public void ShowDialogue(Dialogue dialogue, GameObject contextObject = null)
     {
         if (!isActive) return;
         if (dialoguePanel == null)
@@ -167,6 +168,7 @@ public class DialogueSystem : MonoBehaviour
         if (disablePlayerMovement) DisablePlayerMovement();
 
         currentDialogue = dialogue;
+        currentContextObject = contextObject;
         currentLineIndex = 0;
         isDialogueActive = true;
         inputEnabled = false;
@@ -248,16 +250,6 @@ public class DialogueSystem : MonoBehaviour
         }
 
         Debug.Log("Player movement and animation enabled");
-    }
-
-    public void DisablePlayerMovementPublic()
-    {
-        DisablePlayerMovement();
-    }
-
-    public void EnablePlayerMovementPublic()
-    {
-        EnablePlayerMovement();
     }
 
     // Основная корутина показа диалога (поддерживает последовательные реплики)
@@ -397,7 +389,7 @@ public class DialogueSystem : MonoBehaviour
 
         QuestDialogue questDialogue = currentDialogue as QuestDialogue;
 
-        // Стандартная обработка переходов и телепортов (как раньше)
+        // Обработка обычных переходов (телепорт, смена сцены) – без изменений…
         if (currentDialogue != null)
         {
             if (currentDialogue.teleportAfterDialogue)
@@ -425,29 +417,33 @@ public class DialogueSystem : MonoBehaviour
             }
         }
 
-        // Если это квестовый диалог и есть вопрос – задаём его и выполняем исход
+        // Квестовая часть
         if (questDialogue != null && !string.IsNullOrEmpty(questDialogue.questionText))
         {
             bool? answer = null;
             AskQuestion(questDialogue.questionText, (result) => { answer = result; });
             yield return new WaitUntil(() => answer.HasValue);
 
-            Outcome chosenOutcome = answer.Value ? questDialogue.positiveOutcome : questDialogue.negativeOutcome;
+            bool yes = answer.Value;
+            Outcome chosenOutcome = yes ? questDialogue.positiveOutcome : questDialogue.negativeOutcome;
+            bool playBlink = yes ? questDialogue.playEyeBlinkOnYes : questDialogue.playEyeBlinkOnNo;
+
+            // Сначала эффект моргания
+            if (playBlink && TransitionManager.Instance != null)
+                yield return TransitionManager.Instance.PlayEyeBlink();
+
+            // Потом применяем исход
             if (chosenOutcome != null)
-            {
                 ExecuteOutcome(chosenOutcome);
-                if (questDialogue.playEyeBlink && TransitionManager.Instance != null)
-                    yield return TransitionManager.Instance.PlayEyeBlink();
-            }
         }
 
-        // Разблокируем движение, если не было перехода на сцену
-        if (disablePlayerMovement)
+        if (!currentDialogue.triggerSceneTransition && disablePlayerMovement)
             EnablePlayerMovement();
 
         EndDialogue:
         isDialogueActive = false;
         currentDialogue = null;
+        currentContextObject = null;
         inputEnabled = true;
         OnDialogueEnd?.Invoke();
     }
@@ -455,8 +451,25 @@ public class DialogueSystem : MonoBehaviour
     private void ExecuteOutcome(Outcome outcome)
     {
         if (outcome == null) return;
+
+        // Флаги
         foreach (var change in outcome.flagChanges)
             GameState.SetFlag(change.flagName, change.value);
+
+        // Спрайт и активность через контекст
+        if (currentContextObject != null)
+        {
+            if (outcome.newSprite != null)
+            {
+                SpriteRenderer sr = currentContextObject.GetComponent<SpriteRenderer>();
+                if (sr != null) sr.sprite = outcome.newSprite;
+            }
+
+            // Управление целевым объектом
+            GameObject target = outcome.targetObject != null ? outcome.targetObject : currentContextObject;
+            if (target != null)
+                target.SetActive(outcome.setActive);
+        }
 
         outcome.onComplete.Invoke();
     }

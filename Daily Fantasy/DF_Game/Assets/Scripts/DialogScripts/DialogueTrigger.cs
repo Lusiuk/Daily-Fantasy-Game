@@ -27,6 +27,14 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Dialogue Replacement")]
     [SerializeField] private DialogueReplacement[] replacements; // список замен
 
+    [Header("Initial Visual Sync")]
+    [SerializeField] private string syncFlagName;           // имя флага для проверки при старте
+    [SerializeField] private Sprite onTrueSprite;           // спрайт, если флаг == true
+    [SerializeField] private Sprite onFalseSprite;          // спрайт, если флаг == false
+    [SerializeField] private bool modifyActive = false;     // изменять ли активность объекта
+    [SerializeField] private bool activeWhenTrue = true;    // если modifyActive, то при true – такая активность
+    [SerializeField] private GameObject targetObject;       // если не указан, действуем на gameObject
+
     // Приватные переменные
     private bool hasBeenUsed = false;
     private bool playerInRange = false;
@@ -69,6 +77,8 @@ public class DialogueTrigger : MonoBehaviour
             DisableTrigger();
             return;
         }
+
+        ApplyInitialVisual();
 
         UpdatePromptVisibility();
     }
@@ -268,7 +278,7 @@ public class DialogueTrigger : MonoBehaviour
         if (!isActive) return;
         if (dialogue == null || hasBeenUsed || DialogueSystem.Instance == null) return;
 
-        DialogueSystem.Instance.ShowDialogue(dialogue);
+        DialogueSystem.Instance.ShowDialogue(dialogue, gameObject);
 
         if (dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId))
         {
@@ -361,6 +371,32 @@ public class DialogueTrigger : MonoBehaviour
             isPromptVisible = false;
         }
         hasBeenUsed = false;
+    }
+
+    private void ApplyInitialVisual()
+    {
+        if (string.IsNullOrEmpty(syncFlagName))
+            return;
+
+        bool flagValue = GameState.GetFlag(syncFlagName);
+
+        // Меняем спрайт
+        SpriteRenderer sr = (targetObject != null ? targetObject.GetComponent<SpriteRenderer>() : GetComponent<SpriteRenderer>());
+        if (sr != null)
+        {
+            if (flagValue && onTrueSprite != null)
+                sr.sprite = onTrueSprite;
+            else if (!flagValue && onFalseSprite != null)
+                sr.sprite = onFalseSprite;
+        }
+
+        // Меняем активность
+        if (modifyActive)
+        {
+            GameObject obj = targetObject != null ? targetObject : gameObject;
+            if (obj != null)
+                obj.SetActive(flagValue ? activeWhenTrue : !activeWhenTrue);
+        }
     }
 
     // Обновить видимость подсказки в зависимости от доступности диалога

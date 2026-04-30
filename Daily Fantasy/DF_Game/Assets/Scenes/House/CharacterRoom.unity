@@ -506,7 +506,12 @@ MonoBehaviour:
   smoothTime: 0.1
   fadePromptSpeed: 5
   replacements: []
-  disableInputHandling: 0
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &107579789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -747,9 +752,18 @@ MonoBehaviour:
   fadePromptSpeed: 5
   replacements:
   - conditions:
+    - '!BedInteracted'
+    - '!PlayerWentOutside'
+    dialogue: {fileID: 11400000, guid: 9ba9a6c85c9b40d4589058229f74f1e5, type: 2}
+  - conditions:
     - DialogueUsed:w45b7w
     dialogue: {fileID: 11400000, guid: ceb7f90262def3b4e82f4f4063136eff, type: 2}
-  disableInputHandling: 0
+  syncFlagName: BedMade
+  onTrueSprite: {fileID: -671176086701521447, guid: ce7cb8d79c7e4034f9e95ee09c06ad2a, type: 3}
+  onFalseSprite: {fileID: -8061600739767840541, guid: 2593e7f7891a23849b5a275d4388a30b, type: 3}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &353920685
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -788,7 +802,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.69, y: 1.02}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -840,10 +854,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1050067117
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -8061600739767840541, guid: 2593e7f7891a23849b5a275d4388a30b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -863,8 +877,8 @@ Transform:
   m_GameObject: {fileID: 353920683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.2304, y: -6.93, z: 0}
-  m_LocalScale: {x: 8.289744, y: 3.9119132, z: 1}
+  m_LocalPosition: {x: -19.9157, y: -5.288, z: 0}
+  m_LocalScale: {x: 5.1313825, y: 5.0232363, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -878,49 +892,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 353920683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5efb16e798fe9734897b605573c060c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 46e623498de2e6847bbedf44255a17dc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  actions:
-  - actionName: "\u0417\u0430\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u043A\u0440\u043E\u0432\u0430\u0442\u044C"
-    questionText: "\u0412\u0438\u0434\u0438\u043C\u043E, \u044F \u043E\u0447\u0435\u043D\u044C
-      \u0441\u0438\u043B\u044C\u043D\u043E \u0432\u043E\u0440\u043E\u0447\u0430\u043B\u0441\u044F
-      \u0432\u043E \u0441\u043D\u0435, \u0447\u0442\u043E \u043A\u0440\u043E\u0432\u0430\u0442\u044C
-      \u0432 \u0442\u0430\u043A\u043E\u043C \u0432\u0438\u0434\u0435. \u0417\u0430\u043F\u0440\u0430\u0432\u0438\u0442\u044C
-      \u043A\u0440\u043E\u0432\u0430\u0442\u044C?"
-    requiresChoice: 1
+  m_EditorClassIdentifier: Assembly-CSharp::VisualStateController
+  visualStates:
+  - stateName: BedMade
     conditions:
-    - '!BedInteracted'
-    - '!PlayerWentOutside'
-    positiveOutcome:
-      flagChanges:
-      - flagName: BedMade
-        value: 1
-      - flagName: BedInteracted
-        value: 1
-      newSprite: {fileID: 0}
-      targetObject: {fileID: 0}
-      setActive: 0
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-    negativeOutcome:
-      flagChanges:
-      - flagName: BedInteracted
-        value: 1
-      newSprite: {fileID: 0}
-      targetObject: {fileID: 0}
-      setActive: 0
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-  visualStates: []
-  interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
-  interactionPrompt: {fileID: 2115541722}
-  promptOffset: 4
-  uiAdditionalOffset: 90
-  smoothTime: 0.1
-  fadePromptSpeed: 5
+    - BedMade
+    sprite: {fileID: -671176086701521447, guid: ce7cb8d79c7e4034f9e95ee09c06ad2a, type: 3}
+    setActive: 0
+    targetObject: {fileID: 0}
+  - stateName: NotMade
+    conditions:
+    - BedMade
+    sprite: {fileID: -8061600739767840541, guid: 2593e7f7891a23849b5a275d4388a30b, type: 3}
+    setActive: 0
+    targetObject: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &418373500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,9 +1927,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.006770834
+    x: 0
     y: 0
-    width: 0.98684216
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1972,7 +1960,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1284065, y: -4.87326, z: -1}
+  m_LocalPosition: {x: -2.7775269, y: -4.87293, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4073,7 +4061,12 @@ MonoBehaviour:
   smoothTime: 0.1
   fadePromptSpeed: 5
   replacements: []
-  disableInputHandling: 0
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &1606514458
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4455,7 +4448,12 @@ MonoBehaviour:
   smoothTime: 0.1
   fadePromptSpeed: 5
   replacements: []
-  disableInputHandling: 0
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!1 &1827979453
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,7 +5318,12 @@ MonoBehaviour:
   smoothTime: 0.1
   fadePromptSpeed: 5
   replacements: []
-  disableInputHandling: 0
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &2040628886
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5480,7 +5483,12 @@ MonoBehaviour:
   smoothTime: 0.1
   fadePromptSpeed: 5
   replacements: []
-  disableInputHandling: 0
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &2044245239
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5762,7 +5770,12 @@ MonoBehaviour:
   - conditions:
     - IsIDEMinigameCompleted
     dialogue: {fileID: 11400000, guid: 0d8a504020d5e704891acebabbd2307a, type: 2}
-  disableInputHandling: 0
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!1 &2070582521
 GameObject:
   m_ObjectHideFlags: 0
@@ -6072,6 +6085,10 @@ PrefabInstance:
     - target: {fileID: 1392169367849006305, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392169367849006305, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6168794700365915830, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
       propertyPath: m_FlipX

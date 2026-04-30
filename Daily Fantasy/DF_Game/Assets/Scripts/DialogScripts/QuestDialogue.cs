@@ -10,5 +10,6 @@ public class QuestDialogue : Dialogue
     public Outcome positiveOutcome;      // Исход при ответе "Да"
     public Outcome negativeOutcome;      // Исход при ответе "Нет"
 
-    public bool playEyeBlink = false;    // Показать эффект закрытия/открытия глаз после выполнения исхода
+    public bool playEyeBlinkOnYes = false;   // эффект при ответе Да
+    public bool playEyeBlinkOnNo = false;    // эффект при ответе Нет
 }
