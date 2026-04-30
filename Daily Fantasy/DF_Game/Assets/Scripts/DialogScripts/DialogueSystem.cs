@@ -500,7 +500,7 @@ public class DialogueSystem : MonoBehaviour
         dialoguePanel.SetActive(true);
         if (canvasGroup != null) canvasGroup.alpha = 1f;
 
-        // Запускаем музыку вопроса, если назначена
+        // Запускаем музыку вопроса (только на время печати)
         if (questionMusic != null)
         {
             if (typewriterAudioSource == null)
@@ -527,6 +527,9 @@ public class DialogueSystem : MonoBehaviour
             }
         }
 
+        // Остановка музыки сразу после завершения печати
+        StopQuestionMusic();
+
         // Ждём нажатия Y или N
         bool? answer = null;
         Keyboard keyboard = Keyboard.current;
@@ -546,15 +549,17 @@ public class DialogueSystem : MonoBehaviour
             yield return null;
         }
 
-        // Останавливаем музыку
-        if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
-            typewriterAudioSource.Stop();
-
         // Скрываем панель
         dialoguePanel.SetActive(false);
         if (dialogueText != null) dialogueText.text = "";
 
         isQuestionMode = false;
         callback?.Invoke(answer.Value);
+    }
+
+    private void StopQuestionMusic()
+    {
+        if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
+            typewriterAudioSource.Stop();
     }
 }

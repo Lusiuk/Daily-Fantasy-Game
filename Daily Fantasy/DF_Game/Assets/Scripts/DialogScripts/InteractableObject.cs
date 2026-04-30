@@ -5,13 +5,6 @@ using System.Collections;
 using System;
 
 [System.Serializable]
-public class Condition
-{
-    public string flagName;
-    public bool _not = false;
-}
-
-[System.Serializable]
 public class Outcome
 {
     [System.Serializable]
@@ -96,7 +89,16 @@ public class InteractableObject : MonoBehaviour
             dialogueTrigger.disableInputHandling = true;
         }
 
-        // Инициализация подсказки
+        // Инициализация подсказки (если не назначена, пытаемся взять из DialogueTrigger и отключаем её управление там)
+        if (interactionPrompt == null && dialogueTrigger != null)
+        {
+            interactionPrompt = dialogueTrigger.GetPrompt();
+            if (interactionPrompt != null)
+            {
+                dialogueTrigger.DisablePromptControl();
+            }
+        }
+
         if (interactionPrompt != null)
         {
             promptRectTransform = interactionPrompt.GetComponent<RectTransform>();
@@ -119,7 +121,7 @@ public class InteractableObject : MonoBehaviour
             interactAction.action.performed += OnInteractPerformed;
         }
 
-        // Подписка на изменения флагов для обновления визуала
+        // Подписка на изменения флагов для обновления визуала и подсказки
         GameState.OnFlagChanged += OnFlagChanged;
         UpdateVisual();
 
@@ -224,8 +226,8 @@ public class InteractableObject : MonoBehaviour
         }
         else
         {
-            // Действий нет – запускаем диалог через DialogueTrigger
-            if (dialogueTrigger != null)
+            // Действий нет – запускаем диалог через DialogueTrigger, если он доступен
+            if (dialogueTrigger != null && dialogueTrigger.CanTriggerDialogue())
             {
                 dialogueTrigger.TriggerDialogue();
             }
@@ -234,7 +236,7 @@ public class InteractableObject : MonoBehaviour
 
     private IEnumerator PerformAction(InteractiveAction action)
     {
-        // Блокируем управление игроком (используем методы DialogueSystem)
+        // Блокируем управление игроком
         DialogueSystem.Instance.DisablePlayerMovementPublic();
 
         if (action.requiresChoice)
@@ -256,14 +258,14 @@ public class InteractableObject : MonoBehaviour
         {
             // Без вопроса – просто выполняем положительный исход
             ExecuteOutcome(action.positiveOutcome);
-            // Небольшая пауза, чтобы игрок заметил результат
             yield return new WaitForSeconds(0.2f);
         }
 
         DialogueSystem.Instance.EnablePlayerMovementPublic();
         isPerformingAction = false;
         UpdateVisual();
-        HidePrompt();
+        // После выполнения действия обновляем видимость подсказки
+        UpdatePromptVisibility();
     }
 
     private void ExecuteOutcome(Outcome outcome)
@@ -309,6 +311,7 @@ public class InteractableObject : MonoBehaviour
     {
         if (promptCanvasGroup == null || isPromptVisible) return;
         isPromptVisible = true;
+        StopAllCoroutines(); // на случай, если ещё работает затухание
         StartCoroutine(FadePrompt(0f, 1f, fadePromptSpeed));
     }
 
@@ -316,29 +319,51 @@ public class InteractableObject : MonoBehaviour
     {
         if (promptCanvasGroup == null || !isPromptVisible) return;
         isPromptVisible = false;
+        StopAllCoroutines();
         StartCoroutine(FadePrompt(promptCanvasGroup.alpha, 0f, fadePromptSpeed));
+    }
+
+    //Мгновенно перемещает подсказку на правильное место над игроком
+    private void SnapPromptPosition()
+    {
+        if (playerTransform == null || mainCamera == null || promptRectTransform == null) return;
+
+        Vector3 worldPos = playerTransform.position + Vector3.up * promptOffset;
+        Vector2 screenPos = mainCamera.WorldToScreenPoint(worldPos);
+        screenPos.y += uiAdditionalOffset;
+
+        promptRectTransform.position = screenPos;
+        targetScreenPosition = screenPos;
+        currentVelocity = Vector2.zero;
     }
 
     private void UpdatePromptVisibility()
     {
         if (interactionPrompt == null) return;
 
-        bool canInteract = false;
+        // Проверяем, доступно ли сейчас какое-либо действие
+        bool actionAvailable = false;
         foreach (var act in actions)
         {
             if (GameState.AreFlagsSatisfied(act.conditions))
             {
-                canInteract = true;
+                actionAvailable = true;
                 break;
             }
         }
-        // Если действий нет, но есть диалог (DialogueTrigger) – тоже показываем подсказку
-        if (!canInteract && dialogueTrigger != null)
-            canInteract = true;
+
+        // Если действий нет, но есть DialogueTrigger, смотрим, может ли он сработать
+        bool dialogAvailable = (dialogueTrigger != null && dialogueTrigger.CanTriggerDialogue());
+
+        bool canInteract = actionAvailable || dialogAvailable;
 
         if (playerInRange && canInteract)
         {
-            if (!isPromptVisible) ShowPrompt();
+            if (!isPromptVisible)
+            {
+                SnapPromptPosition();
+                ShowPrompt();
+            }
         }
         else
         {

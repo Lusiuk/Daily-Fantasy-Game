@@ -385,4 +385,29 @@ public class DialogueTrigger : MonoBehaviour
             if (isPromptVisible) HidePrompt();
         }
     }
+
+    // Возвращает true, если диалог сейчас может быть запущен
+    public bool CanTriggerDialogue()
+    {
+        return isActive && dialogue != null && !hasBeenUsed && !dialogueTriggeredThisSession;
+    }
+
+    // Отдаёт объект подсказки, если нужно передать управление другому компоненту
+    public GameObject GetPrompt()
+    {
+        return interactionPrompt;
+    }
+
+    // Отключает собственное управление подсказкой
+    public void DisablePromptControl()
+    {
+        if (interactionPrompt != null)
+        {
+            StopAllCoroutines();
+            if (promptCanvasGroup != null) promptCanvasGroup.alpha = 0f;
+            interactionPrompt.SetActive(false);
+            isPromptVisible = false;
+        }
+        interactionPrompt = null;
+    }
 }
