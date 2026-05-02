@@ -165,6 +165,7 @@ public class PlayerPlatformingMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!enabled) return;
         Vector2 input = context.ReadValue<Vector2>();
         horizontalMovement = input.x;
         isInputActive = Mathf.Abs(horizontalMovement) > 0.01f;
@@ -172,6 +173,7 @@ public class PlayerPlatformingMovement : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
+        if (!enabled) return;
         if (context.performed && canDash && isDashingActive)
         {
             StartCoroutine(DashCoroutine());
@@ -202,6 +204,7 @@ public class PlayerPlatformingMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (!enabled) return;
         if (context.performed && jumpsRemaining > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower * 1.2f);

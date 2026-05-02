@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -33,6 +34,9 @@ public class DialogueSystem : MonoBehaviour
     [Header("Teleport Settings")]
     [SerializeField] private float teleportDelay = 0.1f;
 
+    [Header("Question UI")]
+    [SerializeField] private AudioClip questionMusic;
+
     // События
     public System.Action OnDialogueStart;
     public System.Action OnDialogueEnd;
@@ -49,6 +53,8 @@ public class DialogueSystem : MonoBehaviour
     private int currentLineIndex = 0;
     private bool isWaitingForNext = false;
     private PlayerPlatformingMovement playerPlatformingMovement;
+    private bool isQuestionMode = false;
+    private GameObject currentContextObject;
 
     public static DialogueSystem Instance { get; private set; }
 
@@ -134,6 +140,7 @@ public class DialogueSystem : MonoBehaviour
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         if (!isActive || !isDialogueActive) return;
+        if (isQuestionMode) return;
 
         // Если ждём следующую реплику – переходим к ней
         if (isWaitingForNext)
@@ -148,7 +155,7 @@ public class DialogueSystem : MonoBehaviour
     }
 
     // Показ диалога
-    public void ShowDialogue(Dialogue dialogue)
+    public void ShowDialogue(Dialogue dialogue, GameObject contextObject = null)
     {
         if (!isActive) return;
         if (dialoguePanel == null)
@@ -161,6 +168,7 @@ public class DialogueSystem : MonoBehaviour
         if (disablePlayerMovement) DisablePlayerMovement();
 
         currentDialogue = dialogue;
+        currentContextObject = contextObject;
         currentLineIndex = 0;
         isDialogueActive = true;
         inputEnabled = false;
@@ -377,9 +385,11 @@ public class DialogueSystem : MonoBehaviour
     private IEnumerator HideDialogueSequence()
     {
         yield return StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
-
         if (dialogueText != null) dialogueText.text = "";
 
+        QuestDialogue questDialogue = currentDialogue as QuestDialogue;
+
+        // Обработка обычных переходов (телепорт, смена сцены) – без изменений…
         if (currentDialogue != null)
         {
             if (currentDialogue.teleportAfterDialogue)
@@ -391,6 +401,7 @@ public class DialogueSystem : MonoBehaviour
                     GameState.TeleportMarkerName = currentDialogue.teleportMarkerName;
                     if (TransitionManager.Instance != null)
                         TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
+                    goto EndDialogue;
                 }
                 else
                 {
@@ -402,16 +413,65 @@ public class DialogueSystem : MonoBehaviour
             {
                 if (TransitionManager.Instance != null)
                     TransitionManager.Instance.TransitionToScene(currentDialogue.targetSceneName);
+                goto EndDialogue;
             }
+        }
+
+        // Квестовая часть
+        if (questDialogue != null && !string.IsNullOrEmpty(questDialogue.questionText))
+        {
+            bool? answer = null;
+            AskQuestion(questDialogue.questionText, (result) => { answer = result; });
+            yield return new WaitUntil(() => answer.HasValue);
+
+            bool yes = answer.Value;
+            Outcome chosenOutcome = yes ? questDialogue.positiveOutcome : questDialogue.negativeOutcome;
+            bool playBlink = yes ? questDialogue.playEyeBlinkOnYes : questDialogue.playEyeBlinkOnNo;
+
+            // Сначала эффект моргания
+            if (playBlink && TransitionManager.Instance != null)
+                yield return TransitionManager.Instance.PlayEyeBlink();
+
+            // Потом применяем исход
+            if (chosenOutcome != null)
+                ExecuteOutcome(chosenOutcome);
         }
 
         if (!currentDialogue.triggerSceneTransition && disablePlayerMovement)
             EnablePlayerMovement();
 
+        EndDialogue:
         isDialogueActive = false;
         currentDialogue = null;
+        currentContextObject = null;
         inputEnabled = true;
         OnDialogueEnd?.Invoke();
+    }
+
+    private void ExecuteOutcome(Outcome outcome)
+    {
+        if (outcome == null) return;
+
+        // Флаги
+        foreach (var change in outcome.flagChanges)
+            GameState.SetFlag(change.flagName, change.value);
+
+        // Спрайт и активность через контекст
+        if (currentContextObject != null)
+        {
+            if (outcome.newSprite != null)
+            {
+                SpriteRenderer sr = currentContextObject.GetComponent<SpriteRenderer>();
+                if (sr != null) sr.sprite = outcome.newSprite;
+            }
+
+            // Управление целевым объектом
+            GameObject target = outcome.targetObject != null ? outcome.targetObject : currentContextObject;
+            if (target != null)
+                target.SetActive(outcome.setActive);
+        }
+
+        outcome.onComplete.Invoke();
     }
 
     // Телепортация игрока
@@ -465,5 +525,85 @@ public class DialogueSystem : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+
+    public void AskQuestion(string question, Action<bool> callback)
+    {
+        if (!isActive || isQuestionMode) return;
+        StartCoroutine(AskQuestionRoutine(question, callback));
+    }
+
+    private IEnumerator AskQuestionRoutine(string question, Action<bool> callback)
+    {
+        isQuestionMode = true;
+        if (dialoguePanel == null) yield break;
+
+        // Показываем панель
+        dialoguePanel.SetActive(true);
+        if (canvasGroup != null) canvasGroup.alpha = 1f;
+
+        // Запускаем музыку вопроса (только на время печати)
+        if (questionMusic != null)
+        {
+            if (typewriterAudioSource == null)
+            {
+                typewriterAudioSource = gameObject.AddComponent<AudioSource>();
+                typewriterAudioSource.playOnAwake = false;
+            }
+            typewriterAudioSource.clip = questionMusic;
+            typewriterAudioSource.loop = false;
+            typewriterAudioSource.Play();
+        }
+
+        // Добавляем подсказку Y/N
+        string fullText = question + " (Y/N)";
+
+        // Печатаем вопрос
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+            foreach (char c in fullText)
+            {
+                dialogueText.text += c;
+                yield return new WaitForSeconds(typewriterSpeed);
+            }
+        }
+
+        // Остановка музыки сразу после завершения печати
+        StopQuestionMusic();
+
+        // Ждём нажатия Y или N
+        bool? answer = null;
+        Keyboard keyboard = Keyboard.current;
+        while (!answer.HasValue)
+        {
+            if (keyboard != null)
+            {
+                if (keyboard.yKey.wasPressedThisFrame)
+                    answer = true;
+                else if (keyboard.nKey.wasPressedThisFrame)
+                    answer = false;
+            }
+            #if ENABLE_LEGACY_INPUT_MANAGER
+            if (Input.GetKeyDown(KeyCode.Y)) answer = true;
+            else if (Input.GetKeyDown(KeyCode.N)) answer = false;
+            #endif
+            yield return null;
+        }
+
+        // Скрываем панель
+        dialoguePanel.SetActive(false);
+        if (dialogueText != null) dialogueText.text = "";
+
+        isQuestionMode = false;
+        callback?.Invoke(answer.Value);
+    }
+
+    private void StopQuestionMusic()
+    {
+        if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
+            typewriterAudioSource.Stop();
     }
 }
