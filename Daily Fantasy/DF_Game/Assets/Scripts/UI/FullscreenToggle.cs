@@ -35,7 +35,7 @@ public class FullscreenToggleController : MonoBehaviour
         if (enable)
         {
             // Полноэкранный — фиксируем разрешение (можно взять текущее)
-            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         }
         else
         {

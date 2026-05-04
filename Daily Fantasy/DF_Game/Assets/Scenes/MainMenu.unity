@@ -1671,6 +1671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Manager
   SettingsPanel: {fileID: 2090003238}
+  PauseMenu: {fileID: 0}
 --- !u!4 &703985201
 Transform:
   m_ObjectHideFlags: 0
