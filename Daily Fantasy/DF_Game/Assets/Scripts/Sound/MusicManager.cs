@@ -49,6 +49,20 @@ public class MusicManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        // Если окно игры стало неактивным (свернуто), выключаем звук.
+        if (!hasFocus)
+        {
+            AudioListener.pause = true;
+        }
+        // Если окно снова активно, включаем звук.
+        else
+        {
+            AudioListener.pause = false;
+        }
+    }
+
     // Вызывается автоматически при загрузке любой сцены
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
