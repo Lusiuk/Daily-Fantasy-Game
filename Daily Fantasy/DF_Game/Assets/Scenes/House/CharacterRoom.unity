@@ -1913,10 +1913,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.5231481
-    width: 0.67864585
-    height: 0.68769443
+    x: 0.006770834
+    y: 0
+    width: 0.98684216
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1946,7 +1946,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4650116, y: -2.40273, z: -1}
+  m_LocalPosition: {x: -3.1284065, y: -4.87326, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3875,6 +3875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Manager
   SettingsPanel: {fileID: 0}
+  PauseMenu: {fileID: 0}
 --- !u!4 &1329823037
 Transform:
   m_ObjectHideFlags: 0
@@ -6071,6 +6072,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6168794700365915830, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2975959668780239560, guid: 42e3739f8703c134c865c01d469c75a5, type: 3}
     - target: {fileID: 6805020889521051939, guid: a16f35b5d651540ef9c2a3e9dfd9a3bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.99
