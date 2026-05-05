@@ -24,6 +24,9 @@ public class UI_Manager : MonoBehaviour
 
     public void Back()
     {
+        if (isPaused)
+            ResumeGame();
+
         SceneManager.LoadScene("MainMenu");
     }
 
