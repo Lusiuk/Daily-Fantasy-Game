@@ -30,6 +30,19 @@ public class UI_Manager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void Back_MG()
+    {
+        if (isPaused)
+            ResumeGame();
+        string current = SceneManager.GetActiveScene().name;
+
+        if (current == "IdeMiniGame 1")
+            SceneManager.LoadScene("CharacterRoom");
+
+        if (current == "Rhythm Game")
+            SceneManager.LoadScene("Street");
+    }
+
     public void Settings()
     {
         if (!SettingsPanel.activeSelf)
