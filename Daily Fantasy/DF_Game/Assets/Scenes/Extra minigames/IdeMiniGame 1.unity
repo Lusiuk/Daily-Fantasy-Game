@@ -781,8 +781,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 834206197208388112, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834206197208388112, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
       propertyPath: m_SortingOrder
       value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863007482528116852, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2384656171515160493, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
       propertyPath: m_Name
@@ -795,6 +803,10 @@ PrefabInstance:
     - target: {fileID: 4992538379073826457, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
       propertyPath: m_Name
       value: UI_minigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992538379073826457, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195340725631856784, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
       propertyPath: m_Text
