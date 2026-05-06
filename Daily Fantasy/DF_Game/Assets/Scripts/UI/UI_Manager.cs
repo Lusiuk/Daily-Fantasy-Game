@@ -30,6 +30,13 @@ public class UI_Manager : MonoBehaviour
         SceneManager.LoadScene("CharacterRoom");
     }
 
+    public static bool IsPaused()
+    {
+        if (isPaused) 
+            return true;
+        return false;
+    }
+
     public void Back()
     {
         DialogueSystem.Instance?.StopMusic();

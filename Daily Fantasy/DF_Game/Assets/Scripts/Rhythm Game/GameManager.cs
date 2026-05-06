@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
     public BeatScroller theBS;
     public static GameManager instance;
+    public UI_Manager manager;
 
     public Dialogue completionDialogue;
 
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy && !resultsShown)
+            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy && !resultsShown && !UI_Manager.IsPaused())
             {
                 resultsShown = true;
                 StartCoroutine(ShowResultsAfterDelay());
