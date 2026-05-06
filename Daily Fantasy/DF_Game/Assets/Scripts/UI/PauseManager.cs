@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
     [Header("UI Паузы")]
     [Tooltip("Панель меню паузы (найдется автоматически в сцене, если не назначена)")]
     public GameObject pauseMenuPanel;
-
+    
     [Tooltip("Имя объекта панели паузы в сцене (должно совпадать во всех сценах)")]
     public string pausePanelObjectName = "PauseMenuPanel";
 

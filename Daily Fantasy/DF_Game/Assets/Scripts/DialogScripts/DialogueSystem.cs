@@ -79,9 +79,21 @@ public class DialogueSystem : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"DialogueSystem: Scene loaded - {scene.name}");
+
         ReinitializeInputSystem();
         FindDialoguePanelInScene();
         InitializeComponents();
+
+        if (isDialogueActive)
+        {
+            isDialogueActive = false;
+            currentDialogue = null;
+            currentContextObject = null;
+            inputEnabled = true;
+            if (dialoguePanel != null)
+                dialoguePanel.SetActive(false);
+            Debug.Log("DialogueSystem: Диалог был активен при загрузке сцены, состояние сброшено");
+        }
     }
 
     // Переподключаем InputSystem
@@ -440,7 +452,7 @@ public class DialogueSystem : MonoBehaviour
         if (!currentDialogue.triggerSceneTransition && disablePlayerMovement)
             EnablePlayerMovement();
 
-        EndDialogue:
+    EndDialogue:
         isDialogueActive = false;
         currentDialogue = null;
         currentContextObject = null;
@@ -525,6 +537,9 @@ public class DialogueSystem : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (currentTypewriter != null)
+            StopCoroutine(currentTypewriter);
+        isDialogueActive = false;
     }
 
 
@@ -586,10 +601,10 @@ public class DialogueSystem : MonoBehaviour
                 else if (keyboard.nKey.wasPressedThisFrame)
                     answer = false;
             }
-            #if ENABLE_LEGACY_INPUT_MANAGER
+#if ENABLE_LEGACY_INPUT_MANAGER
             if (Input.GetKeyDown(KeyCode.Y)) answer = true;
             else if (Input.GetKeyDown(KeyCode.N)) answer = false;
-            #endif
+#endif
             yield return null;
         }
 

@@ -7,6 +7,8 @@ public class UI_Manager : MonoBehaviour
     public GameObject SettingsPanel;
     public GameObject PauseMenu;
 
+    public DialogueSystem dialogueSystem;
+
     public static bool isPaused;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
