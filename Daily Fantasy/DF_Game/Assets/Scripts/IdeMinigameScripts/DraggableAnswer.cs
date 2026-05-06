@@ -88,7 +88,9 @@ public class DraggableAnswer : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         originalParent = transform.parent;
         rectTransform = GetComponent<RectTransform>();
-        canvas = Object.FindFirstObjectByType<Canvas>();
+        //canvas = Object.FindFirstObjectByType<Canvas>();
+        canvas = GetComponentInParent<Canvas>();
+        if (canvas != null) canvas = canvas.rootCanvas;
         raycastGraphic = GetComponent<Graphic>();
     }
 
