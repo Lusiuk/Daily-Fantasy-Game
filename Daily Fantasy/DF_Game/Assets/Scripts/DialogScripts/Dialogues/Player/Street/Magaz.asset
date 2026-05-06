@@ -26,7 +26,8 @@ MonoBehaviour:
   typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
   loopMusic: 1
   dialogueId: 76557rm75
-  oneTimeUse: 1
+  oneTimeUse: 0
+  trackForCondition: 1
   isPlayerSpeaking: 1
   npcName: NPC
   lines:

@@ -2489,6 +2489,9 @@ MonoBehaviour:
   - conditions:
     - DialogueUsed:e6nubue
     dialogue: {fileID: 11400000, guid: f8af06702c78a114a85d8d799cac13e2, type: 2}
+  - conditions:
+    - IsPlatformingCompleted
+    dialogue: {fileID: 11400000, guid: 7a6b1247775614b4895ce68adc1d17f2, type: 2}
   syncFlagName: 
   onTrueSprite: {fileID: 0}
   onFalseSprite: {fileID: 0}
@@ -3566,7 +3569,10 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacements: []
+  replacements:
+  - conditions:
+    - IsRhythmGame1Completed
+    dialogue: {fileID: 11400000, guid: 6e96a2d823ad6d24fa1136924389c998, type: 2}
   syncFlagName: 
   onTrueSprite: {fileID: 0}
   onFalseSprite: {fileID: 0}

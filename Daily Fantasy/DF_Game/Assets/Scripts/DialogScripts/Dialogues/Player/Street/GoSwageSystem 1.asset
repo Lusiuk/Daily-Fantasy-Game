@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0ce09f1e1f89b43ab3ba879ccf71a6, type: 3}
-  m_Name: GoSwageSystem
+  m_Name: GoSwageSystem 1
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  text: "\u0410 \u0435\u0441\u043B\u0438 \u0431\u044B.... [R]"
+  text: "\u0425\u0432\u0430\u0442\u0438\u0442, \u043A \u043B\u044E\u043A\u0430\u043C
+    \u043D\u0438 \u043D\u043E\u0433\u043E\u0439 [R]"
   canInteract: 1
-  triggerSceneTransition: 1
-  targetSceneName: PlatformingMenu
-  teleportAfterDialogue: 1
+  triggerSceneTransition: 0
+  targetSceneName: 
+  teleportAfterDialogue: 0
   teleportPosition: {x: 0, y: 0}
-  teleportMarkerName: SpawnPoint
+  teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
   loopMusic: 1
-  dialogueId: 4u4vw4
+  dialogueId: 
   oneTimeUse: 0
-  trackForCondition: 1
+  trackForCondition: 0
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []
