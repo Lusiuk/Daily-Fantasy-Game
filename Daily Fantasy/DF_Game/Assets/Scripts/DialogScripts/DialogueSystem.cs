@@ -80,20 +80,29 @@ public class DialogueSystem : MonoBehaviour
     {
         Debug.Log($"DialogueSystem: Scene loaded - {scene.name}");
 
+        // Полностью останавливаем текущий диалог/вопрос
+        if (currentTypewriter != null)
+        {
+            StopCoroutine(currentTypewriter);
+            currentTypewriter = null;
+        }
+        isDialogueActive = false;
+        isQuestionMode = false;
+        currentDialogue = null;
+        currentContextObject = null;
+        inputEnabled = true;
+        isWaitingForNext = false;
+
+        // Сброс ссылок на компоненты игрока (чтобы не держать уничтоженные объекты)
+        playerMovement = null;
+        playerPlatformingMovement = null;
+
         ReinitializeInputSystem();
         FindDialoguePanelInScene();
         InitializeComponents();
 
-        if (isDialogueActive)
-        {
-            isDialogueActive = false;
-            currentDialogue = null;
-            currentContextObject = null;
-            inputEnabled = true;
-            if (dialoguePanel != null)
-                dialoguePanel.SetActive(false);
-            Debug.Log("DialogueSystem: Диалог был активен при загрузке сцены, состояние сброшено");
-        }
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
     }
 
     // Переподключаем InputSystem
