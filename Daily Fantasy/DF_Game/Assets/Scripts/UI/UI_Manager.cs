@@ -20,6 +20,8 @@ public class UI_Manager : MonoBehaviour
 
     public void Play()
     {
+        if (Time.timeScale == 0f)
+            Time.timeScale = 1f;
         GameState.ResetGameState();
         SceneManager.LoadScene("CharacterRoom");
     }
