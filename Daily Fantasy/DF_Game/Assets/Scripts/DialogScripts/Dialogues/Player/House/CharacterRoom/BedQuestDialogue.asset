@@ -25,6 +25,7 @@ MonoBehaviour:
   loopMusic: 1
   dialogueId: 
   oneTimeUse: 0
+  trackForCondition: 0
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []
@@ -42,9 +43,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   negativeOutcome:
-    flagChanges:
-    - flagName: BedInteracted
-      value: 1
+    flagChanges: []
     newSprite: {fileID: 0}
     targetObject: {fileID: 0}
     setActive: 1

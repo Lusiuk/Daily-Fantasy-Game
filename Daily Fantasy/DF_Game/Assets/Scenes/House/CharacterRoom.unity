@@ -650,6 +650,9 @@ MonoBehaviour:
   fadePromptSpeed: 5
   replacements:
   - conditions:
+    - BedInteracted
+    dialogue: {fileID: 11400000, guid: 5e07be9b701229848b89fee0901be631, type: 2}
+  - conditions:
     - '!BedInteracted'
     - '!PlayerWentOutside'
     dialogue: {fileID: 11400000, guid: 9ba9a6c85c9b40d4589058229f74f1e5, type: 2}
@@ -1679,9 +1682,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.053703703
+    width: 0.33333334
+    height: 0.3377778
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1711,7 +1714,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7775269, y: -4.87293, z: -1}
+  m_LocalPosition: {x: -3.1284065, y: -4.87326, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
