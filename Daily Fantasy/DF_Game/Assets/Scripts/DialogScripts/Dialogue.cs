@@ -26,6 +26,7 @@ public class Dialogue : ScriptableObject
     [Header("Dialogue Identification")]
     public string dialogueId;          // для отслеживания одноразовости
     public bool oneTimeUse = false;     // должен ли диалог исчезнуть после первого использования
+    public bool trackForCondition = false;
 
     [System.Serializable]
     public struct DialogueLine

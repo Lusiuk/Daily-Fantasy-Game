@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0ce09f1e1f89b43ab3ba879ccf71a6, type: 3}
-  m_Name: ComputerDialogue
+  m_Name: ComputerDialogue 1
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  text: "\u042D\u0442\u043E \u043C\u043E\u0439 \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440.
-    \u041D\u0430\u0436\u043C\u0438 R, \u0447\u0442\u043E\u0431\u044B \u0432\u043A\u043B\u044E\u0447\u0438\u0442\u044C
-    \u0435\u0433\u043E."
+  text: "\u0412\u0441\u0451, \u0445\u0432\u0430\u0442\u0438\u0442 \u0443\u0436\u0435
+    \u0438\u0433\u0440\u0430\u0442\u044C [R]"
   canInteract: 1
-  triggerSceneTransition: 1
-  targetSceneName: IdeMiniGame 1
+  triggerSceneTransition: 0
+  targetSceneName: 
   teleportAfterDialogue: 0
   teleportPosition: {x: 0, y: 0}
   teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
   loopMusic: 1
-  dialogueId: "8\u043D\u043086\u04356"
+  dialogueId: 
   oneTimeUse: 0
-  trackForCondition: 1
+  trackForCondition: 0
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []

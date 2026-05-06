@@ -280,7 +280,7 @@ public class DialogueTrigger : MonoBehaviour
 
         DialogueSystem.Instance.ShowDialogue(dialogue, gameObject);
 
-        if (dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId))
+        if (!string.IsNullOrEmpty(dialogue.dialogueId) && (dialogue.oneTimeUse || dialogue.trackForCondition))
         {
             GameState.MarkDialogueUsed(dialogue.dialogueId);
         }
