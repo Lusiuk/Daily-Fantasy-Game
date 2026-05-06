@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a31ede7807d5a499ff9f3b2188fe4a, type: 3}
+  m_Name: FlowerQuest
+  m_EditorClassIdentifier: Assembly-CSharp::QuestDialogue
+  text: "\u041C\u0430\u043C\u0430 \u043F\u0440\u043E\u0441\u0438\u043B\u0430 \u0435\u0433\u043E
+    \u043F\u043E\u043B\u0438\u0442\u044C. [R]"
+  canInteract: 1
+  triggerSceneTransition: 0
+  targetSceneName: 
+  teleportAfterDialogue: 0
+  teleportPosition: {x: 0, y: 0}
+  teleportMarkerName: 
+  typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
+  loopMusic: 1
+  dialogueId: "\u0443\u04407\u0440\u0440"
+  oneTimeUse: 0
+  trackForCondition: 1
+  isPlayerSpeaking: 1
+  npcName: NPC
+  lines: []
+  questionText: "\u041F\u043E\u043B\u0438\u0442\u044C \u0446\u0432\u0435\u0442\u043E\u043A?"
+  positiveOutcome:
+    flagChanges:
+    - flagName: FlowerWatered
+      value: 1
+    - flagName: HasWateringCan
+      value: 0
+    newSprite: {fileID: 0}
+    targetObject: {fileID: 0}
+    setActive: 1
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  negativeOutcome:
+    flagChanges: []
+    newSprite: {fileID: 0}
+    targetObject: {fileID: 0}
+    setActive: 1
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  playEyeBlinkOnYes: 0
+  playEyeBlinkOnNo: 0

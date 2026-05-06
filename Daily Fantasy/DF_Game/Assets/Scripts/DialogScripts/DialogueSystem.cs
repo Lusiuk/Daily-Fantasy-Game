@@ -469,23 +469,50 @@ public class DialogueSystem : MonoBehaviour
             Outcome chosenOutcome = yes ? questDialogue.positiveOutcome : questDialogue.negativeOutcome;
             bool playBlink = yes ? questDialogue.playEyeBlinkOnYes : questDialogue.playEyeBlinkOnNo;
 
-            // Закрываем полосы (глаза закрываются)
-            if (playBlink && TransitionManager.Instance != null)
-                yield return TransitionManager.Instance.CloseBars();
+            try
+            {
+                // Закрываем полосы (глаза закрываются)
+                if (playBlink && TransitionManager.Instance != null)
+                    yield return TransitionManager.Instance.CloseBars();
 
-            // Меняем кровать (спрайт, флаги и т.д.)
-            if (chosenOutcome != null)
-                ExecuteOutcome(chosenOutcome);
+                // Меняем объект (спрайт, флаги и т.д.)
+                if (chosenOutcome != null)
+                    ExecuteOutcome(chosenOutcome);
 
-            // Открываем полосы (глаза открываются)
-            if (playBlink && TransitionManager.Instance != null)
-                yield return TransitionManager.Instance.OpenBars();
+                // Открываем полосы (глаза открываются)
+                if (playBlink && TransitionManager.Instance != null)
+                    yield return TransitionManager.Instance.OpenBars();
+            }
+            finally
+            {
+                // Гарантированно возвращаем управление игроку
+                if (disablePlayerMovement)
+                    EnablePlayerMovement();
+            }
         }
 
-        if (!currentDialogue.triggerSceneTransition && disablePlayerMovement)
+        // Включаем движение только если это был НЕ квестовый диалог (в квесте уже включили)
+        if (!questDialogue && !currentDialogue.triggerSceneTransition && disablePlayerMovement)
             EnablePlayerMovement();
 
-    EndDialogue:
+        // Полный сброс всех состояний, как при загрузке сцены (кроме InputSystem)
+        StopTypewriterMusic();
+        if (currentTypewriter != null)
+        {
+            StopCoroutine(currentTypewriter);
+            currentTypewriter = null;
+        }
+        isDialogueActive = false;
+        isQuestionMode = false;
+        currentDialogue = null;
+        currentContextObject = null;
+        inputEnabled = true;
+        isWaitingForNext = false;
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
+
+        EndDialogue:
+        // (повторно, на случай если переход на метку был из другого места)
         isDialogueActive = false;
         currentDialogue = null;
         currentContextObject = null;

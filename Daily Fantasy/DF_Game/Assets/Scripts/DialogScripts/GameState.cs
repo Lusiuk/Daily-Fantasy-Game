@@ -168,6 +168,23 @@ public static class GameState
         }
     }
 
+    private static bool _pieBaked;
+    public static bool PieBaked
+    {
+        get => _pieBaked;
+        set
+        {
+            if (_pieBaked != value)
+            {
+                _pieBaked = value;
+                OnFlagChanged?.Invoke("PieBaked");
+                // Если пирог испечён и цветок не полит — цветок засыхает
+                if (value && !FlowerWatered)
+                    FlowerDead = true;
+            }
+        }
+    }
+
     private static bool _flowerWatered;
     public static bool FlowerWatered
     {
@@ -182,16 +199,17 @@ public static class GameState
         }
     }
 
-    private static bool _pieBaked;
-    public static bool PieBaked
+    // Цветок засох (пирог испечён, а цветок не полит)
+    private static bool _flowerDead;
+    public static bool FlowerDead
     {
-        get => _pieBaked;
+        get => _flowerDead;
         set
         {
-            if (_pieBaked != value)
+            if (_flowerDead != value)
             {
-                _pieBaked = value;
-                OnFlagChanged?.Invoke("PieBaked");
+                _flowerDead = value;
+                OnFlagChanged?.Invoke("FlowerDead");
             }
         }
     }
@@ -222,6 +240,7 @@ public static class GameState
         HasWateringCan = false;
         FlowerWatered = false;
         PieBaked = false;
+        FlowerDead = false;
 
         _usedDialogues.Clear();
 
@@ -338,6 +357,7 @@ public static class GameState
             case "HasWateringCan": HasWateringCan = value; break;
             case "FlowerWatered": FlowerWatered = value; break;
             case "PieBaked": PieBaked = value; break;
+            case "FlowerDead": FlowerDead = value; break;
             default:
                 Debug.LogWarning($"GameState.SetFlag: неизвестный флаг '{flagName}'");
                 break;
@@ -362,6 +382,7 @@ public static class GameState
             case "HasWateringCan": return HasWateringCan;
             case "FlowerWatered": return FlowerWatered;
             case "PieBaked": return PieBaked;
+            case "FlowerDead": return FlowerDead;
             default:
                 Debug.LogWarning($"Неизвестный флаг: {flagName}");
                 return false;

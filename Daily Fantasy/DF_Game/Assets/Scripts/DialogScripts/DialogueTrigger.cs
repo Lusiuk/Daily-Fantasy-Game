@@ -83,21 +83,18 @@ public class DialogueTrigger : MonoBehaviour
         UpdatePromptVisibility();
     }
 
-    // Настраивает систему ввода при активации
     void OnEnable()
     {
         isActive = true;
 
         if (interactAction != null)
         {
-            interactAction.action.Enable();
             interactAction.action.performed += OnInteractPerformed;
         }
 
         GameState.OnFlagChanged += OnFlagChanged;
     }
 
-    // Отключает систему ввода при деактивации
     void OnDisable()
     {
         isActive = false;
@@ -105,7 +102,6 @@ public class DialogueTrigger : MonoBehaviour
         if (interactAction != null)
         {
             interactAction.action.performed -= OnInteractPerformed;
-            interactAction.action.Disable();
         }
 
         GameState.OnFlagChanged -= OnFlagChanged;
@@ -402,7 +398,7 @@ public class DialogueTrigger : MonoBehaviour
     // Обновить видимость подсказки в зависимости от доступности диалога
     private void UpdatePromptVisibility()
     {
-        bool available = dialogue != null && !hasBeenUsed && !dialogueTriggeredThisSession;
+        bool available = dialogue != null && dialogue.canInteract && !hasBeenUsed && !dialogueTriggeredThisSession;
 
         if (available && playerInRange)
         {
