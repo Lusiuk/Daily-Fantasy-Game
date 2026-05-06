@@ -449,13 +449,17 @@ public class DialogueSystem : MonoBehaviour
             Outcome chosenOutcome = yes ? questDialogue.positiveOutcome : questDialogue.negativeOutcome;
             bool playBlink = yes ? questDialogue.playEyeBlinkOnYes : questDialogue.playEyeBlinkOnNo;
 
-            // Сначала эффект моргания
+            // Закрываем полосы (глаза закрываются)
             if (playBlink && TransitionManager.Instance != null)
-                yield return TransitionManager.Instance.PlayEyeBlink();
+                yield return TransitionManager.Instance.CloseBars();
 
-            // Потом применяем исход
+            // Меняем кровать (спрайт, флаги и т.д.)
             if (chosenOutcome != null)
                 ExecuteOutcome(chosenOutcome);
+
+            // Открываем полосы (глаза открываются)
+            if (playBlink && TransitionManager.Instance != null)
+                yield return TransitionManager.Instance.OpenBars();
         }
 
         if (!currentDialogue.triggerSceneTransition && disablePlayerMovement)

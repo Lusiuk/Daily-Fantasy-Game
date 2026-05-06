@@ -161,18 +161,28 @@ public class TransitionManager : MonoBehaviour
         StartCoroutine(TransitionCoroutine(sceneName));
     }
 
-    // Проигрывает эффект закрытия и открытия чёрных полос без смены сцены
-    public IEnumerator PlayEyeBlink(float durationScale = 1f)
+    // Анимация закрытия полос
+    public IEnumerator CloseBars(float durationScale = 1f)
     {
         if (topBlackBar == null || bottomBlackBar == null)
         {
-            Debug.LogWarning("TransitionManager.PlayEyeBlink: чёрные полосы не найдены");
+            Debug.LogWarning("TransitionManager.CloseBars: чёрные полосы не найдены");
             yield break;
         }
+        float duration = (transitionDuration / 2f) * durationScale;
+        yield return StartCoroutine(AnimateBars(0f, 0.5f, duration));
+    }
 
-        float halfDuration = transitionDuration / 2f * durationScale;
-        yield return StartCoroutine(AnimateBars(0f, 0.5f, halfDuration));
-        yield return StartCoroutine(AnimateBars(0.5f, 0f, halfDuration));
+    // Анимация открытия полос
+    public IEnumerator OpenBars(float durationScale = 1f)
+    {
+        if (topBlackBar == null || bottomBlackBar == null)
+        {
+            Debug.LogWarning("TransitionManager.OpenBars: чёрные полосы не найдены");
+            yield break;
+        }
+        float duration = (transitionDuration / 2f) * durationScale;
+        yield return StartCoroutine(AnimateBars(0.5f, 0f, duration));
     }
 
     private IEnumerator TransitionCoroutine(string sceneName)
