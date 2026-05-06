@@ -14,12 +14,16 @@ public class UI_Manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        AudioListener.volume = 1f;
+        AudioListener.pause = false;
+
         if (SettingsPanel != null)
             SettingsPanel.SetActive(false);
     }
 
     public void Play()
     {
+        AudioListener.volume = 1f;
         if (Time.timeScale == 0f)
             Time.timeScale = 1f;
         GameState.ResetGameState();
@@ -28,6 +32,10 @@ public class UI_Manager : MonoBehaviour
 
     public void Back()
     {
+        DialogueSystem.Instance?.StopMusic();
+        AudioListener.volume = 0f;
+        AudioListener.pause = true;
+
         if (isPaused)
             ResumeGame();
 
@@ -36,6 +44,10 @@ public class UI_Manager : MonoBehaviour
 
     public void Back_MG()
     {
+        DialogueSystem.Instance?.StopMusic();
+        AudioListener.volume = 0f;
+        AudioListener.pause = true;
+
         if (isPaused)
             ResumeGame();
         string current = SceneManager.GetActiveScene().name;
@@ -84,6 +96,7 @@ public class UI_Manager : MonoBehaviour
     {
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        AudioListener.pause = true;
         isPaused = true;
     }
 
@@ -91,6 +104,7 @@ public class UI_Manager : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        AudioListener.pause = false;
         isPaused = false;
     }
 }

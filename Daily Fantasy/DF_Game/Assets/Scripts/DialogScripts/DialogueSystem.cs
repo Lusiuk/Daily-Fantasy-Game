@@ -80,12 +80,14 @@ public class DialogueSystem : MonoBehaviour
     {
         Debug.Log($"DialogueSystem: Scene loaded - {scene.name}");
 
-        // Полностью останавливаем текущий диалог/вопрос
         if (currentTypewriter != null)
         {
             StopCoroutine(currentTypewriter);
             currentTypewriter = null;
         }
+
+        StopTypewriterMusic();
+
         isDialogueActive = false;
         isQuestionMode = false;
         currentDialogue = null;
@@ -385,6 +387,24 @@ public class DialogueSystem : MonoBehaviour
     {
         if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
             typewriterAudioSource.Stop();
+    }
+
+    public void StopMusic()
+    {
+        if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
+            typewriterAudioSource.Stop();
+
+        if (currentTypewriter != null)
+        {
+            StopCoroutine(currentTypewriter);
+            currentTypewriter = null;
+        }
+        isDialogueActive = false;
+        isQuestionMode = false;
+        currentDialogue = null;
+        currentContextObject = null;
+        inputEnabled = true;
+        isWaitingForNext = false;
     }
 
     // Скрытие диалога
