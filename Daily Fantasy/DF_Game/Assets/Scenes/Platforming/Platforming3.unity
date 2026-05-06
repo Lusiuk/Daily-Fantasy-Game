@@ -1704,6 +1704,7 @@ MonoBehaviour:
   heightPercentage: 0.2
   disablePlayerMovement: 1
   teleportDelay: 0.1
+  questionMusic: {fileID: 0}
 --- !u!4 &434447931
 Transform:
   m_ObjectHideFlags: 0
@@ -11362,15 +11363,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0010416667
-    y: 0
-    width: 0.50937504
-    height: 1.7333333
+    x: 0.00052083336
+    y: 0.0009259259
+    width: 1.4395834
+    height: 0.44074073
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 19.5
+  orthographic size: 7.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11744,6 +11745,12 @@ MonoBehaviour:
   smoothTime: 0.1
   fadePromptSpeed: 5
   replacements: []
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &1788890908
 BoxCollider2D:
   m_ObjectHideFlags: 0
