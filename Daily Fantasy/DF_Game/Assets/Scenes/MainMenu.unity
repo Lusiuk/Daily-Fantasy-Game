@@ -1855,6 +1855,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 74cf9a0b42384d148921507e4454d99b, type: 3}
   - sceneName: Street
     clip: {fileID: 8300000, guid: ce578af73d3e2a74098ee36e352e80a7, type: 3}
+  - sceneName: Credits
+    clip: {fileID: 8300000, guid: 070b81ef55eaff946a40dbd4305b7de0, type: 3}
 --- !u!1 &987063048
 GameObject:
   m_ObjectHideFlags: 0
