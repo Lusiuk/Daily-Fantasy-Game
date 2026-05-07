@@ -16,7 +16,7 @@ MonoBehaviour:
     \u043C\u043E\u0436\u043D\u043E. [R]"
   canInteract: 1
   triggerSceneTransition: 1
-  targetSceneName: MainRoom2
+  targetSceneName: MainRoom
   teleportAfterDialogue: 1
   teleportPosition: {x: 0, y: 0}
   teleportMarkerName: SpawnPoint_Door2
@@ -24,6 +24,7 @@ MonoBehaviour:
   loopMusic: 1
   dialogueId: 
   oneTimeUse: 0
+  trackForCondition: 0
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []
