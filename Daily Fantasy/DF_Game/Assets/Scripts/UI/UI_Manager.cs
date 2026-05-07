@@ -85,6 +85,10 @@ public class UI_Manager : MonoBehaviour
         {
             if (isPaused)
             {
+                if(SettingsPanel.activeSelf)
+                {
+                    SettingsPanel.SetActive(false);
+                }
                 ResumeGame();
             }
             else
