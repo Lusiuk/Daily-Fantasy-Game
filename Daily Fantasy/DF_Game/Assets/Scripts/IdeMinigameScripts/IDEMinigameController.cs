@@ -20,7 +20,8 @@ public class IDEMinigameController : MonoBehaviour
     public Button resetButton;
 
     public GameObject Answer;
-    public GameObject AnswerSlot;
+    public GameObject AnswerSlotLeft;
+    public GameObject AnswerSlotRight;
 
     private bool isChecking = false;
 
@@ -148,7 +149,7 @@ private void LoadLevel(int levelIndex)
     {
         Debug.Log($"Создание блока: {codeLine}");
         
-        GameObject slot = Instantiate(AnswerSlot,parent);
+        GameObject slot = Instantiate(AnswerSlotLeft,parent);
         GameObject blockObj = Instantiate(Answer, slot.transform);
         var textComponent = blockObj.GetComponentInChildren<TMP_Text>();
          
