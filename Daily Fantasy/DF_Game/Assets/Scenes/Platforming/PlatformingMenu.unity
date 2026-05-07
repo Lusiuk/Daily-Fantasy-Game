@@ -446,6 +446,7 @@ MonoBehaviour:
   heightPercentage: 0.2
   disablePlayerMovement: 1
   teleportDelay: 0.1
+  questionMusic: {fileID: 0}
 --- !u!4 &367034841
 Transform:
   m_ObjectHideFlags: 0
@@ -5225,6 +5226,12 @@ MonoBehaviour:
   - conditions:
     - IsDoor2Completed
     dialogue: {fileID: 11400000, guid: ec81ca71344aec34493fe35ba1622561, type: 2}
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &1568199087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8880,6 +8887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Manager
   SettingsPanel: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  dialogueSystem: {fileID: 0}
 --- !u!4 &1620058276
 Transform:
   m_ObjectHideFlags: 0
@@ -8941,6 +8950,12 @@ MonoBehaviour:
   - conditions:
     - IsDoor3Completed
     dialogue: {fileID: 11400000, guid: 0133426a3ad74de478ae06f5a648d6b1, type: 2}
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &1648142553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10804,7 +10819,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.90625
+  orthographic size: 10.28125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11098,6 +11113,12 @@ MonoBehaviour:
   - conditions:
     - IsDoor1Completed
     dialogue: {fileID: 11400000, guid: f977b0fa2dee11944a5119ab4fdc0210, type: 2}
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &1794552640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11275,7 +11296,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802269138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -11708,6 +11729,12 @@ MonoBehaviour:
   - conditions:
     - IsDoor3Completed
     dialogue: {fileID: 11400000, guid: ad41a14470139c947b13b7b8329bbe05, type: 2}
+  syncFlagName: 
+  onTrueSprite: {fileID: 0}
+  onFalseSprite: {fileID: 0}
+  modifyActive: 0
+  activeWhenTrue: 1
+  targetObject: {fileID: 0}
 --- !u!61 &2146725265
 BoxCollider2D:
   m_ObjectHideFlags: 0
