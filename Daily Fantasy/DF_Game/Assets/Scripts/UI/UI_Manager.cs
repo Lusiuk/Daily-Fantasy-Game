@@ -9,6 +9,10 @@ public class UI_Manager : MonoBehaviour
 
     public DialogueSystem dialogueSystem;
 
+    public Dialogue exitingDialogueIDE;
+
+    public Dialogue exitingDialogueRhytm;
+
     public static bool isPaused;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +36,7 @@ public class UI_Manager : MonoBehaviour
 
     public static bool IsPaused()
     {
-        if (isPaused) 
+        if (isPaused)
             return true;
         return false;
     }
@@ -60,10 +64,24 @@ public class UI_Manager : MonoBehaviour
         string current = SceneManager.GetActiveScene().name;
 
         if (current == "IdeMiniGame 1")
-            SceneManager.LoadScene("CharacterRoom");
+        {
+            if (exitingDialogueIDE != null && DialogueSystem.Instance != null)
+            {
+                DialogueSystem.Instance.ShowDialogue(exitingDialogueIDE);
+                Debug.Log("Показываем диалог выхода из мини-игры");
+            }
+        }
+        //SceneManager.LoadScene("CharacterRoom");
 
         if (current == "Rhythm Game")
-            SceneManager.LoadScene("Street");
+        {
+            if (exitingDialogueRhytm != null && DialogueSystem.Instance != null)
+            {
+                DialogueSystem.Instance.ShowDialogue(exitingDialogueRhytm);
+                Debug.Log("Показываем диалог выхода из мини-игры");
+            }
+        }
+        //SceneManager.LoadScene("Street");
     }
 
     public void Settings()
@@ -85,7 +103,7 @@ public class UI_Manager : MonoBehaviour
         {
             if (isPaused)
             {
-                if(SettingsPanel.activeSelf)
+                if (SettingsPanel.activeSelf)
                 {
                     SettingsPanel.SetActive(false);
                 }

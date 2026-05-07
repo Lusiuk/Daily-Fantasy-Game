@@ -664,6 +664,8 @@ MonoBehaviour:
   SettingsPanel: {fileID: 1330851932185234224}
   PauseMenu: {fileID: 9166290764963984407}
   dialogueSystem: {fileID: 0}
+  exitingDialogueIDE: {fileID: 11400000, guid: ca3ddb068cedb4b9fa1eccac0936a09c, type: 2}
+  exitingDialogueRhytm: {fileID: 11400000, guid: 03cba1851a8ed41ea8f9dd527ac920b4, type: 2}
 --- !u!1 &2302254676988865298
 GameObject:
   m_ObjectHideFlags: 0
