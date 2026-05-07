@@ -1668,10 +1668,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.20156251
+    x: 0.006770834
     y: 0
-    width: 0.30062136
-    height: 0.30462962
+    width: 0.98684216
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -5693,6 +5693,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 328368101705779027, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 328368101705779027, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 328368101705779027, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 834206197208388112, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5708,6 +5720,18 @@ PrefabInstance:
     - target: {fileID: 6014989766176881437, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -2.499939
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558878704698952878, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558878704698952878, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8005909786005939299, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -18.673279
       objectReference: {fileID: 0}
     - target: {fileID: 8755039669754674499, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
       propertyPath: m_Pivot.x
