@@ -692,6 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Manager
   SettingsPanel: {fileID: 0}
   PauseMenu: {fileID: 0}
+  BeatScroller: {fileID: 0}
   dialogueSystem: {fileID: 0}
   exitingDialogueIDE: {fileID: 0}
   exitingDialogueRhytm: {fileID: 0}
@@ -1065,8 +1066,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5307.1665}
-  m_SizeDelta: {x: 0, y: 10670.832}
+  m_AnchoredPosition: {x: 2.0462036, y: -5231.884}
+  m_SizeDelta: {x: 24.6012, y: 10821.396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904874997
 MonoBehaviour:
