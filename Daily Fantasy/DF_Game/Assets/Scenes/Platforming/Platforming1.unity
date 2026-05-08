@@ -26290,7 +26290,7 @@ MonoBehaviour:
   dialogueSystem: {fileID: 0}
   vcam: {fileID: 1779669898}
   gameOverScreen: {fileID: 881185170}
-  needQuickAccess: 1
+  needQuickAccess: 0
   HealthContainer: {fileID: 1319649405}
 --- !u!4 &1754280334
 Transform:
@@ -26368,15 +26368,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.00052083336
+    y: 0.0009259259
+    width: 1.1437501
+    height: 0.45185184
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 7.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -26401,7 +26401,7 @@ Transform:
   m_GameObject: {fileID: 1765541961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4754, y: 0.6338, z: -10}
+  m_LocalPosition: {x: 5.066755, y: 0.63378996, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
