@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fad047b99cf6d9241b054ee7bec9c8c8
+guid: daac9bd6f3103e54c863840f7dc6ae92
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 474717778534349937
-    second: Triforce_0
+      213: -7972116236373363276
+    second: Son2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 0.1
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Triforce_0
+      name: Son2_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
-        width: 44
-        height: 39
+        x: 23
+        y: 29
+        width: 2002
+        height: 826
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17c3a1eed49869600800000000000000
-      internalID: 474717778534349937
+      spriteID: 4b577d6658a5d5190800000000000000
+      internalID: -7972116236373363276
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Triforce_0: 474717778534349937
+      Son2_0: -7972116236373363276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
