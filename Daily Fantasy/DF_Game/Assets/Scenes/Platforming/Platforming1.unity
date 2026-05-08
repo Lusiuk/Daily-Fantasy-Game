@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6014989766176881437, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.499939
+      objectReference: {fileID: 0}
     - target: {fileID: 8755039669754674499, guid: 0ed522ab7d959b84cb934e455595ea60, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -25275,6 +25279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  interactionEnabled: 1
   dialogue: {fileID: 11400000, guid: 26d2b24a257eb764480ca1319e9fe841, type: 2}
   autoTrigger: 0
   interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
@@ -25790,15 +25795,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0015625001
     y: 0
-    width: 1
-    height: 1
+    width: 0.6916667
+    height: 1.7333333
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.6875
+  orthographic size: 14.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -26112,6 +26117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  interactionEnabled: 1
   dialogue: {fileID: 11400000, guid: 0bdf61f70ef8d8f46ae1b1f7f7c83c05, type: 2}
   autoTrigger: 1
   interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
@@ -26740,6 +26746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  interactionEnabled: 1
   dialogue: {fileID: 11400000, guid: f727d98bd8845ff408035a930e89f1ed, type: 2}
   autoTrigger: 1
   interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
@@ -35053,15 +35060,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 2467649402088277642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8abbbf2dcc7f3493e98388e085ba1b21, type: 3}
+  m_Script: {fileID: 11500000, guid: 10ef085bf40da47868c5f6ed820cee9d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Chest
-  openAnimationName: ChestOpen
-  closeAnimationName: ChestClose
-  animationDuration: 1
-  easterEggPrefab: {fileID: 4992538379073826457, guid: 4072887a9cf9857468ba9e216b6e3e8c, type: 3}
-  fadeInDuration: 0.5
-  fadeOutDuration: 0.5
+  m_EditorClassIdentifier: '::'
+  chestAnimator: {fileID: 2467649402088277644}
+  dialogueTrigger: {fileID: 2467649402088277645}
+  interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
+  treasurePrefab: {fileID: 4992538379073826457, guid: 4072887a9cf9857468ba9e216b6e3e8c, type: 3}
+  treasureParent: {fileID: 0}
+--- !u!95 &2467649402088277644 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5687268978958782414, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+  m_PrefabInstance: {fileID: 2467649402088277641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2467649402088277645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7806762241949289347, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+  m_PrefabInstance: {fileID: 2467649402088277641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467649402088277642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
 --- !u!1001 &5213163061117346963
 PrefabInstance:
   m_ObjectHideFlags: 0

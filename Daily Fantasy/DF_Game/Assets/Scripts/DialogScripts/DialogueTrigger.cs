@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Dialogue Settings")]
+
+    [SerializeField] private bool interactionEnabled = true;
     [SerializeField] private Dialogue dialogue;
     [SerializeField] private bool autoTrigger = false;
 
@@ -25,17 +27,17 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     [Header("Dialogue Replacement")]
-    [SerializeField] private DialogueReplacement[] replacements; // список замен
+    [SerializeField] private DialogueReplacement[] replacements; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
     [Header("Initial Visual Sync")]
-    [SerializeField] private string syncFlagName;           // имя флага для проверки при старте
-    [SerializeField] private Sprite onTrueSprite;           // спрайт, если флаг == true
-    [SerializeField] private Sprite onFalseSprite;          // спрайт, если флаг == false
-    [SerializeField] private bool modifyActive = false;     // изменять ли активность объекта
-    [SerializeField] private bool activeWhenTrue = true;    // если modifyActive, то при true – такая активность
-    [SerializeField] private GameObject targetObject;       // если не указан, действуем на gameObject
+    [SerializeField] private string syncFlagName;           // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private Sprite onTrueSprite;           // пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ == true
+    [SerializeField] private Sprite onFalseSprite;          // пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ == false
+    [SerializeField] private bool modifyActive = false;     // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private bool activeWhenTrue = true;    // пїЅпїЅпїЅпїЅ modifyActive, пїЅпїЅ пїЅпїЅпїЅ true пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private GameObject targetObject;       // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ gameObject
 
-    // Приватные переменные
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private bool hasBeenUsed = false;
     private bool playerInRange = false;
     private Transform playerTransform;
@@ -49,7 +51,7 @@ public class DialogueTrigger : MonoBehaviour
     private bool dialogueTriggeredThisSession = false;
     private int appliedReplacementIndex = -1;
 
-    // Инициализирует компоненты при старте
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     void Start()
     {
         mainCamera = Camera.main;
@@ -71,7 +73,7 @@ public class DialogueTrigger : MonoBehaviour
 
         CheckAndApplyReplacement();
 
-        // Проверка, не является ли текущий диалог
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
         {
             DisableTrigger();
@@ -117,7 +119,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Обрабатывает вход игрока в триггер
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!isActive) return;
@@ -137,7 +139,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Обрабатывает выход игрока из триггера
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void OnTriggerExit2D(Collider2D other)
     {
         if (!isActive) return;
@@ -156,7 +158,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Плавно показывает подсказку
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void ShowPrompt()
     {
         if (promptCanvasGroup == null || isPromptVisible) return;
@@ -166,7 +168,7 @@ public class DialogueTrigger : MonoBehaviour
         StartCoroutine(FadePrompt(0f, 1f, fadePromptSpeed));
     }
 
-    // Плавно скрывает подсказку
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void HidePrompt()
     {
         if (promptCanvasGroup == null || !isPromptVisible) return;
@@ -176,7 +178,7 @@ public class DialogueTrigger : MonoBehaviour
         StartCoroutine(FadePrompt(promptCanvasGroup.alpha, 0f, fadePromptSpeed));
     }
 
-    // Корутина плавного изменения прозрачности
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private System.Collections.IEnumerator FadePrompt(float from, float to, float speed)
     {
         float elapsed = 0f;
@@ -195,7 +197,7 @@ public class DialogueTrigger : MonoBehaviour
             promptCanvasGroup.alpha = to;
     }
 
-    // Обновляет позицию подсказки
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void Update()
     {
         if (!isActive || !playerInRange || interactionPrompt == null || !isPromptVisible)
@@ -204,9 +206,17 @@ public class DialogueTrigger : MonoBehaviour
         UpdatePromptPositionSmooth();
     }
 
-    // Обрабатывает нажатие клавиши взаимодействия
+    public void SetInteractionEnabled(bool enabled)
+    {
+        interactionEnabled = enabled;
+        UpdatePromptVisibility();
+    }
+
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
+        if (!interactionEnabled) return;
+        
         if (!isActive || !gameObject.activeInHierarchy) return;
 
         if (playerInRange && !autoTrigger && !hasBeenUsed && DialogueSystem.Instance != null && !DialogueSystem.Instance.IsDialogueActive())
@@ -215,7 +225,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Плавно обновляет позицию подсказки над игроком
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void UpdatePromptPositionSmooth()
     {
         if (playerTransform != null && mainCamera != null && isPromptVisible)
@@ -245,7 +255,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Мгновенная установка позиции
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void SnapPromptPosition()
     {
         if (playerTransform != null && mainCamera != null)
@@ -268,7 +278,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Запускает диалог
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     public void TriggerDialogue()
     {
         if (!isActive) return;
@@ -286,7 +296,7 @@ public class DialogueTrigger : MonoBehaviour
         if (dialogue.oneTimeUse) hasBeenUsed = true;
     }
 
-    // Сбрасывает состояние триггера
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public void ResetTrigger()
     {
         hasBeenUsed = false;
@@ -302,7 +312,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (replacements == null || replacements.Length == 0) return;
 
-        // Ищем самую нижнюю подходящую замену, начиная с конца массива
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         int bestIndex = -1;
         for (int i = replacements.Length - 1; i >= 0; i--)
         {
@@ -319,15 +329,15 @@ public class DialogueTrigger : MonoBehaviour
 
         if (bestIndex == -1) return;
 
-        // Если это та же замена, что уже применена, ничего не делаем
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         if (appliedReplacementIndex == bestIndex) return;
 
-        // Применяем замену
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         dialogue = replacements[bestIndex].dialogue;
         appliedReplacementIndex = bestIndex;
-        Debug.Log($"{gameObject.name}: диалог заменён на {dialogue.name} (условия #{bestIndex})");
+        Debug.Log($"{gameObject.name}: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ {dialogue.name} (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ #{bestIndex})");
 
-        // После замены перепроверяем доступность нового диалога
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (dialogue != null && dialogue.oneTimeUse && !string.IsNullOrEmpty(dialogue.dialogueId) && GameState.IsDialogueUsed(dialogue.dialogueId))
         {
             DisableTrigger();
@@ -376,7 +386,7 @@ public class DialogueTrigger : MonoBehaviour
 
         bool flagValue = GameState.GetFlag(syncFlagName);
 
-        // Меняем спрайт
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         SpriteRenderer sr = (targetObject != null ? targetObject.GetComponent<SpriteRenderer>() : GetComponent<SpriteRenderer>());
         if (sr != null)
         {
@@ -386,7 +396,7 @@ public class DialogueTrigger : MonoBehaviour
                 sr.sprite = onFalseSprite;
         }
 
-        // Меняем активность
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (modifyActive)
         {
             GameObject obj = targetObject != null ? targetObject : gameObject;
@@ -395,7 +405,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // Обновить видимость подсказки в зависимости от доступности диалога
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void UpdatePromptVisibility()
     {
         bool available = dialogue != null && dialogue.canInteract && !hasBeenUsed && !dialogueTriggeredThisSession;

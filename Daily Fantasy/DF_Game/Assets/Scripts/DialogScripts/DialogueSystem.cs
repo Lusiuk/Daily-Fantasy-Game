@@ -41,6 +41,9 @@ public class DialogueSystem : MonoBehaviour
     public System.Action OnDialogueStart;
     public System.Action OnDialogueEnd;
 
+    //Какой объект открыл диалог
+    public GameObject CurrentContextObject => currentContextObject;
+
     // Приватные переменные
     private CanvasGroup canvasGroup;
     private Coroutine currentTypewriter;
