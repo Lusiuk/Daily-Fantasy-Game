@@ -23,8 +23,8 @@ MonoBehaviour:
   teleportMarkerName: 
   typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
   loopMusic: 1
-  dialogueId: "\u04464\u044C868"
-  oneTimeUse: 1
+  dialogueId: 
+  oneTimeUse: 0
   trackForCondition: 0
   setFlagsAfterDialogue: 0
   flagChanges: []
