@@ -157,6 +157,7 @@ public class TransitionManager : MonoBehaviour
         if (isTransitioning) return;
 
         GameState.PreviousScene = SceneManager.GetActiveScene().name;
+        GameState.Save();
 
         StartCoroutine(TransitionCoroutine(sceneName));
     }
