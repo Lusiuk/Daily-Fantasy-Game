@@ -28,6 +28,9 @@ public class Dialogue : ScriptableObject
     public bool oneTimeUse = false;     // должен ли диалог исчезнуть после первого использования
     public bool trackForCondition = false;
 
+    [Header("Dialogue Panel Alignment")]
+    public bool centerDialoguePanel = false;   // если true, панель будет по центру экрана
+
     [System.Serializable]
     public struct DialogueLine
     {

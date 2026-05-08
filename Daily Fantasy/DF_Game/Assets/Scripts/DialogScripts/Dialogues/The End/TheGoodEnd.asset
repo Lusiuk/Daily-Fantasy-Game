@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0ce09f1e1f89b43ab3ba879ccf71a6, type: 3}
+  m_Name: TheGoodEnd
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  text: "\u0422\u044B \u0431\u044B\u043B \u0445\u043E\u0440\u043E\u0448\u0438\u043C
+    \u043C\u0430\u043B\u044C\u0447\u0438\u043A\u043E\u043C [R]"
+  canInteract: 1
+  triggerSceneTransition: 1
+  targetSceneName: Credits
+  teleportAfterDialogue: 0
+  teleportPosition: {x: 0, y: 0}
+  teleportMarkerName: 
+  typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
+  loopMusic: 1
+  dialogueId: 
+  oneTimeUse: 0
+  trackForCondition: 0
+  centerDialoguePanel: 1
+  isPlayerSpeaking: 1
+  npcName: NPC
+  lines: []
