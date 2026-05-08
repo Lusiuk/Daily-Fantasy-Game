@@ -63,5 +63,7 @@ MonoBehaviour:
   - 0.25
   - 0.5
   blinkStepDuration: 0.5
-  finalDialogueOptions: []
+  finalDialogueOptions:
+  - conditions: []
+    dialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}
   finalDialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}

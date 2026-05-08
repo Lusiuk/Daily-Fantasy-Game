@@ -207,7 +207,12 @@ public class TransitionManager : MonoBehaviour
         Debug.Log("Starting transition - closing animation");
 
         // Шаг 1: Анимация закрытия
-        yield return StartCoroutine(AnimateBars(0f, 0.5f, transitionDuration / 2));
+        // Если полосы ещё не полностью закрыты – анимируем закрытие
+        float currentTopHeight = topBlackBar != null ? topBlackBar.rectTransform.sizeDelta.y / Screen.height : 0f;
+        if (currentTopHeight < 0.5f)
+        {
+            yield return StartCoroutine(AnimateBars(currentTopHeight, 0.5f, transitionDuration / 2));
+        }
 
         Debug.Log($"Loading scene: {sceneName}");
 

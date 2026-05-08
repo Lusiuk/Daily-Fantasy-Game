@@ -507,10 +507,22 @@ public class DialogueSystem : MonoBehaviour
                         yield return TransitionManager.Instance.PlayCustomBlink(finalEnding.blinkSteps, finalEnding.blinkStepDuration);
                     }
 
+                    StopTypewriterMusic();
+                    if (currentTypewriter != null)
+                    {
+                        StopCoroutine(currentTypewriter);
+                        currentTypewriter = null;
+                    }
+                    isDialogueActive = false;
+                    isQuestionMode = false;
+                    currentDialogue = null;
+                    currentContextObject = null;
+                    inputEnabled = true;
+                    isWaitingForNext = false;
+
                     // Выбираем финальный диалог
                     Dialogue chosenFinalDialogue = null;
 
-                    // Сначала ищем подходящий вариант из массива
                     if (finalEnding.finalDialogueOptions != null && finalEnding.finalDialogueOptions.Length > 0)
                     {
                         foreach (var option in finalEnding.finalDialogueOptions)
@@ -523,18 +535,21 @@ public class DialogueSystem : MonoBehaviour
                         }
                     }
 
-                    // Если не нашли – используем одиночный диалог (обратная совместимость)
                     if (chosenFinalDialogue == null)
                         chosenFinalDialogue = finalEnding.finalDialogue;
 
                     // Запускаем финальный диалог
                     if (chosenFinalDialogue != null)
                     {
+                        // Поднимаем диалоговый канвас над чёрными полосами
+                        DialogueSystem.Instance.SetCanvasOrder(999);
+
                         DialogueSystem.Instance.ShowDialogue(chosenFinalDialogue, null);
                         yield return new WaitUntil(() => !DialogueSystem.Instance.IsDialogueActive());
-                    }
 
-                    // После финального диалога сцена сменится, и движение игрока уже не нужно
+                        // Возвращаем исходный порядок
+                        DialogueSystem.Instance.SetCanvasOrder(-1);
+                    }
                 }
                 else
                 {
@@ -753,5 +768,24 @@ public class DialogueSystem : MonoBehaviour
     {
         if (typewriterAudioSource != null && typewriterAudioSource.isPlaying)
             typewriterAudioSource.Stop();
+    }
+
+    private int originalCanvasOrder = 0;
+    private Canvas dialogueCanvas;
+
+    public void SetCanvasOrder(int order)
+    {
+        if (dialogueCanvas == null)
+            dialogueCanvas = dialoguePanel?.GetComponentInParent<Canvas>();
+        if (dialogueCanvas != null)
+        {
+            if (order == -1) // специальное значение для восстановления
+                dialogueCanvas.sortingOrder = originalCanvasOrder;
+            else
+            {
+                if (originalCanvasOrder == 0) originalCanvasOrder = dialogueCanvas.sortingOrder;
+                dialogueCanvas.sortingOrder = order;
+            }
+        }
     }
 }
