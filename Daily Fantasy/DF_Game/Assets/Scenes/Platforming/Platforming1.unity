@@ -23605,7 +23605,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -24276,8 +24276,8 @@ Tilemap:
   - m_RefCount: 52
     m_Data: {fileID: 11400000, guid: c16517b3487ff40a49b3a646b35e26e6, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: -984899422, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -703814445, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 92
@@ -24292,8 +24292,8 @@ Tilemap:
     m_Data: {fileID: 22460681, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 767922211, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -984899422, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -1061196577, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 5
@@ -25790,15 +25790,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0020833334
-    y: 0.0009259259
-    width: 1.140625
-    height: 0.9537037
+    x: 0
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.4375
+  orthographic size: 5.6875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -35034,8 +35034,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6580689516518995078, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2467649402088277643}
   m_SourcePrefab: {fileID: 100100000, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+--- !u!1 &2467649402088277642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6580689516518995078, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+  m_PrefabInstance: {fileID: 2467649402088277641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2467649402088277643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467649402088277642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abbbf2dcc7f3493e98388e085ba1b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chest
+  openAnimationName: ChestOpen
+  closeAnimationName: ChestClose
+  animationDuration: 1
+  easterEggPrefab: {fileID: 4992538379073826457, guid: 4072887a9cf9857468ba9e216b6e3e8c, type: 3}
+  fadeInDuration: 0.5
+  fadeOutDuration: 0.5
 --- !u!1001 &5213163061117346963
 PrefabInstance:
   m_ObjectHideFlags: 0
