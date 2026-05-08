@@ -8,6 +8,7 @@ public class FinalEndingDialogue : QuestDialogue
     public Sprite bedFinalSprite;
     public float[] blinkSteps = new float[] { 0.5f, 0f, 0.5f, 0.25f, 0.5f };
     public float blinkStepDuration = 0.5f;
+    public Vector2 bedFinalScale = new Vector2(0.66f, 0.66f);
 
     [System.Serializable]
     public class FinalDialogueOption

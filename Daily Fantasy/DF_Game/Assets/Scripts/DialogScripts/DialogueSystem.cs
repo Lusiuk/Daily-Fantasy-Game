@@ -498,7 +498,11 @@ public class DialogueSystem : MonoBehaviour
                     if (currentContextObject != null && finalEnding.bedFinalSprite != null)
                     {
                         SpriteRenderer sr = currentContextObject.GetComponent<SpriteRenderer>();
-                        if (sr != null) sr.sprite = finalEnding.bedFinalSprite;
+                        if (sr != null)
+                        {
+                            sr.sprite = finalEnding.bedFinalSprite;
+                            currentContextObject.transform.localScale = finalEnding.bedFinalScale;
+                        }
                     }
 
                     // Кастомное моргание

@@ -55,7 +55,7 @@ MonoBehaviour:
   playEyeBlinkOnYes: 0
   playEyeBlinkOnNo: 0
   hidePlayer: 1
-  bedFinalSprite: {fileID: 0}
+  bedFinalSprite: {fileID: 1291748198613406465, guid: d3d3198d712d7488c9df68911872c16a, type: 3}
   blinkSteps:
   - 0.5
   - 0
@@ -63,6 +63,7 @@ MonoBehaviour:
   - 0.25
   - 0.5
   blinkStepDuration: 0.5
+  bedFinalScale: {x: 0.66, y: 0.66}
   finalDialogueOptions:
   - conditions: []
     dialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}
