@@ -65,6 +65,18 @@ MonoBehaviour:
   blinkStepDuration: 0.5
   bedFinalScale: {x: 0.66, y: 0.66}
   finalDialogueOptions:
-  - conditions: []
+  - conditions:
+    - IsIDEMinigameCompleted
+    - BedMade
     dialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}
-  finalDialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}
+  - conditions:
+    - IsIDEMinigameCompleted
+    - FlowerWatered
+    dialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}
+  - conditions:
+    - BedMade
+    - FlowerWatered
+    dialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}
+  - conditions: []
+    dialogue: {fileID: 11400000, guid: f5e196e10ea4fe540b74555e33b48f90, type: 2}
+  finalDialogue: {fileID: 0}
