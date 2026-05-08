@@ -23605,7 +23605,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -24276,8 +24276,8 @@ Tilemap:
   - m_RefCount: 52
     m_Data: {fileID: 11400000, guid: c16517b3487ff40a49b3a646b35e26e6, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -984899422, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -703814445, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 92
@@ -24292,8 +24292,8 @@ Tilemap:
     m_Data: {fileID: 22460681, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 767922211, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -984899422, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 5
     m_Data: {fileID: -1061196577, guid: e1abd2fef108d4de08a4532996cb7819, type: 3}
   - m_RefCount: 5
@@ -25275,7 +25275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogue: {fileID: 11400000, guid: a20ce6725ebf4dd438085381050ff7fd, type: 2}
+  dialogue: {fileID: 11400000, guid: 26d2b24a257eb764480ca1319e9fe841, type: 2}
   autoTrigger: 0
   interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
   interactionPrompt: {fileID: 158750314}
@@ -25790,15 +25790,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0020833334
+    y: 0.0009259259
+    width: 1.140625
+    height: 0.9537037
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.78125
+  orthographic size: 6.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
