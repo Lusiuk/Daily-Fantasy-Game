@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class UI_Manager : MonoBehaviour
 {
 
     public GameObject SettingsPanel;
     public GameObject PauseMenu;
+    public BeatScroller BeatScroller;
 
     public DialogueSystem dialogueSystem;
 
@@ -77,6 +79,7 @@ public class UI_Manager : MonoBehaviour
         {
             if (exitingDialogueRhytm != null && DialogueSystem.Instance != null)
             {
+                BeatScroller.BeatStop();
                 DialogueSystem.Instance.ShowDialogue(exitingDialogueRhytm);
                 Debug.Log("Показываем диалог выхода из мини-игры");
             }
