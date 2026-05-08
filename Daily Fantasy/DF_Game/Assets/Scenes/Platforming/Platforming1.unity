@@ -19393,6 +19393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7806762241949289347, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: a20ce6725ebf4dd438085381050ff7fd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25667,15 +25671,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.00052083336
+    x: 0
     y: 0
-    width: 0.45416668
-    height: 1.8407407
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 31.0625
+  orthographic size: 10.78125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
