@@ -1578,6 +1578,10 @@ PrefabInstance:
       propertyPath: dialogue
       value: 
       objectReference: {fileID: 11400000, guid: eb152b3804c7c6a41b50b7dfec446632, type: 2}
+    - target: {fileID: 7806762241949289347, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+      propertyPath: interactionPrompt
+      value: 
+      objectReference: {fileID: 1227268072}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14026,6 +14030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  interactionEnabled: 1
   dialogue: {fileID: 11400000, guid: bf22514cc93cafb41a9dbff298443c2a, type: 2}
   autoTrigger: 1
   interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
