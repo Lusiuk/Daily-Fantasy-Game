@@ -777,8 +777,8 @@ MonoBehaviour:
   - conditions:
     - HasWateringCan
     - '!FlowerWatered'
-    - '!PieBaked'
     - '!FlowerDead'
+    - '!PieBaked'
     dialogue: {fileID: 11400000, guid: 9e9fa4cfbbbbf4f4f9a637f25dd7a8e8, type: 2}
   syncFlagName: FlowerDead
   onTrueSprite: {fileID: 2904788205133708690, guid: 14d2a82379378414db89565589d754d3, type: 3}
@@ -1046,10 +1046,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.20156251
+    x: 0
     y: 0
-    width: 0.30062136
-    height: 0.30462962
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1079,7 +1079,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0517616, y: -4.8246055, z: -1}
+  m_LocalPosition: {x: -2.7008762, y: -4.823175, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

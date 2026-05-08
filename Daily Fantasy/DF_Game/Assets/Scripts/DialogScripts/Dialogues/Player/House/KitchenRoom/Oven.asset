@@ -26,6 +26,12 @@ MonoBehaviour:
   loopMusic: 1
   dialogueId: "5\u043F47\u04436"
   oneTimeUse: 1
+  trackForCondition: 0
+  setFlagsAfterDialogue: 1
+  flagChanges:
+  - flagName: PieBaked
+    value: 1
+  centerDialoguePanel: 0
   isPlayerSpeaking: 1
   npcName: NPC
   lines: []

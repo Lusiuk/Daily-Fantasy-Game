@@ -2658,8 +2658,8 @@ MonoBehaviour:
   fadePromptSpeed: 5
   replacements:
   - conditions:
-    - '!IsPlatformingCompleted'
-    - '!IsRhythmGame1Completed'
+    - IsPlatformingCompleted
+    - IsRhythmGame1Completed
     dialogue: {fileID: 11400000, guid: 679a718392489e8479fcf04e729e84a3, type: 2}
   syncFlagName: 
   onTrueSprite: {fileID: 0}
@@ -3435,7 +3435,7 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.26406252
+    x: 0.24062501
     y: 0
     width: 0.30062136
     height: 0.30462962

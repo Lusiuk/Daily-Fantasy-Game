@@ -178,9 +178,13 @@ public static class GameState
             {
                 _pieBaked = value;
                 OnFlagChanged?.Invoke("PieBaked");
+                Debug.Log($"[GameState] Флаг 'PieBaked' установлен в {value}");
                 // Если пирог испечён и цветок не полит — цветок засыхает
                 if (value && !FlowerWatered)
+                {
                     FlowerDead = true;
+                    Debug.Log($"[GameState] Флаг 'FlowerDead' установлен в true");
+                }
             }
         }
     }
@@ -195,6 +199,7 @@ public static class GameState
             {
                 _flowerWatered = value;
                 OnFlagChanged?.Invoke("FlowerWatered");
+                Debug.Log($"[GameState] Флаг 'FlowerWatered' установлен в {value}");
             }
         }
     }
@@ -379,6 +384,7 @@ public static class GameState
                 Debug.LogWarning($"GameState.SetFlag: неизвестный флаг '{flagName}'");
                 break;
         }
+        Debug.Log($"[GameState] Флаг '{flagName}' установлен в {value}");
     }
 
     // Получить значение флага по имени

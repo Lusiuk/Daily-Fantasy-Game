@@ -604,7 +604,14 @@ public class DialogueSystem : MonoBehaviour
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
-        EndDialogue:
+        // Применяем флаги, если диалог это поддерживает
+        if (currentDialogue != null && currentDialogue.setFlagsAfterDialogue && currentDialogue.flagChanges != null)
+        {
+            foreach (var change in currentDialogue.flagChanges)
+                GameState.SetFlag(change.flagName, change.value);
+        }
+
+    EndDialogue:
         isDialogueActive = false;
         currentDialogue = null;
         currentContextObject = null;
