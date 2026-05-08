@@ -16575,6 +16575,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8167176038581519643, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
+      propertyPath: BeatScroller
+      value: 
+      objectReference: {fileID: 520797369}
     - target: {fileID: 8755039669754674499, guid: 1bd9c72c11fc17f458f57047cdbe24b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0

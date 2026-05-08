@@ -12,6 +12,8 @@ public class BeatScroller : MonoBehaviour
         beatTempo = beatTempo / 60f; // Convert BPM to beats per second
     }
 
+    public void BeatStop() => beatTempo = 0;
+
     // Update is called once per frame
     void Update()
     {
