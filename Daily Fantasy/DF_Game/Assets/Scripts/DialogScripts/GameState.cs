@@ -214,6 +214,21 @@ public static class GameState
         }
     }
 
+    // The end
+    private static bool _finalStage;
+    public static bool FinalStage
+    {
+        get => _finalStage;
+        set
+        {
+            if (_finalStage != value)
+            {
+                _finalStage = value;
+                OnFlagChanged?.Invoke("FinalStage");
+            }
+        }
+    }
+
     //Событие
     public static event System.Action<string> OnFlagChanged;
 
@@ -241,6 +256,7 @@ public static class GameState
         FlowerWatered = false;
         PieBaked = false;
         FlowerDead = false;
+        FinalStage = false;
 
         _usedDialogues.Clear();
 
@@ -358,6 +374,7 @@ public static class GameState
             case "FlowerWatered": FlowerWatered = value; break;
             case "PieBaked": PieBaked = value; break;
             case "FlowerDead": FlowerDead = value; break;
+            case "FinalStage": FinalStage = value; break;
             default:
                 Debug.LogWarning($"GameState.SetFlag: неизвестный флаг '{flagName}'");
                 break;
@@ -383,6 +400,7 @@ public static class GameState
             case "FlowerWatered": return FlowerWatered;
             case "PieBaked": return PieBaked;
             case "FlowerDead": return FlowerDead;
+            case "FinalStage": return FinalStage;
             default:
                 Debug.LogWarning($"Неизвестный флаг: {flagName}");
                 return false;

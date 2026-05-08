@@ -288,8 +288,16 @@ public class DialogueSystem : MonoBehaviour
                 float height = Screen.height * heightPercentage;
                 panelRect.sizeDelta = new Vector2(width, height);
                 panelRect.anchoredPosition = Vector2.zero;
-                panelRect.anchorMin = new Vector2(0.5f, 0.1f);
-                panelRect.anchorMax = new Vector2(0.5f, 0.1f);
+                if (currentDialogue.centerDialoguePanel)
+                {
+                    panelRect.anchorMin = new Vector2(0.5f, 0.5f);
+                    panelRect.anchorMax = new Vector2(0.5f, 0.5f);
+                }
+                else
+                {
+                    panelRect.anchorMin = new Vector2(0.5f, 0.1f);
+                    panelRect.anchorMax = new Vector2(0.5f, 0.1f);
+                }
                 panelRect.pivot = new Vector2(0.5f, 0.5f);
             }
         }
@@ -469,33 +477,99 @@ public class DialogueSystem : MonoBehaviour
             Outcome chosenOutcome = yes ? questDialogue.positiveOutcome : questDialogue.negativeOutcome;
             bool playBlink = yes ? questDialogue.playEyeBlinkOnYes : questDialogue.playEyeBlinkOnNo;
 
-            try
+            FinalEndingDialogue finalEnding = questDialogue as FinalEndingDialogue;
+
+            if (finalEnding != null)
             {
-                // Закрываем полосы (глаза закрываются)
-                if (playBlink && TransitionManager.Instance != null)
-                    yield return TransitionManager.Instance.CloseBars();
+                if (yes)
+                {
+                    // Применяем исход (флаги и т.д.)
+                    if (chosenOutcome != null)
+                        ExecuteOutcome(chosenOutcome);
 
-                // Меняем объект (спрайт, флаги и т.д.)
-                if (chosenOutcome != null)
-                    ExecuteOutcome(chosenOutcome);
+                    // Скрываем игрока, если нужно
+                    if (finalEnding.hidePlayer)
+                    {
+                        GameObject player = GameObject.FindGameObjectWithTag("Player");
+                        if (player != null) player.SetActive(false);
+                    }
 
-                // Открываем полосы (глаза открываются)
-                if (playBlink && TransitionManager.Instance != null)
-                    yield return TransitionManager.Instance.OpenBars();
+                    // Меняем спрайт кровати
+                    if (currentContextObject != null && finalEnding.bedFinalSprite != null)
+                    {
+                        SpriteRenderer sr = currentContextObject.GetComponent<SpriteRenderer>();
+                        if (sr != null) sr.sprite = finalEnding.bedFinalSprite;
+                    }
+
+                    // Кастомное моргание
+                    if (finalEnding.blinkSteps != null && finalEnding.blinkSteps.Length > 0 && TransitionManager.Instance != null)
+                    {
+                        yield return TransitionManager.Instance.PlayCustomBlink(finalEnding.blinkSteps, finalEnding.blinkStepDuration);
+                    }
+
+                    // Выбираем финальный диалог
+                    Dialogue chosenFinalDialogue = null;
+
+                    // Сначала ищем подходящий вариант из массива
+                    if (finalEnding.finalDialogueOptions != null && finalEnding.finalDialogueOptions.Length > 0)
+                    {
+                        foreach (var option in finalEnding.finalDialogueOptions)
+                        {
+                            if (GameState.AreFlagsSatisfied(option.conditions))
+                            {
+                                chosenFinalDialogue = option.dialogue;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Если не нашли – используем одиночный диалог (обратная совместимость)
+                    if (chosenFinalDialogue == null)
+                        chosenFinalDialogue = finalEnding.finalDialogue;
+
+                    // Запускаем финальный диалог
+                    if (chosenFinalDialogue != null)
+                    {
+                        DialogueSystem.Instance.ShowDialogue(chosenFinalDialogue, null);
+                        yield return new WaitUntil(() => !DialogueSystem.Instance.IsDialogueActive());
+                    }
+
+                    // После финального диалога сцена сменится, и движение игрока уже не нужно
+                }
+                else
+                {
+                    // Ответ «Нет» – просто возвращаем управление игроку
+                    if (disablePlayerMovement)
+                        EnablePlayerMovement();
+                }
             }
-            finally
+            else
             {
-                // Гарантированно возвращаем управление игроку
-                if (disablePlayerMovement)
-                    EnablePlayerMovement();
+                // Стандартная обработка квеста (с эффектом моргания)
+                try
+                {
+                    if (playBlink && TransitionManager.Instance != null)
+                        yield return TransitionManager.Instance.CloseBars();
+
+                    if (chosenOutcome != null)
+                        ExecuteOutcome(chosenOutcome);
+
+                    if (playBlink && TransitionManager.Instance != null)
+                        yield return TransitionManager.Instance.OpenBars();
+                }
+                finally
+                {
+                    if (disablePlayerMovement)
+                        EnablePlayerMovement();
+                }
             }
         }
 
-        // Включаем движение только если это был НЕ квестовый диалог (в квесте уже включили)
+        // Включаем движение только для не-квестовых диалогов (и не финала)
         if (!questDialogue && !currentDialogue.triggerSceneTransition && disablePlayerMovement)
             EnablePlayerMovement();
 
-        // Полный сброс всех состояний, как при загрузке сцены (кроме InputSystem)
+        // Полный сброс состояний
         StopTypewriterMusic();
         if (currentTypewriter != null)
         {
@@ -512,7 +586,6 @@ public class DialogueSystem : MonoBehaviour
             dialoguePanel.SetActive(false);
 
         EndDialogue:
-        // (повторно, на случай если переход на метку был из другого места)
         isDialogueActive = false;
         currentDialogue = null;
         currentContextObject = null;

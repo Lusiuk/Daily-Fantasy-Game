@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b187b8988198240b9c79818b3b5a8e, type: 3}
+  m_Name: BedFinalEnding
+  m_EditorClassIdentifier: Assembly-CSharp::FinalEndingDialogue
+  text: 
+  canInteract: 1
+  triggerSceneTransition: 0
+  targetSceneName: 
+  teleportAfterDialogue: 0
+  teleportPosition: {x: 0, y: 0}
+  teleportMarkerName: 
+  typewriterMusic: {fileID: 8300000, guid: dd4068423f967d241aa87d438833ed6c, type: 3}
+  loopMusic: 1
+  dialogueId: 
+  oneTimeUse: 0
+  trackForCondition: 0
+  centerDialoguePanel: 0
+  isPlayerSpeaking: 1
+  npcName: NPC
+  lines:
+  - text: "*\u0417\u0435\u0432\u0430\u0435\u0442* [R]"
+    isPlayerSpeaking: 1
+    npcName: 
+  - text: "\u041F\u043E\u0435\u043B\u0438, \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u043D\u043E
+      \u0438 \u043F\u043E\u0441\u043F\u0430\u0442\u044C [R]"
+    isPlayerSpeaking: 1
+    npcName: 
+  questionText: "\u041B\u0435\u0447\u044C \u0441\u043F\u0430\u0442\u044C?"
+  positiveOutcome:
+    flagChanges: []
+    newSprite: {fileID: 0}
+    targetObject: {fileID: 0}
+    setActive: 1
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  negativeOutcome:
+    flagChanges: []
+    newSprite: {fileID: 0}
+    targetObject: {fileID: 0}
+    setActive: 1
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  playEyeBlinkOnYes: 0
+  playEyeBlinkOnNo: 0
+  hidePlayer: 1
+  bedFinalSprite: {fileID: 0}
+  blinkSteps:
+  - 0.5
+  - 0
+  - 0.5
+  - 0.25
+  - 0.5
+  blinkStepDuration: 0.5
+  finalDialogueOptions: []
+  finalDialogue: {fileID: 11400000, guid: d16501daf2d567944a999d15cbf1a9dd, type: 2}

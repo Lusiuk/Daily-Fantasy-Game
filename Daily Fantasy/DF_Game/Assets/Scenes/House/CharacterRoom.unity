@@ -657,7 +657,10 @@ MonoBehaviour:
     dialogue: {fileID: 11400000, guid: 9ba9a6c85c9b40d4589058229f74f1e5, type: 2}
   - conditions:
     - DialogueUsed:w45b7w
-    dialogue: {fileID: 11400000, guid: ceb7f90262def3b4e82f4f4063136eff, type: 2}
+    dialogue: {fileID: 11400000, guid: b1f0db227587287419d60ed5727b99a1, type: 2}
+  - conditions:
+    - FinalStage
+    dialogue: {fileID: 11400000, guid: b1f0db227587287419d60ed5727b99a1, type: 2}
   syncFlagName: BedMade
   onTrueSprite: {fileID: -671176086701521447, guid: ce7cb8d79c7e4034f9e95ee09c06ad2a, type: 3}
   onFalseSprite: {fileID: -8061600739767840541, guid: 2593e7f7891a23849b5a275d4388a30b, type: 3}
@@ -1668,9 +1671,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.006770834
+    x: 0
     y: 0
-    width: 0.98684216
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1701,7 +1704,7 @@ Transform:
   m_GameObject: {fileID: 810800189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1284065, y: -4.87326, z: -1}
+  m_LocalPosition: {x: -2.7775269, y: -4.87293, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
