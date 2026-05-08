@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy && !resultsShown && !UI_Manager.IsPaused())
+            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy && !resultsShown && !UI_Manager.IsPaused() && !AudioListener.pause)
             {
                 resultsShown = true;
                 StartCoroutine(ShowResultsAfterDelay());

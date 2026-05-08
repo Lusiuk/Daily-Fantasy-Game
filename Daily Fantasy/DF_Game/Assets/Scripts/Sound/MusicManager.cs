@@ -55,11 +55,13 @@ public class MusicManager : MonoBehaviour
         if (!hasFocus)
         {
             AudioListener.pause = true;
+
         }
         // Если окно снова активно, включаем звук.
         else
         {
-            AudioListener.pause = false;
+            if(!UI_Manager.IsPaused())
+                AudioListener.pause = false;
         }
     }
 
