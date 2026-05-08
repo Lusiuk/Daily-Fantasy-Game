@@ -84,6 +84,15 @@ public class UI_Manager : MonoBehaviour
         //SceneManager.LoadScene("Street");
     }
 
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        // Если окно игры стало неактивным (свернуто), выключаем звук.
+        if (!hasFocus)
+        {
+            PauseGame();
+        }
+    }
+
     public void Settings()
     {
         if (!SettingsPanel.activeSelf)
