@@ -607,12 +607,12 @@ public class DialogueSystem : MonoBehaviour
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
-        EndDialogue:
+    EndDialogue:
         isDialogueActive = false;
         currentDialogue = null;
+        OnDialogueEnd?.Invoke();
         currentContextObject = null;
         inputEnabled = true;
-        OnDialogueEnd?.Invoke();
     }
 
     private void ExecuteOutcome(Outcome outcome)

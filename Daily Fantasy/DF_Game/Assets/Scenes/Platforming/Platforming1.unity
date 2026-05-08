@@ -19385,6 +19385,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2607608689368443857, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
+      propertyPath: treasurePrefab
+      value: 
+      objectReference: {fileID: 4992538379073826457, guid: 7d28c7fb4a7de3b44abe765ae1a88a90, type: 3}
     - target: {fileID: 6580689516518995078, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
       propertyPath: m_Name
       value: Chest (1)
@@ -25663,15 +25667,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0015625001
+    x: 0.00052083336
     y: 0
-    width: 0.6916667
-    height: 1.7333333
+    width: 0.45416668
+    height: 1.8407407
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 14.625
+  orthographic size: 31.0625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -34906,7 +34910,8 @@ PrefabInstance:
       propertyPath: interactionPrompt
       value: 
       objectReference: {fileID: 158750314}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2607608689368443857, guid: 9616fb442478a4bcfa6ba4b9b20fcc12, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

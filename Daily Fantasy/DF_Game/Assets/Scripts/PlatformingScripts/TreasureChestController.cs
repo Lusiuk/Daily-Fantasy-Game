@@ -15,23 +15,12 @@ public class TreasureChestController : MonoBehaviour
     private GameObject treasureInstance;
     private bool playerInRange;
     private bool isOpen;
-    private bool canClose;
-
-    private void Awake()
-    {
-        if (treasureParent == null)
-            treasureParent = null; // можно оставить null: будет инстанс в корне
-    }
 
     private void Start()
     {
         if (dialogueTrigger != null)
-            dialogueTrigger.SetInteractionEnabled(false); // чтобы R обрабатывал только этот скрипт
-
-        if (treasurePrefab != null)
         {
-            treasureInstance = Instantiate(treasurePrefab, treasureParent);
-            treasureInstance.SetActive(false);
+            dialogueTrigger.SetInteractionEnabled(false);
         }
     }
 
@@ -39,16 +28,12 @@ public class TreasureChestController : MonoBehaviour
     {
         if (interactAction != null)
             interactAction.action.performed += OnInteract;
-        if (DialogueSystem.Instance != null)
-            DialogueSystem.Instance.OnDialogueEnd += OnDialogueEnd;
     }
 
     private void OnDisable()
     {
         if (interactAction != null)
             interactAction.action.performed -= OnInteract;
-        if (DialogueSystem.Instance != null)
-            DialogueSystem.Instance.OnDialogueEnd -= OnDialogueEnd;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -61,6 +46,7 @@ public class TreasureChestController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             playerInRange = false;
+         CloseChest();
     }
 
     private void OnInteract(InputAction.CallbackContext context)
@@ -70,10 +56,12 @@ public class TreasureChestController : MonoBehaviour
 
         if (!isOpen)
         {
+            // ОТКРЫТЬ сундук
             OpenChest();
         }
-        else if (canClose)
+        else
         {
+            // ЗАКРЫТЬ сундук
             CloseChest();
         }
     }
@@ -81,36 +69,43 @@ public class TreasureChestController : MonoBehaviour
     private void OpenChest()
     {
         isOpen = true;
-        canClose = false;
 
         if (chestAnimator != null)
             chestAnimator.SetTrigger("Open");
 
-        if (treasureInstance != null)
+        if (treasurePrefab != null)
+        {
+            treasureInstance = Instantiate(treasurePrefab, treasureParent);
+            RectTransform canvasRect = treasureInstance.GetComponent<RectTransform>();
+            if (canvasRect != null)
+            {
+                canvasRect.anchorMin = Vector2.zero;
+                canvasRect.anchorMax = Vector2.one;
+                canvasRect.offsetMin = Vector2.zero;
+                canvasRect.offsetMax = Vector2.zero;
+            }
             treasureInstance.SetActive(true);
+        }
 
         if (dialogueTrigger != null)
+        {
             dialogueTrigger.TriggerDialogue();
+        }
     }
 
     private void CloseChest()
     {
+        // Удаляем canvas
         if (treasureInstance != null)
-            treasureInstance.SetActive(false);
+        {
+            Destroy(treasureInstance);
+            treasureInstance = null;
+        }
 
+        // Анимация закрытия
         if (chestAnimator != null)
             chestAnimator.SetTrigger("Close");
 
         isOpen = false;
-        canClose = false;
-    }
-
-    private void OnDialogueEnd()
-    {
-        if (DialogueSystem.Instance == null) return;
-        if (DialogueSystem.Instance.CurrentContextObject != gameObject) return;
-
-        // диалог сундука закрыт — разрешаем закрыть сундук на следующий R
-        canClose = true;
     }
 }
