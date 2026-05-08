@@ -28,6 +28,10 @@ public class Dialogue : ScriptableObject
     public bool oneTimeUse = false;     // должен ли диалог исчезнуть после первого использования
     public bool trackForCondition = false;
 
+    [Header("Flags after dialogue")]
+    public bool setFlagsAfterDialogue = false;     // включить установку флагов
+    public Outcome.FlagChange[] flagChanges;     // массив флагов
+
     [Header("Dialogue Panel Alignment")]
     public bool centerDialoguePanel = false;   // если true, панель будет по центру экрана
 

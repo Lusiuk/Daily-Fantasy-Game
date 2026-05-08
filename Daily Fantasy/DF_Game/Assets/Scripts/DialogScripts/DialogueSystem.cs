@@ -439,9 +439,16 @@ public class DialogueSystem : MonoBehaviour
         yield return StartCoroutine(FadeDialogue(1f, 0f, fadeDuration, true));
         if (dialogueText != null) dialogueText.text = "";
 
+        // Применяем флаги сразу после скрытия текста, до телепортов и переходов
+        if (currentDialogue != null && currentDialogue.setFlagsAfterDialogue && currentDialogue.flagChanges != null)
+        {
+            foreach (var change in currentDialogue.flagChanges)
+                GameState.SetFlag(change.flagName, change.value);
+        }
+
         QuestDialogue questDialogue = currentDialogue as QuestDialogue;
 
-        // Обработка обычных переходов (телепорт, смена сцены) – без изменений…
+        // Обработка обычных переходов (телепорт, смена сцены)
         if (currentDialogue != null)
         {
             if (currentDialogue.teleportAfterDialogue)
@@ -514,6 +521,7 @@ public class DialogueSystem : MonoBehaviour
                         yield return TransitionManager.Instance.PlayCustomBlink(finalEnding.blinkSteps, finalEnding.blinkStepDuration);
                     }
 
+                    // Сбрасываем состояние, чтобы можно было запустить новый диалог
                     StopTypewriterMusic();
                     if (currentTypewriter != null)
                     {
@@ -548,13 +556,9 @@ public class DialogueSystem : MonoBehaviour
                     // Запускаем финальный диалог
                     if (chosenFinalDialogue != null)
                     {
-                        // Поднимаем диалоговый канвас над чёрными полосами
                         DialogueSystem.Instance.SetCanvasOrder(999);
-
                         DialogueSystem.Instance.ShowDialogue(chosenFinalDialogue, null);
                         yield return new WaitUntil(() => !DialogueSystem.Instance.IsDialogueActive());
-
-                        // Возвращаем исходный порядок
                         DialogueSystem.Instance.SetCanvasOrder(-1);
                     }
                 }

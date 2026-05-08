@@ -3929,7 +3929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogue: {fileID: 11400000, guid: c0804e05f52a43f48ab26c43e1759a1d, type: 2}
+  dialogue: {fileID: 0}
   autoTrigger: 0
   interactAction: {fileID: -5692351487708188261, guid: 463309fdce2d7fe48a58b411d4ae91d3, type: 3}
   interactionPrompt: {fileID: 2115541722}
@@ -3937,7 +3937,10 @@ MonoBehaviour:
   uiAdditionalOffset: 90
   smoothTime: 0.1
   fadePromptSpeed: 5
-  replacements: []
+  replacements:
+  - conditions:
+    - "DialogueUsed:98\u043D87\u043D\u0435"
+    dialogue: {fileID: 11400000, guid: c0804e05f52a43f48ab26c43e1759a1d, type: 2}
   syncFlagName: 
   onTrueSprite: {fileID: 0}
   onFalseSprite: {fileID: 0}
@@ -4407,10 +4410,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.20156251
+    x: 0.006770834
     y: 0
-    width: 0.30062136
-    height: 0.30462962
+    width: 0.98684216
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
