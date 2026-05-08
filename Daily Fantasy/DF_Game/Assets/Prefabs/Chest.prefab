@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3583560860661030821}
   - component: {fileID: 7806762241949289347}
   - component: {fileID: 5687268978958782414}
+  - component: {fileID: 2607608689368443857}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -151,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed949378a4857834897908f1a7d2b11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  interactionEnabled: 1
   dialogue: {fileID: 11400000, guid: 26d2b24a257eb764480ca1319e9fe841, type: 2}
   autoTrigger: 0
   interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
@@ -188,3 +190,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2607608689368443857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580689516518995078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef085bf40da47868c5f6ed820cee9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreasureChestController
+  chestAnimator: {fileID: 5687268978958782414}
+  dialogueTrigger: {fileID: 7806762241949289347}
+  interactAction: {fileID: 1781555164194001046, guid: b6460552864044c549ff7dc200157cb6, type: 3}
+  treasurePrefab: {fileID: 0}
+  treasureParent: {fileID: 0}

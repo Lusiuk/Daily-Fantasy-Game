@@ -41,6 +41,9 @@ public class DialogueSystem : MonoBehaviour
     public System.Action OnDialogueStart;
     public System.Action OnDialogueEnd;
 
+    //Какой объект открыл диалог
+    public GameObject CurrentContextObject => currentContextObject;
+
     // Приватные переменные
     private CanvasGroup canvasGroup;
     private Coroutine currentTypewriter;
@@ -608,12 +611,12 @@ public class DialogueSystem : MonoBehaviour
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
-        EndDialogue:
+    EndDialogue:
         isDialogueActive = false;
         currentDialogue = null;
+        OnDialogueEnd?.Invoke();
         currentContextObject = null;
         inputEnabled = true;
-        OnDialogueEnd?.Invoke();
     }
 
     private void ExecuteOutcome(Outcome outcome)
